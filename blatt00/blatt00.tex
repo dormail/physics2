@@ -3,6 +3,8 @@
 \usepackage{fancyhdr}
 \usepackage[margin=2.5cm]{geometry}
 
+\usepackage{amsmath, amssymb}
+
 \fancyhf{}
 % vspaces in den headern fuer Distanzen notwendig
 % linke Seite: Namen der Abgabegruppe
@@ -14,6 +16,12 @@
 % benoetigt damit der eigentliche Text nicht in der Überschrift steckt
 \setlength{\headheight}{4cm} 
 
+% newcommands für diese abgabe
+\newcommand{\nabvec}{\vec{\nabla}}
+\newcommand{\delx}{\partial_x}
+\newcommand{\dely}{\partial_y}
+\newcommand{\delz}{\partial_z}
+
 
 \begin{document}
 % pagestyle nicht global festgelegt, da sonst bei allen Seiten Überschrift ist
@@ -22,6 +30,40 @@
 
 \section*{Aufgabe 1}
 % ...
+\mbox{}
+\par{a)} $ \quad \nabvec(x^2 + xz - z^2 + 3xyz)= 
+\begin{pmatrix}
+	\delx \\
+	\dely \\
+	\delz 
+\end{pmatrix}
+(x^2 + xz - z^2 + 3xyz)
+	= 
+\begin{pmatrix}
+	\delx \ (x^2 + zx + 3xyz) \\
+	\dely \ 3xyz \\
+	\delz \ xz - z^2 + 3xyz
+\end{pmatrix}
+	=
+\begin{pmatrix}
+	2x + 3yz + z \\
+	3xz \\
+	x - 2z + 3xy
+\end{pmatrix}
+	$
+\vspace{0.5cm} \par{b)} 
+$ \nabvec \cdot
+\begin{pmatrix}
+	2xz+8x \\ e^x + y(\text{sin}^2(xyz) + \text{cos}(xy)) \\ \text{ln}(y^4) + 4xy + 7z^3
+\end{pmatrix}
+=
+\begin{pmatrix}
+	2z + 8 \\
+	\sin^2(xyz) + cos(xy) + xyz*\sin(2*xyz) + xy*\sin(xy) \\
+	21 z^2
+\end{pmatrix}
+$
+\vspace{0.5cm} \par{c)}
 \section*{Aufgabe 2}
 % ...
 \section*{Aufgabe 3}
