@@ -2,8 +2,8 @@
 
 
 Zur benutzung von Git:  
-Befehle:  
 
+Befehle:  
 wenn du das Repository neu runterlaedst (in einem Ordner wo noch keins existiert):  
   `$ git init`  
   `$ git clone https://github.com/dormail/physics2.git`  
