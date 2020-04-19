@@ -1,0 +1,75 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath, amssymb}
+
+
+% eigene commands
+\newcommand{\epszero}{\epsilon_0}
+
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Etem Kalyon\\Matthias Maile}\vspace{1.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Physik II - Gruppe 2\\Sommersemester 2020}\vspace{1.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{2.5cm}\huge{\textbf{1. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{4cm} 
+
+
+\begin{document}
+% pagestyle nicht global festgelegt, da sonst bei allen Seiten Überschrift ist
+% daher muss hier fancy aktiviert werden (für eine Seite, daher thispagestyle)
+\thispagestyle{fancy}
+
+\section*{Aufgabe 1}
+% ...
+\section*{Aufgabe 2}
+\par{(a)} 
+% flaechenladungsdichte der erdoberflaeche
+Das Gaußsche Gesetz besagt:
+\[ \int \vec{E} \  d\vec{A} = \frac{Q}{\epsilon_0} \]
+Da $\vec{E}$ unabhängig vom Ort auf der Fläche A ist und dazu parallel zum Normalenvektor liegt, kann der Betrag von $\vec{E}$ aus dem Integral gezogen werden.\\
+$\vec{E}$ und $\hat{n}$ zeigen jedoch in verschiedene Richtungen; $\hat{n}$ von der Erde weg, das elektrische Feld richtugn Erde. Daher entsteht ein negatives Vorzeichen.\\
+Die Flächenladungsdichte $\sigma$ lautet somit:
+\begin{align*}
+	\int \vec E \ d\vec A &= -\vert \vec E \vert \int d\vec A = -\vert \vec E \vert * A = \frac{Q}{\epszero} \\
+	\Rightarrow \sigma = \frac{Q}{A} &= -E*\epszero
+\end{align*}
+
+\par{(b)}
+% gesamtladung
+Wenn man die Ladungsdichte $\sigma$ aus (a) mit der Fläche $A$ multipliziert erhält man die Gesamtladung:
+\[
+	Q_{Gesamt} = \sigma * A = -EA\epszero = -\epszero * E * 4\pi r_E^2
+\]
+
+\par{(c)}
+% fallende kugeln
+Die Kraft die auf eine Kugel wirkt ist die Summe aus Gewichtskraft und Coulomkraft. Aus dem zweiten newtonschen Axiom folgt dann die Beschleunigung.
+\[
+	F_{Gesamt} = F_G + F_{Co} = mg + E*q_{Kugel} \Rightarrow a = g + \frac{E*q_{Kugel}}{m} 
+\]
+Aus der Formel für den freien Fall können wir die benötigten Zeiten für den Fall bestimmen:
+\begin{align*}
+	\Delta h &= \frac{1}{2} a*(\Delta t)^2 \\
+	\Rightarrow \Delta t &= \sqrt{\frac{2*\Delta h}{a}}
+\end{align*}
+\[ 
+	\Delta t_{ungeladen} = \sqrt{\frac{2*\Delta h}{g}} = \sqrt{\frac{2*2m}{10m/s^2}} \approx 0.6325s
+\]
+\[
+	\Delta t_{geladen} = \sqrt{\frac{2*\Delta h}{g + \frac{E*q_{Kugel}}{m} }}
+	= \sqrt{\frac{4m}{10m/s^2 + \frac{150N/C * 100 \mu C}{0.1 Kg} }}
+	= \sqrt{\frac{4m}{10m/s^2 + 0.15 m/s^2}} \approx 0.6278s
+\]
+Die geladene Kugel erreicht somit die Erde ungefähr $0.0047s$ schneller als die Ungeladene.
+
+\section*{Aufgabe 3}
+% ...
+\section*{Aufgabe 4}
+% ...
+\end{document}
