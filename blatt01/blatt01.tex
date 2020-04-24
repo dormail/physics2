@@ -3,10 +3,19 @@
 \usepackage{fancyhdr}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{amsmath, amssymb}
+\usepackage{aligned-overset}
 
 
 % eigene commands
 \newcommand{\epszero}{\epsilon_0}
+% partielle ableitungen in Kugelkoordinaten
+\newcommand{\delr}{\partial_r}
+\newcommand{\delp}{\partial_\phi}
+\newcommand{\delt}{\partial_\theta}
+% einheisvektoren in kugelkoordinaten
+\newcommand{\er}{\hat{e}_r}
+\newcommand{\et}{\hat{e}_\theta}
+\newcommand{\ep}{\hat{e}_\phi}
 
 \fancyhf{}
 % vspaces in den headern fuer Distanzen notwendig
@@ -72,4 +81,49 @@ Die geladene Kugel erreicht somit die Erde ungefähr $0.0047s$ schneller als die
 % ...
 \section*{Aufgabe 4}
 % ...
+\newpage
+\setlength{\headheight}{0cm} 
+\section*{Aufgabe 5}
+% ...
+\par{a)}
+Nabla in Kugelkoordinaten:
+\[ \nabla = \er \cdot \delr + \et \cdot \frac{1}{r} \delt + \ep \cdot \frac{1}{r \sin\theta} \delp \]
+Die Divergenz eines Radialfeldes $\vec{E}(\vec{r}) = \alpha r^\beta \er$ lautet dadurch:
+\begin{align*}
+	\vec{\nabla} \cdot \vec{E}(\vec{r}) 
+	&= \left(  \er \delr + \et \frac{1}{r} \delt + \ep  \frac{1}{r \sin\theta} \delp \right) \cdot \alpha r^\beta \er \\
+	% skalar produkt aufgeloest
+	&= \left(\er * \delr (\alpha r^\beta \er )
+		+ \et * \frac{1}{r} \delt (\alpha r^\beta \er )
+		+ \ep * \frac{1}{r\sin\theta} \delp (\alpha r^\beta \er) \right) \\
+	% ableiten
+	&= \left(\er \cdot \er \cdot \alpha \beta r^{\beta - 1}
+		+ \frac{1}{r} \cdot \et \cdot \et \alpha r^\beta
+		+ \frac{1}{r\sin\theta} \cdot \ep \cdot \ep \cdot \alpha r^\beta \right) \\
+	% skalarprodukte
+	&= \left(\alpha \beta r^{\beta - 1}
+		+ \frac{1}{r} \alpha r^\beta
+		+ \frac{1}{r\sin\theta}  \alpha r^\beta \right) \\
+	% kuerzen
+	&= \left( \alpha\beta r^{\beta - 1} +\alpha r^{\beta - 1} +\alpha r^{\beta - 1} \right) \\
+	&= \alpha (\beta + 2) r^{\beta - 1}
+\end{align*}
+Da $\nabla \cdot \vec{E}(\vec{r}) = 1$ für alle $r$ erfüllt sein soll, muss die Gleichung unabhängig von $r$ sein:
+\begin{align*}
+	\alpha (\beta + 2) r^{\beta - 1} \overset{!}&{=} 1
+	\quad \Rightarrow
+	\beta = 1 \text{ damit Gleichung unabhängig von r ist}
+	\\
+	\Leftrightarrow
+	\alpha * 3 &= 1 \\
+	\Leftrightarrow
+	\alpha &= \frac{1}{3}
+\end{align*}
+
+
+
+\newpage
+\section*{Aufgabe 6}
+
+
 \end{document}
