@@ -6,8 +6,8 @@ epsilon0 = 8.8541878128 * 10^(-12); % elektrische feldkonstante
 re = 6370000; % radius der erde
 E = 150; % elektrisches Feld
 
-sigma = -1 * E * epsilon0;
-Q = sigma * 4 * pi * re^2;
+sigma = -1 * E * epsilon0; % Ladungsdichte
+Q = sigma * 4 * pi * re^2; % Gesamtladung
 
 disp(sigma);
 disp(Q);
