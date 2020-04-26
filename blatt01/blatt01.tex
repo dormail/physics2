@@ -43,8 +43,8 @@
 % flaechenladungsdichte der erdoberflaeche
 Das Gaußsche Gesetz besagt:
 \[ \int \vec{E} \  d\vec{A} = \frac{Q}{\epsilon_0} \]
-Da $\vec{E}$ unabhängig vom Ort auf der Fläche A ist und dazu parallel zum Normalenvektor liegt, kann der Betrag von $\vec{E}$ aus dem Integral gezogen werden.\\
-$\vec{E}$ und $\hat{n}$ zeigen jedoch in verschiedene Richtungen; $\hat{n}$ von der Erde weg, das elektrische Feld richtugn Erde. Daher entsteht ein negatives Vorzeichen.\\
+Da $\vec{E}$ unabhängig vom Ort auf der Fläche A ist und parallel zum Normalenvektor liegt, kann der Betrag von $\vec{E}$ aus dem Integral gezogen werden.\\
+$\vec{E}$ und $\hat{n}$ zeigen jedoch in verschiedene Richtungen; $\hat{n}$ von der Erde weg, das elektrische Feld richtung Erde. Daher entsteht ein negatives Vorzeichen.\\
 Die Flächenladungsdichte $\sigma$ lautet somit:
 \begin{align*}
 	\int \vec E \ d\vec A &= -\vert \vec E \vert \int d\vec A = -\vert \vec E \vert * A = \frac{Q}{\epszero} \\
@@ -79,7 +79,7 @@ Aus der Formel für den freien Fall können wir die benötigten Zeiten für den 
 	= \sqrt{\frac{4m}{10m/s^2 + \frac{150N/C * 100 \mu C}{0.1 Kg} }}
 	= \sqrt{\frac{4m}{10m/s^2 + 0.15 m/s^2}} \approx 0.6278s
 \]
-Die geladene Kugel erreicht somit die Erde ungefähr $0.0047s$ schneller als die Ungeladene.
+Die geladene Kugel erreicht die Erde ungefähr $0.0047s$ schneller als die Ungeladene.
 
 \newpage
 \setlength{\headheight}{0cm}
@@ -121,26 +121,23 @@ Das Feld nah an der Kugel ($r = R_{Kugel}$) ist also:
 \[
 E(R) = \kco \frac{Q_{Kugel}}{R^2} = \kco \frac{\sigma * 4 \pi R^2}{R^2} = \frac \sigma {\epsilon_0}
 \]
-Damit die Durchschlagsfeldstärke nicht erreicht wird muss darf $\sigma$ nicht höher als $2.656 * 10^{-5} \frac{C}{m^2}$ sein:
+Damit die Durchschlagsfeldstärke nicht erreicht wird, darf $\sigma$ nicht höher als $2.656 * 10^{-5} \frac{C}{m^2}$ sein:
 \[
 \frac \sigma {\epsilon_0} < 3 * 10^6 \frac V m
 \Leftrightarrow
 \sigma < \epsilon_0 * 3 * 10^6 \frac V m = 2.656 * 10^{-5} \frac{C}{m^2}
 \]
-\vspace{1cm}
-
+\vspace{0.5cm}
 
 \par{b)}
-Definition der Spannung
-\[ U_{AB} = \int_A^B \vec{E} \cdot \ ds \]
-Fuer das E-Feld eines langen Stabes bei Distanz $r$:
-\[ \vec{E}(r) = \frac{\lambda}{2\pi\epsilon_0 r} \cdot \hat{e}_r \]
-Da die Spannung größer als $3\cdot 10^6 \frac{V}{m}$ sein soll, ist der Maximale Abstand:
-\begin{align*}
-	U_{0, r} 
-	&= \int_0^r \vec{E} \cdot \ ds = \int_0^r \frac{\lambda}{2\pi\epsilon_0 r} \cdot dr \\
-	&= 	
-\end{align*}
+Das E-Feld einer Linienladung mit Ladungsdichte $\lambda$, für $r \ll l$:
+\[
+	\vec E = \frac \lambda {2 \pi r \epsilon_0} \hat r
+\]
+Durch umstellen erhalten wir den Radius der ionisierten Luft (der Bereich wo $E \geq 3 * 10^6 \frac{V}{m} $:
+\[
+	r_{max} = \frac \lambda {E * 2 \pi \epsilon_0} = \frac{10^3 \frac C m}{3 * 10^6 \frac{V}{m} * 2 \pi \epsilon_0} \approx 5.99 m
+	\] 
 
 \newpage
 
