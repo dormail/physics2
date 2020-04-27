@@ -115,19 +115,18 @@ Aus $\theta_1$ folgt zuletzt:
 \section*{Aufgabe 4}
 % ...
 \par{a)}
-E-Feld außerhalb einer geladenen Hohlkugel (Flächenladungsdichte $\sigma$):
-\[ \vec E(r) = \kco \frac{Q_{Kugel}}{r^2} \hat r \]
-Das Feld nah an der Kugel ($r = R_{Kugel}$) ist also:
-\[
-E(R) = \kco \frac{Q_{Kugel}}{R^2} = \kco \frac{\sigma * 4 \pi R^2}{R^2} = \frac \sigma {\epsilon_0}
-\]
-Damit die Durchschlagsfeldstärke nicht erreicht wird, darf $\sigma$ nicht höher als $2.656 * 10^{-5} \frac{C}{m^2}$ sein:
-\[
-\frac \sigma {\epsilon_0} < 3 * 10^6 \frac V m
-\Leftrightarrow
-\sigma < \epsilon_0 * 3 * 10^6 \frac V m = 2.656 * 10^{-5} \frac{C}{m^2}
-\]
+Für $\vec E = 3 * 10^6 \frac V m$ folgt aus dem Gaußschem Gesetz:
+\begin{align*}
+	\oint_A \vec E \cdot d\vec{A} &= \frac Q {\epsilon_0} \\
+	\Leftrightarrow
+	Q_{max}	&= \epsilon_0 * \oint_A \vec E \cdot d\vec{A}\\
+	\Leftrightarrow
+	Q_{max}	&= \epsilon_0 * E * A_{Kugel}\\
+	\Leftrightarrow
+	Q_{max}	&= \epsilon_0 * E * 4\pi*R_{Kugel}^2
+\end{align*}
 \vspace{0.5cm}
+
 
 \par{b)}
 Das E-Feld einer Linienladung mit Ladungsdichte $\lambda$, für $r \ll l$:
