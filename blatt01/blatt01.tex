@@ -123,7 +123,7 @@ Für $\vec E = 3 * 10^6 \frac V m$ folgt aus dem Gaußschem Gesetz:
 	\Leftrightarrow
 	Q_{max}	&= \epsilon_0 * E * A_{Kugel}\\
 	\Leftrightarrow
-	Q_{max}	&= \epsilon_0 * E * 4\pi*R_{Kugel}^2
+	Q_{max}	&= \epsilon_0 * E * 4\pi*R_{Kugel}^2 = 
 \end{align*}
 \vspace{0.5cm}
 
@@ -196,9 +196,95 @@ Da $\nabla \cdot \vec{E}(\vec{r}) = 1$ für alle $r$ erfüllt sein soll, muss di
 \newpage
 \section*{Aufgabe 6}
 \[
-	\vec F = \begin{pmatrix} y^3 \\ x^2 \\ z \end{pmatrix}
+	\vec F (\vec r) = 
+	\begin{pmatrix}
+		y^3 \\ x^2 \\ z
+	\end{pmatrix}
 \]
 
+Das Linienintegral in den Teil entlang der x-Achse $r_1$ und entlang der Kreislinie $r_2$ aufteilt werden. Die Parametrisierung lautet dann:
+\[
+	r_1 = R * \begin{pmatrix} t \\ 0 \\ 0 \end{pmatrix}, \quad 
+	t \in [-1, 1] \qquad 
+	r_2 = \overline \gamma (t) = R *
+		\begin{pmatrix}
+			\cos(t) \\ \sin(t) \\ 0
+		\end{pmatrix}
+		\quad
+	t \in [0, \pi ]
+\]
+Daraus folgt dann das Linienintegral:
+\begin{align*}
+	\int_{\partial A} \vec F (\vec r ) \cdot d\vec s
+	&= \int_{r_1} \vec F (\vec r_1 ) \cdot d\vec r_1 +
+	\int_{r_2} \vec F (\vec r_2 ) \cdot d\vec r_2 \\
+	% substitution
+	&= \int_{-1}^1 \vec F (\vec r_1 ) \cdot \frac{d\vec r_1(t)}{dt} dt +
+	\int_0^\pi \vec F (\vec r_2 ) \cdot \frac{d\vec r_2(t)}{dt} dt \\
+	&= \int_{-1}^1
+	% werte in vektoren einsetzen
+	\begin{pmatrix} 0 \\ (R*t)^2 \\ 0 \end{pmatrix}
+	\cdot
+	\begin{pmatrix} R \\ 0 \\ 0 \end{pmatrix}
+	dt + 
+	\int_0^\pi
+	\begin{pmatrix} R^3 * \sin^3(t) \\ R^2 * \cos^2(t) \\ 0 \end{pmatrix}
+	\cdot
+	\begin{pmatrix} -R*\sin(t) \\ R*\cos(t) \\ 0 \end{pmatrix}
+	dt \\
+	% skalarprodukte ausrechnen
+	&= \int_{-1}^1 0 \ dt + 
+	\int_0^\pi
+	\left(
+	-R^4 * \sin^4(t) + R^3 * \cos^3(t)
+	\right)
+	dt \\
+	% integral aufteilen
+	&= -R^4 \int_0^\pi \sin^4(t) dt + 
+	R^3 \underbrace{\int_0^\pi \cos^3(t) dt }_{= 0} \\
+	% loesen
+	&= -R^4 \int_0^\pi \sin^4(t) dt = -R^4 * \pi * \frac 3 8
+\end{align*}
+Das Flächen-Integral kann ueber eine Umformung in Zylinderkoodinaten vereinfacht werden:
+\begin{align*}
+	\iint_{A} \vec \nabla \times \vec F d\vec A &= 
+	\iint_{A} \left( \vec \nabla \times \vec F\right) \cdot  \vec e_z \ dA \\
+	&= \iint_{A}
+	\begin{pmatrix} 0 \\ 0 \\ 2x - 3y^2 \end{pmatrix} \cdot
+	\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} dA \\
+	&= \iint_{A} \left( 2x - 3y^2 \right) dA \\
+	% umformen in zylinder koordinaten
+	&= \int_0^\pi \int_0^R 
+	\left(
+		2 * \rho * \cos\varphi - 
+		3 * (\rho \sin\varphi)^2
+	\right) * \rho \
+	d\rho d\varphi \\
+	% rho integral loesen
+	&= \int_0^\pi 
+	\left(
+		\frac 2 3 R^3 \cos\varphi - 
+		\frac 3 4 R^4 \sin^2\varphi
+	\right)
+	d\varphi \\
+	% trennen
+	&= 
+	\underbrace{\int_0^\pi 
+	\left(
+		\frac 2 3 R^3 \cos\varphi
+	\right)
+	d\varphi}_{= 0}
+	-
+	\int_0^\pi
+	\left(
+		\frac 3 4 R^4 \sin^2\varphi
+	\right)
+	d\varphi \\
+	% loesen
+	&= -R^4 \frac 3 4 \int_0^\pi \sin^2\varphi d\varphi = -R^4 * \pi *
+	\frac 3 8
+\end{align*}
+Die Lösung der Integrale über $\sin^n(t)$ folgt aus der Redduktionsformel.
 
 
 \end{document}
