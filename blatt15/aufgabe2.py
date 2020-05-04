@@ -71,4 +71,5 @@ plt.title('Potential und 1. Ableitung vom Potential\n einer geladenen Kugel mit 
 plt.axis('equal')
 plt.grid(True)
 plt.ylim(-2,2)
+plt.savefig('aufgabe2_efeld_analytisch.png', dpi=600)
 plt.show()
