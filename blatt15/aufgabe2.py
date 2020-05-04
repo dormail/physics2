@@ -19,6 +19,19 @@ def potential(r,R):
     else:
         return (beta / r)
 
+# die analytische ableitung vom potential
+def potential_derived(r,R):
+    eps = 1 # elektrische feldkonstante
+    rho = 1 # Ladungsdichte
+
+    beta = rho * R**3 / (3 * eps)
+    gamma = R**2 * rho  / (2 * eps)
+    
+    if r <= R:
+        return -1 * rho * r / (3 * eps)
+    else:
+        return -1 * beta / (r**2)
+
 # bildet die ableitung von y zu x
 def derive(x,y):
     der = y.copy()
@@ -31,10 +44,12 @@ def derive(x,y):
     return der
 
 R = 1
-r = np.linspace(0,10,1000)
-phi = r.copy()
+r = np.linspace(0,10) # die werte der x-Achse
+phi = r.copy() # das Potential zu den Abstaenden
+phi_der = r.copy() # analytisch bestimmte ableitung vom potential
 for i in range(0,len(r)):
     phi[i] = potential(r[i], R)
+    phi_der[i] = potential_derived(r[i],R)
 
 der = derive(r,phi.copy())
 
@@ -42,11 +57,16 @@ der = derive(r,phi.copy())
 plot_kugel(R)
 
 plt.plot(r,phi) # plot potential
-plt.plot(r,der) # plot 1. ableitung 
+#plt.plot(r, - 1 * der) # plot 1. ableitung 
+plt.plot(r, -1 * phi_der) # plot 1. ableitung analytisch
 
 plt.xlabel('Distanz r')
 
-plt.legend(['Geladene Kugel', 'Potential', '1. Ableitung des potentials'])
+# legende fuer numerischen plot
+#plt.legend(['Geladene Kugel', 'Potential', 'Elektrisches Feld,\nnumerische bestimmt', 'Elektrisches Feld,\nanalytisch bestimmt']) 
+
+# legende fuer rein analyitschen plot
+plt.legend(['Geladene Kugel', 'Potential', 'Betrag des elektrischen\nFeldes auf eine Testladung'])
 plt.title('Potential und 1. Ableitung vom Potential\n einer geladenen Kugel mit Radius R = ' + str(R))
 plt.axis('equal')
 plt.grid(True)
