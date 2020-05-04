@@ -12,7 +12,7 @@ def potential(r,R):
     rho = 1 # Ladungsdichte
 
     beta = rho * R**3 / (3 * eps)
-    gamma = 1 / 2 * rho * R**3 / eps
+    gamma = R**2 * rho  / (2 * eps)
     
     if r <= R:
         return (-1 * rho * r**2 / (6 * eps) + gamma)
@@ -47,6 +47,7 @@ plt.plot(r,der) # plot 1. ableitung
 plt.xlabel('Distanz r')
 
 plt.legend(['Geladene Kugel', 'Potential', '1. Ableitung des potentials'])
+plt.title('Potential und 1. Ableitung vom Potential\n einer geladenen Kugel mit Radius R = ' + str(R))
 plt.axis('equal')
 plt.grid(True)
 plt.ylim(-2,2)
