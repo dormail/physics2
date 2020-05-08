@@ -1,75 +1,47 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
 # plotet eine kugel mit radius R
 def plot_kugel(R):
     t = np.linspace(0,2 * np.pi)
     plt.plot(R * np.cos(t), R * np.sin(t), color='black')
 
-# die gibt da potential im abstand r zurueck
+# potential der geladenen Kugel mit Radius R im Abstand r
 def potential(r,R):
-    eps = 1 # elektrische feldkonstante
-    rho = 1 # Ladungsdichte
-
-    beta = rho * R**3 / (3 * eps)
-    gamma = R**2 * rho  / (2 * eps)
-    
+    eps = 1
+    rho = 1
+    if r > R:
+        return rho * R**3 / (3 * eps * r)
     if r <= R:
-        return (-1 * rho * r**2 / (6 * eps) + gamma)
-    else:
-        return (beta / r)
+        return -1 * rho * r**2 / (6 * eps) + rho * R**2 / (2 * eps)
 
-# die analytische ableitung vom potential
-def potential_derived(r,R):
-    eps = 1 # elektrische feldkonstante
-    rho = 1 # Ladungsdichte
-
-    beta = rho * R**3 / (3 * eps)
-    gamma = R**2 * rho  / (2 * eps)
-    
+# efeld, analog zu potential
+def efeld(r,R):
+    eps = 1
+    rho = 1
+    if r > R:
+        return rho * R**3 / (3 * eps * r**2)
     if r <= R:
-        return -1 * rho * r / (3 * eps)
-    else:
-        return -1 * beta / (r**2)
-
-# bildet die ableitung von y zu x
-def derive(x,y):
-    der = y.copy()
-    # fuer zentralen werte zentralen diff. quotient
-    for i in range(1,len(y) - 1):
-        der[i] = (y[i + 1] - y[i - 1]) / (x[i + 1] - x[i - 1])
-    # fuer raender normalen difquotien
-    der[0] = (y[1] - y[0]) / (x[1] - x[0])
-    der[-1] = (y[-1] - y[-2]) / (x[-1] - x[-2])
-    return der
+        return rho * r / (3 * eps)
 
 R = 1
-r = np.linspace(0,10) # die werte der x-Achse
-phi = r.copy() # das Potential zu den Abstaenden
-phi_der = r.copy() # analytisch bestimmte ableitung vom potential
-for i in range(0,len(r)):
-    phi[i] = potential(r[i], R)
-    phi_der[i] = potential_derived(r[i],R)
+r = np.linspace(0, 10, 1000)
 
-der = derive(r,phi.copy())
+phi = r.copy()
+e = r.copy()
+
+for i in range(0, len(r)):
+    phi[i] = potential(r[i], R)
+    e[i] = efeld(r[i], R)
 
 
 plot_kugel(R)
-
-plt.plot(r,phi) # plot potential
-#plt.plot(r, - 1 * der) # plot 1. ableitung 
-plt.plot(r, -1 * phi_der) # plot 1. ableitung analytisch
+plt.plot(r,phi)
+plt.plot(r,e)
 
 plt.xlabel('Distanz r')
 
-# legende fuer numerischen plot
-#plt.legend(['Geladene Kugel', 'Potential', 'Elektrisches Feld,\nnumerische bestimmt', 'Elektrisches Feld,\nanalytisch bestimmt']) 
-
-# legende fuer rein analyitschen plot
-plt.legend(['Geladene Kugel', 'Potential', 'Betrag des elektrischen\nFeldes auf eine Testladung'])
-plt.title('Potential und 1. Ableitung vom Potential\n einer geladenen Kugel mit Radius R = ' + str(R))
 plt.axis('equal')
-plt.grid(True)
-plt.ylim(-2,2)
-plt.savefig('aufgabe2_efeld_analytisch.png', dpi=600)
+plt.legend(['Geladene Kugel', 'Elektrisches Potential φ(r)', 'Betrag des elektrischen Feldes E(r)'])
+plt.savefig('aufgabe2.png', dpi=600)
 plt.show()
