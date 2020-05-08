@@ -209,11 +209,45 @@ Durch partielle Integration erhalten wir dann:
 		\left(
 		\frac{ra}{2} + \frac{a^2}{4}
 		\right)
-	\right]
+	\right] \\
 	% vereinfachen
+	&= \frac{e}{4\pi\epsz r a^3} \exp\left( \frac{-2r}{a} \right) *
+	\left( a^3 + ra^2 \right) - \frac{e}{4\pi\epsz a^3 r} a^3 \\
+	% weiter vereinfachen
+	&= \frac{e}{4\pi\epsz r} \exp\left(\frac{-2r}{a}\right) *
+	\left( 1 + \frac{r}{a} \right) - \frac{e}{4\pi\epsz r}
+\end{align*}
+Da das Proton als Punktladung angenommen werden kann lautet das elektrisches Potential:
+\[
+	\phi_p (r) = \frac{e}{4\pi\epsz r}
+	\]
+Das Gesamtpotential als Summe lautet damit:
+\[
+	\phi_{ges} (r) = \phi_e (r) \phi_p (r) =
+	\frac{e}{4\pi\epsz r} \exp\left( \frac{-2r}{a}\right)
+	\left( 1 + \frac r a \right)
+\]
+\newpage
+Das elektrische Feld folgt dann aus der Produktregel:
+\begin{align*}
+	\vec E (\vec r) 
+	&= -\phi^\prime(r) * \hat r \\
+	% ableitung einsetzen
+	&= -\frac{e}{4\pi\epsz r^2} * \exp\left(\frac{-2r}{a}\right)
+	\left(1 + \frac ra \right)
+	+ \frac{e}{4\pi\epsz r} \left(
+	\frac{-2}{a} \exp\left(\frac{-2r}{a}\right) \left(1+\frac ra \right)
+	+ \exp\left(\frac{-2r}{a}\right) \frac1a
+	\right) \\
+	% kuerzen
+	&= \frac{e}{4\pi\epsz r} \exp\left(\frac{-2r}{a}\right)
+	\left( \frac2a + \frac{2r}{a^2} + \frac1r \right) \\
+	% weiter kuerzen
+	&= \frac{e}{4\pi\epsz} \exp\left(\frac{-2r}{a}\right)
+	\left( \frac{2r^2 + 2ar + a^2}{a^2r^2} \right)
 \end{align*}
 
-
+\newpage
 \section*{Aufgabe 4}
 \paragraph{a)}
 \begin{align*}
