@@ -1,0 +1,130 @@
+\documentclass[11pt a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{aligned-overset}
+
+% partielle ableitungen
+\newcommand{\delr}{\partial_r}
+\newcommand{\deltheta}{\partial_\theta}
+\newcommand{\delphi}{\partial_\varphi}
+
+% elektrische feldkonstante
+\newcommand{\epsz}{\epsilon_0}
+% 1 / 4pi eps
+\newcommand{\kco}{\frac{1}{4\pi\epsilon_0}}
+
+% fancy header
+\usepackage{fancyhdr}
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Etem Kalyon\\Matthias Maile\\Roman Surma}\vspace{1.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Physik II - Gruppe 2\\Sommersemester 2020}\vspace{1.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{2.5cm}\huge{\textbf{16. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{4cm}
+
+% zum zeichnen tikz
+\usepackage{tikz}
+
+\begin{document}
+\thispagestyle{fancy}
+\section*{Aufgabe 1: Eine geladene Linie}
+\par{a)}
+Die drei dimensionale Linienladungsdichte $\rho$ lautet:
+\[
+	\rho(\vec r) =
+	\sigma \cdot \delta(x) \cdot \delta(y) \cdot \Theta\left( z + \frac a 2 \right)
+	\cdot \Theta\left(\frac a 2 - z\right)
+	\qquad \text{ mit } \sigma \text{ als Linienladungsdichte }
+	\sigma = \frac Q a
+\]
+
+
+\newpage
+\setlength{\headheight}{0cm}
+\section*{Aufgabe 3: Spiegelladungen}
+Zum Erfüllen der Randbedingung setzen 3 weitere Ladungen in das System,
+die gegenüberliegende Ladung ist gleichnamig. Die Ladungen im 2. und im 4.
+Quadranten sind jedoch negativ geladen. Die Anordnung sieht dann wie folgt
+aus:
+\newline
+\begin{center}
+\begin{tikzpicture}
+	% die x und y achse
+	\draw[gray, thick, ->] (0, -3) -- (0, 3);
+	\draw[gray, thick, ->] (-5, 0) -- (5,0);
+	% die Ladungen mit annotation
+	\filldraw [black] (3,2) circle (2pt);
+	\draw (3,2) node [right] {$Q$};
+	\filldraw [black] (-3,2) circle (2pt);
+	\draw (-3,2) node [left] {$-q$};
+	\filldraw [black] (-3,-2) circle (2pt);
+	\draw (-3,-2) node [left] {$q$};
+	\filldraw [black] (3,-2) circle (2pt);
+	\draw (3,-2) node [right] {$-q$};
+	% weg zu Ladung q0
+	\draw[thick, dashed] (3,0) -- (3,2);
+	\draw[thick, dashed] (0,2) -- (3,2);
+	% anotation an der achse
+	\draw (0,2) node [left] {$b$};
+	\draw (3,0) node [below] {$a$};
+\end{tikzpicture}
+\end{center}
+Durch die Multipolentwicklung können wir das elektrische Potential im Raum ermitteln:
+\begin{align*}
+	\phi (\vec r)
+	&= \frac1{4\pi\epsz} \sum_i \frac{q_i}{d(\vec r, \vec{q_i})} \\
+	% ladungen und distanzen einsetzen
+	&= \kco \left[
+		\underbrace{\frac{Q}{\sqrt{(x-a)^2 + (y-b)^2}}}_{
+			\text{Durch Ladung } Q}
+		- \underbrace{\frac{Q}{\sqrt{(x+a)^2 + (y-b)^2}} }_{
+			\text{Spiegelladung im 2. Quadrant}}
+		+ \underbrace{\frac{Q}{\sqrt{(x + a)^2 + (y+b)^2}} }_{
+			\text{Spiegelladung im 3. Quadrant}}
+		- \underbrace{\frac{Q}{\sqrt{(x-a)^2 + (y+b)^2}} }_{
+			\text{Spiegelladung im 4. Quadrant}}
+	\right]
+\end{align*}
+Die Randbedingung $\phi = 0$ auf den Platten ist damit auch erfüllt:
+\begin{align*}
+	\phi \left( \begin{pmatrix} x \\ 0 \end{pmatrix} \right) 
+	&= \kco \left[
+		\frac{Q}{\sqrt{(x-a)^2 + (0-b)^2}}
+		- \frac{Q}{\sqrt{(x+a)^2 + (0-b)^2}}
+		+ \frac{Q}{\sqrt{(x + a)^2 + (0+b)^2}}
+		- \frac{Q}{\sqrt{(x-a)^2 + (0+b)^2}}
+	\right] \\
+	% zusammen fassen, 0 entfernen
+	&= \kco \left[
+		\frac{Q}{\sqrt{(x-a)^2 + b^2}}
+		- \frac{Q}{\sqrt{(x+a)^2 + b^2}}
+		+ \frac{Q}{\sqrt{(x + a)^2 + b^2}}
+		- \frac{Q}{\sqrt{(x-a)^2 + b^2}}
+	\right] \\
+	&= 0 \\
+	% jetzt noch mal alles für y achse
+	\phi \left( \begin{pmatrix} 0 \\ y \end{pmatrix} \right) 
+	&= \kco \left[
+		\frac{Q}{\sqrt{(0-a)^2 + (y-b)^2}}
+		- \frac{Q}{\sqrt{(0+a)^2 + (y-b)^2}}
+		+ \frac{Q}{\sqrt{(0 + a)^2 + (y+b)^2}}
+		- \frac{Q}{\sqrt{(0-a)^2 + (y+b)^2}}
+	\right] \\
+	% 0 entfernen
+	&= \kco \left[
+		\frac{Q}{\sqrt{a^2 + (y-b)^2}}
+		- \frac{Q}{\sqrt{a^2 + (y-b)^2}}
+		+ \frac{Q}{\sqrt{a^2 + (y+b)^2}}
+		- \frac{Q}{\sqrt{a^2 + (y+b)^2}}
+	\right] \\
+	&= 0
+\end{align*}
+
+
+\end{document}
