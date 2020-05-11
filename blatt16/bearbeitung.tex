@@ -126,5 +126,50 @@ Die Randbedingung $\phi = 0$ auf den Platten ist damit auch erfüllt:
 	&= 0
 \end{align*}
 
+\newpage
+\section*{Aufgabe 4: Tankanzeige}
+\par{a)}
+Zur Berechnung des $\vec E$-Feldes Benutzen wir den Gaußschen Satz
+\[ \int \vec E \cdot \hat n dA = \frac{Q_\text{enq}}{\epsz\epsilon_r} \]
+und nehmen das Feld mit der Idealisierung des idealen Platenkondensators,
+dass das $\vec E$-Feld nur radial verläuft
+\[ \vec E \parallel \hat r \perp \hat z. \]
+Dann ergibt sich für $\vec E$:
+\begin{align*}
+	\int \underbrace{\vec E(r) \cdot \hat n}_{E(r)}	\ dA(r) 
+	&= \frac{Q_\text{enq}}{\epsilon_r \epsz} \\
+	% flaeche raus ziehen
+	E(r) * A(r) &= \frac{Q_\text{enq}}{\epsilon_r \epsz} \\
+	% flaeche einsetzen
+	E(r) * 2\pi r^2 &= \frac{Q_\text{enq}}{\epsilon_r \epsz} \\
+	% Q umformen
+	E(r) * l * 2\pi r^2 &= \frac{\sigma_i * l * 2\pi * R_i^2}
+	{\epsilon_r \epsz}
+	\qquad ^{\text{\small mit $\sigma_i$ als Flächenladungsdichte}}
+	_{\text{\small des inneren Hohlzylinders}} \\
+	% Kuerzen
+	E(r) &= \frac{\sigma_i R_i}{\epsilon_r \epsz r} 
+	= \frac{Q_i}{2\pi * l * \epsilon_r \epsz * r}
+\end{align*}
+Für die Spannung U bilden wir ein Wegintegral über mit den zwei Radien als 
+Grenzen, da es sich um ein konservatives Kraftfeld handelt, ist es 
+wegunabhängig, sodass wir einfach entlang des Radius integrieren können:
+\begin{align*}
+	U &= \int_{R_i}^{R_a} E(r) dr \\
+	% E einsetzen
+	&= \int_{R_i}^{R_a} \frac{Q_i}{2\pi * l * \epsz \epsilon_r* r} dr \\
+	% integrieren
+	&= \frac{Q}{2\pi * l * \epsilon_r \epsz} \ln\left(\frac{R_a}{R_i}
+	\right)
+\end{align*}
+Die Kapazität folgt dann aus der Formel $C = \frac QU$:
+\begin{align*}
+	C = \frac QU &= \frac{Q * 2\pi * l * \epsilon_r \epsz}
+	{Q \ln\left(\frac{R_a}{R_i}\right)} \\
+	% kuerzen
+	&= \frac{2\pi * l * \epsilon_r \epsz}
+	{\ln\left(\frac{R_a}{R_i}\right)} 
+\end{align*}
+
 
 \end{document}
