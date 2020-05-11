@@ -47,6 +47,94 @@ Die drei dimensionale Linienladungsdichte $\rho$ lautet:
 
 \newpage
 \setlength{\headheight}{0cm}
+
+\section*{Aufgabe 2: Ladungsverteilung und Multipolmomente}
+\par{a)}
+\[
+	\rho (\vec r) = q \cdot \delta(x) \delta(y) \cdot \left(
+	\delta(z+a) + \delta(z-a) - 2\delta(z) \right)
+\]
+\par{b)}
+\begin{align*}
+	\phi(\vec r) = \frac1{4\pi\epsz} \int_{\mathbb{R}^3} 
+	\frac{\rho(r)}{\vert \vec r - \vec r^\prime \vert} d^3r^\prime
+	% rho einsetzen
+	&= \frac{1}{4\pi\epsz} 
+	\int_{-\infty}^\infty
+	\int_{-\infty}^\infty
+	\int_{-\infty}^\infty
+	\frac{
+	q \cdot \delta(x^\prime) \delta(y^\prime) \cdot \left(
+	\delta(z^\prime+a) + \delta(z^\prime-a) - 2\delta(z^\prime) \right)}
+	{\sqrt{(x-x^\prime)^2 +(y-y^\prime)^2 + (z-z^\prime)^2}}
+	\ dx^\prime dy^\prime dz^\prime \\
+	%  x und y integrieren (durch delta distribution)
+	&= \frac{q}{4\pi\epsz} 
+	\int_{-\infty}^\infty 
+	\frac{\delta(z^\prime+a) + \delta(z^\prime-a) - 2\delta(z^\prime)}
+	{\sqrt{x^2 + y^2 + (z - z^\prime)^2}}
+	\ dz^\prime \\
+	% z integrieren und integral aufteilen
+	&= \frac{q}{4\pi\epsz} \left[
+		\frac{1}{\sqrt{x^2 + y^2 + (z-a)^2}} + 
+		\frac{1}{\sqrt{x^2 + y^2 + (z+a)^2}} -
+		\frac{2}{\sqrt{x^2 + y^2 + z^2}}  
+	\right] \\
+	% r^2 = x^2 + y^2 einbringen
+	r := \sqrt{x^2 + y^2}
+	\Rightarrow
+	&= \frac{q}{4\pi\epsz} \left[
+		\frac{1}{\sqrt{r^2 + (z-a)^2}} + 
+		\frac{1}{\sqrt{r^2 + (z+a)^2}} -
+		\frac{2}{\sqrt{r^2 + z^2}}  
+	\right] \\
+	% r ausklammern
+	&= \frac{q}{4\pi\epsz} \frac1r \left[
+		\frac{1}{\sqrt{1 + \left( \frac{z-a}{r} \right)^2}} +
+		\frac{1}{\sqrt{1 + \left( \frac{z+a}{r} \right)^2}} -
+		\frac{2}{\sqrt{1 + \left( \frac{z}{r} \right)^2}} 
+	\right] \\
+	% taylor
+	\text{Taylor} \Rightarrow
+	&= \frac{q}{4\pi\epsz} \frac1r * [
+			% erster bruch als taylor reihe
+			1 + \frac{1}{2} \left(\frac{z-a}{r}\right)^2
+			+ \frac{3}{8} \left(\frac{z-a}{r}\right)^4
+			+  \dotsb \\
+			% zweiter bruch
+			&\hspace{1.49cm} +
+			1 + \frac{1}{2} \left(\frac{z+a}{r}\right)^2
+			+ \frac{3}{8} \left(\frac{z+a}{r}\right)^4
+			+  \dotsb \\
+			% 3. bruch
+			&\hspace{1.49cm} -
+			2 - \frac{2}{2} \left(\frac{z}{r}\right)^2
+			\hspace{0.7cm}
+			-\frac{6}{8} \left(\frac{z}{r}\right)^4
+			\hspace{0.7cm} +  \dotsb] \\
+	% zusammen fassen
+	&= \frac{q}{4\pi\epsz} \left[
+		\underbrace{\frac{1+1-2}{r}}_{0} +
+		\underbrace{\frac{(z-a)^2 + (z+a)^2 - 2z^2}{2 r^3}}_{
+			\frac{a^2}{r^3}}
+		+ 
+		\underbrace{\frac{3 (z-a)^4 + 3 (z+a)^4 - 6 z^4}{8 r^5}}_{
+			\frac{9a^2 z^2 + a^4}{4r^5}} + \dotsb
+		\right] \\
+	% weiter zusammen fassen
+	&= \frac{q a^2}{4\pi\epsz} \left(
+	\frac{1}{r^3} + \frac{z^2 + a^2}{4r^5} \right)
+\end{align*}
+Das erste nicht-verschwindene Moment lautet somit
+\[
+	\phi (r) = \frac{q}{4\pi\epsz} \frac{a^2}{r^3}
+\]
+
+
+	
+
+
+\newpage
 \section*{Aufgabe 3: Spiegelladungen}
 Zum Erfüllen der Randbedingung setzen 3 weitere Ladungen in das System,
 die gegenüberliegende Ladung ist gleichnamig. Die Ladungen im 2. und im 4.
