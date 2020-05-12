@@ -35,14 +35,74 @@
 \thispagestyle{fancy}
 \section*{Aufgabe 1: Eine geladene Linie}
 \par{a)}
-Die drei dimensionale Linienladungsdichte $\rho$ lautet:
+Die dreidimensionale Linienladungsdichte $\rho$ lautet:
 \[
 	\rho(\vec r) =
-	\sigma \cdot \delta(x) \cdot \delta(y) \cdot \Theta\left( z + \frac a 2 \right)
+	\sigma \cdot \delta(x) \cdot \delta(y) \cdot 
+	\Theta\left( z + \frac a 2 \right)
 	\cdot \Theta\left(\frac a 2 - z\right)
 	\qquad \text{ mit } \sigma \text{ als Linienladungsdichte }
 	\sigma = \frac Q a
 \]
+
+\par{b)}
+Aus der Multipolentwicklung folgt:
+\begin{align*}
+	\phi (\vec r) 
+	&= \kco 
+	\int_{\mathbb{R}^3} \frac{\rho(\vec r^\prime)}
+	{\vert \vec r - \vec r^\prime \vert} 
+	d^3r^\prime \\
+	% rho einsetzen
+	&= \kco
+	\int_{-\infty}^\infty
+	\int_{-\infty}^\infty
+	\int_{-\infty}^\infty
+	\frac{
+	\sigma \cdot \delta(x^\prime) \cdot \delta(y^\prime) \cdot 
+	\Theta\left( z^\prime + \frac a 2 \right)
+	\cdot \Theta\left(\frac a 2 - z^\prime \right)}
+	{\sqrt{(x-x^\prime)^2 + (y-y^\prime)^2 + (z-z^\prime)^2}} \
+	dx^\prime dy^\prime dz^\prime\\
+	% x und y integrieren
+	&= \frac{Q}{4\pi\epsz a} \int_{-\frac a 2}^{\frac a 2}
+	\frac1{\sqrt{x^2 + y^2 + (z-z^\prime)^2}} \ dz^\prime \\
+	% r und u einbringen
+	^{r^2 := x^2 + y^2}
+	_{u := z - z^\prime}
+	\Rightarrow
+	&= \frac{Q}{4\pi\epsz a} \int_{z+\frac a 2}^{z-\frac a 2}
+	\frac1{\sqrt{r^2 + u^2}} \ du \\
+	% umformen fuer zweite substitution
+	&= \frac{Q}{4\pi\epsz a} \int_{z+\frac a 2}^{z-\frac a 2}
+	\frac{1}{u + \sqrt{r^2 + u^2}}
+	\frac{u + \sqrt{r^2 + u^2}}{\sqrt{r^2 + u^2}} 
+	\ du \\
+	% weiter umformen
+	&= \frac{Q}{4\pi\epsz a} \int_{z+\frac a 2}^{z-\frac a 2}
+	\frac{1}{u + \sqrt{r^2 + u^2}}
+	\left( 1 + \frac{u}{\sqrt{r^2 + u^2}} \right)
+	\ du \\
+	% 2. substitution
+	v:= u+\sqrt{r^2 + u^2} \quad
+	du = \frac{dv}{1 + \frac{u}{\sqrt{r^2 + u^2}}}
+	\Rightarrow
+	&= \frac{Q}{4\pi\epsz a} \int_{v_1}^{v_2}
+	\frac{1}{v}
+	\ dv \\
+	% integrieren
+	&= \frac{Q}{4\pi\epsz a}
+	\ln \left( \frac{v_2}{v_1} \right) \\
+	% ruecksubstituieren
+	&= \frac{Q}{4\pi\epsz a}
+	\ln \left( \frac{
+		z-\frac a 2 + \sqrt{x^2 + y^2 + \left(z-\frac a 2\right)^2}}
+	{
+		z+\frac a 2 + \sqrt{x^2 + y^2 + \left(z+\frac a 2\right)^2}}
+	\right)
+\end{align*}
+In vorgegebener Lösung ist der Teil im ln im Kehrwert, ist aber nur ein 
+getauschtes Vorzeichen.
 
 
 \newpage
@@ -239,6 +299,9 @@ Dann ergibt sich für $\vec E$:
 	E(r) &= \frac{\sigma_i R_i}{\epsilon_r \epsz r} 
 	= \frac{Q_i}{2\pi * l * \epsilon_r \epsz * r}
 \end{align*}
+
+\vspace{0.5cm}
+\par{b)}
 Für die Spannung U bilden wir ein Wegintegral über mit den zwei Radien als 
 Grenzen, da es sich um ein konservatives Kraftfeld handelt, ist es 
 wegunabhängig, sodass wir einfach entlang des Radius integrieren können:
@@ -259,5 +322,54 @@ Die Kapazität folgt dann aus der Formel $C = \frac QU$:
 	{\ln\left(\frac{R_a}{R_i}\right)} 
 \end{align*}
 
+\par{c)}
+Bei befüllen des Kondensators kann der Kondensator in zweite Teile geteilt
+werden; unter der Annahme, dass sich die Felder des gefüllten Teils und des
+Hohlteils nicht beeinflussen lautet die Kapazität:
+\begin{align*}
+	C(h) &= C_\text{Benzin}(h) + C_\text{Luft}(h) \\
+	% formel fuer kapazitaet einsetzen
+	&= \frac{2\pi * h * \epsilon_\text{Benzin} \epsz}
+	{\ln\left(\frac{R_a}{R_i}\right)} +
+	\frac{2\pi * (l-h)  \epsz}
+	{\ln\left(\frac{R_a}{R_i}\right)} \\
+	% vereinfachen
+	&= 2\pi\epsz \frac{h (\epsilon_\text{Benzin} -1 )+ l}
+	{\ln\left(\frac{R_a}{R_i}\right)}
+\end{align*}
+
+\newpage
+
+\section*{Aufgabe 5: Greensche Funktion}
+Sei $D$ ein $n$-dimensionaler Differentialoperator und $G$ eine Greensche Funktion, sodass 
+gilt:
+\[
+	DG(\vec x) = \delta^{(n)}(\vec x), \hspace{1cm} x \in \mathbb{R}^n
+\]
+\par{a)} Eine partikuläre Lösung $f_p(\vec x)$ der Differentialgleichung
+\[
+	Df(\vec x) = J(\vec x)
+\]
+mit Inhomogenität $J(\vec x)$ kann durch Faltung der Inhomogenität mit der
+Greenschen Funktion erzeugt werden:
+\begin{align*}
+	D f_p(\vec x) 
+	&= J(\vec x) \\
+	% mit delta funktion ins integral verwandeln
+	&= \int_{\mathbb{R}^n} J(\vec x^\prime)
+	\delta(\vec x - \vec x^\prime) d^nx^\prime \\
+	% delta umstellen zu DG(x)
+	&= \int_{\mathbb{R}^n} J(\vec x^\prime) 
+	DG(\vec x - \vec x^\prime) d^nx^\prime \\
+	% D rausziehen
+	&= D \int_{\mathbb{R}^n} J(\vec x^\prime)
+	G(\vec x - \vec x^\prime) d^nx^\prime \\
+	% D entfernen
+	\Rightarrow
+	f_p(\vec x) 
+	&=  \int_{\mathbb{R}^n} J(\vec x^\prime)
+	G(\vec x - \vec x^\prime) d^nx^\prime
+\end{align*}
+	
 
 \end{document}
