@@ -104,12 +104,53 @@ Aus der Multipolentwicklung folgt:
 In vorgegebener Lösung ist der Teil im ln im Kehrwert, ist aber nur ein 
 getauschtes Vorzeichen.
 
+\newpage
+\setlength{\headheight}{0cm}
+c)
+\begin{enumerate}
+	\item $x = y = 0$, $z \rightarrow \frac a 2$
+		\[
+			\phi(z \rightarrow \frac a2) =
+			\lim_{z\rightarrow\frac a2} \frac{Q}
+			{4\pi\epsz a} \ln\left(\frac{
+				z + \frac a2 + \sqrt{\left(z+\frac a2
+				\right)^2}}{
+				z - \frac a2 + \sqrt{\left(z-\frac a2
+				\right)^2}}
+			\right)
+		=
+			\lim_{z\rightarrow\frac a2} \frac{Q}
+			{4\pi\epsz a} \ln\left(\frac{2z + a}{2z -a }
+			\right)
+		\]
+	% x achse, nahe bei null
+	\item $\vec r \in x\text{-Achse}$
+	\[
+		\phi(x) = \frac{Q}{4\pi\epsz a} \ln\left(\frac{
+			\frac a2 + \sqrt{x^2 + \frac{a^2}4}}{
+			-\frac a2 + \sqrt{x^2 + \frac{a^2}4}}\right)
+		=
+		\frac{Q}{4\pi \epsz a} \ln\left(\frac{
+			x^2}{\left(\sqrt{x^2 + \frac{a^2}{4}} - 
+			\frac{a^2}{4}\right)^2} \right)
+			\]
+	\item $r_z = 0$, $r \gg \frac a2$
+		\[
+			\phi(r) = \frac{Q}{4\pi\epsz a} \ln\left(\frac{
+				\frac a2 + \sqrt{r^2 + \frac{a^2}{4}}}{
+				-\frac a2 + \sqrt{r^2 + \frac{a^2}{4}}}
+			\right)
+			\overset{r \gg \frac a2}{\approx}
+			\frac{Q}{4\pi\epsz a} \ln\left(\frac{
+				r + \frac a 2}{r - \frac a2}\right)
+		\]
+\end{enumerate}
 
 \newpage
 \setlength{\headheight}{0cm}
 
 \section*{Aufgabe 2: Ladungsverteilung und Multipolmomente}
-\par{a)}
+\quad \par{a)}
 \[
 	\rho (\vec r) = q \cdot \delta(x) \delta(y) \cdot \left(
 	\delta(z+a) + \delta(z-a) - 2\delta(z) \right)
@@ -185,9 +226,17 @@ getauschtes Vorzeichen.
 	&= \frac{q a^2}{4\pi\epsz} \left(
 	\frac{1}{r^3} + \frac{z^2 + a^2}{4r^5} \right)
 \end{align*}
-Das erste nicht-verschwindene Moment lautet somit
+
+Das erste nicht-verschwindene Moment ist damit das Quadrupolmoment
 \[
-	\phi (r) = \frac{q}{4\pi\epsz} \frac{a^2}{r^3}
+	Q(\vec e_r) = qa^2
+\]
+
+c)
+Aus dem Quadrupolmoment folgt das Potential:
+\[
+	\phi (r) = \frac{Q(\vec e_r)}{4\pi\epsz r^3} 
+	= \frac{qa^2}{4\pi\epsz r^3}
 \]
 
 
