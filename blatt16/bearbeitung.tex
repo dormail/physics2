@@ -346,10 +346,11 @@ gilt:
 \[
 	DG(\vec x) = \delta^{(n)}(\vec x), \hspace{1cm} x \in \mathbb{R}^n
 \]
-\par{a)} Eine partikuläre Lösung $f_p(\vec x)$ der Differentialgleichung
+a) Eine partikuläre Lösung $f_p(\vec x)$ der Differentialgleichung
 \[
 	Df(\vec x) = J(\vec x)
 \]
+
 mit Inhomogenität $J(\vec x)$ kann durch Faltung der Inhomogenität mit der
 Greenschen Funktion erzeugt werden:
 \begin{align*}
@@ -370,6 +371,51 @@ Greenschen Funktion erzeugt werden:
 	&=  \int_{\mathbb{R}^n} J(\vec x^\prime)
 	G(\vec x - \vec x^\prime) d^nx^\prime
 \end{align*}
-	
+b) Die Heaviside (Theta-Funktion)
+\[
+	\Theta (x) = \begin{cases} 
+		1 &\text{für } x \geq 0\\
+		0 &\text{für } x < 0
+	\end{cases}
+\]
+c) 1.
+\[
+	\rho (r) = Q \cdot \delta^3(\vec r) 
+	= Q \cdot \delta(x) \cdot \delta(y) \cdot \delta(z)
+\]
+
+2.
+\begin{align*}
+	\int \vec E \ d\vec A = \frac{Q_\text{enq}}{\epsz}
+	&= \frac{Q}{\epsz} \int \delta^3(\vec r^\prime) d^3 \vec r^\prime \\
+	% umformen
+	E \cdot 4\pi r^2 &= \frac{Q}{\epsz} \\
+	% nach E umstllen
+	E &= \frac{Q}{4\pi r^2 \epsz}
+\end{align*}
+
+Da wir uns in einem Radialfeld befinden:
+\begin{align*}
+	-\nabla \phi = -\partial_r \phi
+	&= E(r) \\
+	% integral
+	\Leftrightarrow
+	\phi &= - \int_\infty^r \frac{Q}{4\pi r^{\prime 2} \epsz} dr^\prime
+	\\
+	&= \frac{Q}{4\pi\epsz} \frac1r
+\end{align*}
+
+3.
+\begin{align*}
+	\phi(r) 
+	&= \int_{\mathbb{R}^3} \frac{-\rho(\vec r^\prime)}{\epsz} 
+	\cdot G(\vec r - \vec r^\prime) \ d^3r^\prime \\
+	% rho einsetzen
+	- \frac{Q}{4\pi r}
+	&= \int_{\mathbb{R}^3} Q \cdot \delta^3(\vec r^\prime)
+	\cdot G(\vec r - \vec r^\prime) \ d^3r^\prime \\
+	% integrieren
+	G(r) &= -\frac1{4\pi r}
+\end{align*}
 
 \end{document}
