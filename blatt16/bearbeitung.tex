@@ -71,15 +71,15 @@ Aus der Multipolentwicklung folgt:
 	^{r^2 := x^2 + y^2}
 	_{u := z - z^\prime}
 	\Rightarrow
-	&= \frac{Q}{4\pi\epsz a} \int_{z+\frac a 2}^{z-\frac a 2}
+	&= \frac{-Q}{4\pi\epsz a} \int_{z+\frac a 2}^{z-\frac a 2}
 	\frac1{\sqrt{r^2 + u^2}} \ du \\
 	% umformen fuer zweite substitution
-	&= \frac{Q}{4\pi\epsz a} \int_{z+\frac a 2}^{z-\frac a 2}
+	&= \frac{-Q}{4\pi\epsz a} \int_{z+\frac a 2}^{z-\frac a 2}
 	\frac{1}{u + \sqrt{r^2 + u^2}}
 	\frac{u + \sqrt{r^2 + u^2}}{\sqrt{r^2 + u^2}} 
 	\ du \\
 	% weiter umformen
-	&= \frac{Q}{4\pi\epsz a} \int_{z+\frac a 2}^{z-\frac a 2}
+	&= \frac{-Q}{4\pi\epsz a} \int_{z+\frac a 2}^{z-\frac a 2}
 	\frac{1}{u + \sqrt{r^2 + u^2}}
 	\left( 1 + \frac{u}{\sqrt{r^2 + u^2}} \right)
 	\ du \\
@@ -87,18 +87,21 @@ Aus der Multipolentwicklung folgt:
 	v:= u+\sqrt{r^2 + u^2} \quad
 	du = \frac{dv}{1 + \frac{u}{\sqrt{r^2 + u^2}}}
 	\Rightarrow
-	&= \frac{Q}{4\pi\epsz a} \int_{v_1}^{v_2}
+	&= \frac{-Q}{4\pi\epsz a} \int_{v_1}^{v_2}
 	\frac{1}{v}
 	\ dv \\
 	% integrieren
-	&= \frac{Q}{4\pi\epsz a}
+	&= \frac{-Q}{4\pi\epsz a}
 	\ln \left( \frac{v_2}{v_1} \right) \\
+	% negatives vorzeichen wegstreichen
+	&= \frac{Q}{4\pi\epsz a}
+	\ln \left( \frac{v_1}{v_2} \right) \\
 	% ruecksubstituieren
 	&= \frac{Q}{4\pi\epsz a}
 	\ln \left( \frac{
-		z-\frac a 2 + \sqrt{x^2 + y^2 + \left(z-\frac a 2\right)^2}}
-	{
 		z+\frac a 2 + \sqrt{x^2 + y^2 + \left(z+\frac a 2\right)^2}}
+	{
+		z-\frac a 2 + \sqrt{x^2 + y^2 + \left(z-\frac a 2\right)^2}}
 	\right)
 \end{align*}
 
