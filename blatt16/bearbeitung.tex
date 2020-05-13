@@ -507,4 +507,21 @@ Da wir uns in einem Radialfeld befinden:
 	G(r) &= -\frac1{4\pi r}
 \end{align*}
 
+4.
+\begin{align*}
+	\phi (\vec r) 
+	&= \int_{\mathbb{R}^3} \rho(\vec r^\prime) G(\vec r - \vec r^\prime)
+	d^3r^\prime \\
+	% G einsetzen
+	\overset{(3.)}&{=} \int_{\mathbb{R}^3} \rho(\vec r^\prime) \cdot
+	\frac1{4\pi\epsz} \cdot \frac1 {\vert \vec r - 
+	\vec r^\prime \vert}
+	d^3r^\prime \\
+	% 1/4pieps rausziehen
+	&= \kco \int_{\mathbb{R}^3}
+	\frac{\rho(\vec r^\prime)} {\vert \vec r - 
+	\vec r^\prime \vert}
+	d^3r^\prime \\
+\end{align*}
+
 \end{document}
