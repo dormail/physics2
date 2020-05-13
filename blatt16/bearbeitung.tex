@@ -101,8 +101,6 @@ Aus der Multipolentwicklung folgt:
 		z+\frac a 2 + \sqrt{x^2 + y^2 + \left(z+\frac a 2\right)^2}}
 	\right)
 \end{align*}
-In vorgegebener Lösung ist der Teil im ln im Kehrwert, ist aber nur ein 
-getauschtes Vorzeichen.
 
 \newpage
 \setlength{\headheight}{0cm}
@@ -245,6 +243,8 @@ Aus dem Quadrupolmoment folgt das Potential:
 
 \newpage
 \section*{Aufgabe 3: Spiegelladungen}
+
+a)
 Zum Erfüllen der Randbedingung setzen 3 weitere Ladungen in das System,
 die gegenüberliegende Ladung ist gleichnamig. Die Ladungen im 2. und im 4.
 Quadranten sind jedoch negativ geladen. Die Anordnung sieht dann wie folgt
@@ -322,6 +322,43 @@ Die Randbedingung $\phi = 0$ auf den Platten ist damit auch erfüllt:
 	\right] \\
 	&= 0
 \end{align*}
+
+\newpage
+b) 
+Für den Bewewis der Eindeutigkeit nehmen wir an, dass zwei Lösungen,
+$\phi_1$ und $\phi_2$ existieren. Die Differenz der Potentiale definieren 
+wir als $\phi_0 = \phi_1 - \phi_2$.\\
+Aus dem ersten Greenschen Satz folgt dann:
+\begin{align*}
+	\int_V (\vec \nabla \phi_0)^2 \ d^3r
+	+ \underbrace{
+		\int_V \phi_0 \cdot \Delta \phi_0 \ d^3 r}_{
+		^\text{$\Delta \phi_0 = \Delta \phi_1 - \Delta \phi_2$}
+		_\text{$= -\frac{\rho}{\epsz} + \frac{\rho}{\epsz} = 0$}}
+	&= 
+	\underbrace{\int_{\partial V} \phi_0 \cdot \partial_n \phi_0 \ d^2r}
+	_{^{=0 \text{, wegen Dirichlet Rdb muss}}
+	_{\text{ $\phi_0(\vec r) \vert_{r\in \partial V} =0$ gelten}}}
+	\\
+	% folgerung
+	\int_V (\vec \nabla \phi_0)^2 \ d^3r 
+	+ \hspace{1.1cm} 0 \hspace{1.1cm} &= \hspace{1.2cm} 0
+\end{align*}
+In der 2. Zeile wird das $\vec E$-Feld des Differenzfeldes $\phi_0$ 
+quadriert und, muss also $\geq0$ sein. \\
+Da über eine nicht negative Zahl integriert wird, muss der Wert des
+Integrals auch positiv sein. Aufgrund der Poisson-Gleichung und der 
+Dirichlet-Randbedingung ist dieser aber 0, d.h. dass auch das $\vec E$-Feld 
+im gesamten Raum 0 ist. \\
+\[
+	\int_V (\vec \nabla \phi_0)^2 \ d^3r = 0
+	\Rightarrow
+	\int_V (\vec E(\vec r))^2 \ d^3r = 0
+	\Rightarrow
+	\vec E (\vec r) = 0, \text{ für } \vec r \in V
+\]
+Dies stellt keine sinnvolle Lösung für die Poissongleichung dar, weshalb 
+keine zwei Lösungen existieren können.
 
 \newpage
 \section*{Aufgabe 4: Tankanzeige}
