@@ -1,0 +1,129 @@
+\documentclass[11pt a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{aligned-overset}
+
+% partielle ableitungen
+\newcommand{\delr}{\partial_r}
+\newcommand{\deltheta}{\partial_\theta}
+\newcommand{\delphi}{\partial_\varphi}
+
+% elektrische feldkonstante
+\newcommand{\epsz}{\epsilon_0}
+% 1 / 4pi eps
+\newcommand{\kco}{\frac{1}{4\pi\epsilon_0}}
+
+% fancy header
+\usepackage{fancyhdr}
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Matthias Maile\\Roman Surma}\vspace{1.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Physik II - Gruppe 2\\Sommersemester 2020}\vspace{1.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{2.5cm}\huge{\textbf{17. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{4cm}
+
+% zum zeichnen tikz
+\usepackage{tikz}
+
+% fuer fabigen text
+\usepackage{xcolor}
+
+\begin{document}
+\thispagestyle{fancy}
+\section*{Aufgabe 1}
+Für die Feldenergie betrachten wir das $E$-Feld im Kondensator. Da wo sich
+das Dielektrikum befindet, ist das Feld im gesamten Bereich 0, für die 
+freien Stellen haben wir ein homogenes $E$-Feld mit dem Betrag $\frac ud$:
+\[
+	E(\vec r, x) = \begin{cases}
+		\frac ud &\text{für } \vec r \in A(x) \\
+	0 	&\text{sonst} \end{cases}
+\]
+Dabei ist $A(x)$ die freie Fläche, welche natürlich von der Auslenkung $x$ 
+abhängt.\\
+Diesen Zusammenhang löst man am einfachsten grafisch:
+\begin{center}
+\begin{tikzpicture}
+	% erste flaeche
+	\filldraw[fill=green!20] 
+		(-2,-2) -- (-2,2) -- (-1.5,2) -- (-1.5,-2);
+	% zweite flaeche
+	\filldraw[fill=blue!20]
+		(-1.5,-2) -- (-1.5, 0) -- (0.5,-2);
+	\filldraw[fill=blue!20]
+		(-1.5,2) -- (-1.5, 0) -- (0.5,2);
+	% dritte flaeche
+	\filldraw[fill=red!20]
+		(0.5, -2) -- (2,-0.5) -- (2,-2);
+	\filldraw[fill=red!20]
+		(0.5, 2) -- (2, 0.5) -- (2, 2);
+	% kondensator und dielektrikum als zweites damit die raender orange
+	% und schwarz sind
+	% der kondensator
+	\draw[gray, thick] (-2,2) -- (2,2);
+	\draw[gray, thick] (-2,2) -- (-2,-2);
+	\draw[gray, thick] (-2,-2) -- (2,-2);
+	\draw[gray, thick] (2,-2) -- (2,2);
+	% das dielektrikum
+	\draw[orange, thick] (0.5, 2) -- (2.5, 0);
+	\draw[orange, thick] (2.5, 0) -- (0.5, -2);
+	\draw[orange, thick] (0.5, -2) -- (-1.5, 0);
+	\draw[orange, thick] (-1.5, 0) -- (0.5, 2);
+	% annotations
+	\draw (-2,0) node [left] {$\sqrt{2}a$};
+	\draw (-1.75, -2) node [below] {$x$};
+	\draw (-0.75, -2) node [below] {$\frac{a}{\sqrt2}$};
+	\draw (1.25, -2) node [below] {$\frac{a}{\sqrt2} - x$};
+	% seperation fuer anotations
+	\draw [thick, dashed] (-2, -2) -- (-2, -2.1);
+	\draw [thick, dashed] (-1.5, -2) -- (-1.5, -2.1);
+	\draw [thick, dashed] (0.5, -2) -- (0.5, -2.1);
+	\draw [thick, dashed] (2, -2) -- (2, -2.1);
+\end{tikzpicture}
+\end{center}
+Dann folgt $A(x)$:
+\begin{align*}
+	A(x) = {\color{green!70} A_1(x)} 
+	+ {\color{blue!50} A_2(x)}
+	+ {\color{red!50} A_3(x)}
+	&= x \cdot \sqrt2 a + \frac{a^2}2 +
+		\left(\frac{a}{\sqrt2} - x\right)^2 \\
+	% binomische formel
+	&= x \cdot \sqrt2 a + \frac{a^2}2 +
+		x^2 - 2 \cdot \frac{a}{\sqrt2} x + 
+		\left(\frac{a}{\sqrt2} \right)^2 \\
+	% kuerzen
+	&= x^2 + a^2
+\end{align*}
+Die elektrische Feldenergie ist gegeben durch
+\[
+	W = \frac{\epsz}{2} \int_{\mathbb{R}^3} E^2(\vec r) d^3r 
+\]
+Da das $E$-Feld homogen ist, lässt sich dieses Integral auch als Produkt 
+mit dem Volumen darstellen:
+\[
+	W = \frac{\epsz}{2} \int_{\mathbb{R}^3} E^2(\vec r) d^3r 
+	= 
+	\frac{\epsz}{2} E^2(\vec r) \cdot V_{E}
+	= 
+	\frac{\epsz}{2} E^2(\vec r) \cdot A(x)d
+	=
+	\frac{u \epsz}{2} \cdot (x^2 + a^2)
+\]
+Daraus folgt die rückstellende Kraft:
+\[
+	\vec F = -\vec\nabla W = -\partial_x W_x 
+	= -\frac{\epsz u^2 x}{d} \hat x
+\]
+
+\section*{Aufgabe 2}
+\section*{Aufgabe 3}
+\section*{Aufgabe 4}
+\section*{Aufgabe 5}
+\end{document}
