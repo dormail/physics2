@@ -37,6 +37,7 @@
 \begin{document}
 \thispagestyle{fancy}
 \section*{Aufgabe 1}
+a) 
 Für die Feldenergie betrachten wir das $E$-Feld im Kondensator. Da wo sich
 das Dielektrikum befindet, ist das Feld im gesamten Bereich 0, für die 
 freien Stellen haben wir ein homogenes $E$-Feld mit dem Betrag $\frac ud$:
@@ -120,6 +121,23 @@ Daraus folgt die rückstellende Kraft:
 \[
 	\vec F = -\vec\nabla W = -\partial_x W_x 
 	= -\frac{\epsz u^2 x}{d} \hat x
+\]
+
+\newpage
+\setlength{\headheight}{0cm}
+
+b) Mit dem Ergebnis für die rückstellende Kraft aus a) können wir die DGL 
+aufstellen:
+\begin{align*}
+	F = m\ddot x&=-\frac{\epsz u^2 x}{d}  \\
+	% fuer dgl umstellen
+	\frac{\epsz u^2 x}{m \cdot d} + \ddot x &= 0
+\end{align*}
+Diese besitzt eine uns bekannte Form mit der Lösung
+\[
+	x(t) = \alpha \cdot \exp\left(
+	\sqrt{\frac{\epsz u^2 x}{m \cdot d}} \cdot i \cdot t
+	\right)
 \]
 
 \section*{Aufgabe 2}
