@@ -142,6 +142,59 @@ Diese besitzt eine uns bekannte Form mit der Lösung
 
 \section*{Aufgabe 2}
 \section*{Aufgabe 3}
+
+a)
+Mit der Formel für den elektrischen Widerstand können wir das Volumen der 
+Konstruktion ermitteln:
+\begin{align*}
+	R &= \rho_r \cdot \frac{l}{A}, & V &= 6 \cdot l \cdot A \\
+	\Rightarrow A &= \frac{\rho_r \cdot l}{R} \quad (1)
+	& \overset{(1)}{\Rightarrow} V &= 6 \frac{\rho_r \cdot l^2}{R}
+\end{align*}
+
+Damit folgt das Gewicht:
+\[
+	m = \rho \cdot V = \frac{6 \cdot \rho \cdot \rho_r \cdot l^2}{R}
+\]
+
+Und der Preis:
+\[
+	\text{Preis} = k \cdot m = 120.30 \text{ Euro}
+\]
+
 \section*{Aufgabe 4}
+a)
+Die Gesamtkapzität der Schaltung lautet
+\[
+	\frac{1}{C_{ges}} = \frac{1}{C_1} + \frac{1}{C_1 + C_2}
+\]
+
+Dann können wir durch die Bedingung $C_{ges} = C_2$ bestimmen:
+\begin{align*}
+	\frac{1}{C_{ges}} = \frac{1}{C_2}
+	&= \frac{1}{C_1} + \frac{1}{C_1 + C_2} \\
+	% brueche zusammen fuhren
+	&= \frac{C_1 + C_2 + C_1}{C_1 (C_1 + C_2)} \\
+	% kehrwert bilden
+	\Leftrightarrow
+	C_2 &= \frac{C_1 (C_1 + C_2)}{2C_1 + C_2} \\
+	% bruch aufloesen
+	\Leftrightarrow
+	C_2^2 + 2C_1C_2 &= C_1^2 + C_1C_2 \\
+	% fuer pq formel umstellen
+	\Leftrightarrow
+	0 &= C_1^2 - C_1C_2 - C_2^2
+\end{align*}
+
+Mit der $pq$-Formel erhalten wir $C_1$:
+\begin{align*}
+	C_1 &= \frac{C_2}{2} \pm \sqrt{\frac{C_2^2}{4} + C_2^2} \\
+	% wurzel aufloesen
+	&= \frac{C_2}{2} \pm \sqrt{1.25} \cdot C_2 \\
+	% negatives ergebnis streichen
+	C_1 \geq 0 \Rightarrow
+	&= \frac{C_2}{2} + \frac{5}{4} C_2 = \frac{7}{4} C_2
+\end{align*}
+
 \section*{Aufgabe 5}
 \end{document}
