@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{aligned-overset}
+\usepackage{subcaption}
 
 % partielle ableitungen
 \newcommand{\delr}{\partial_r}
@@ -39,12 +40,12 @@
 \section*{Aufgabe 1}
 a) 
 Für die Feldenergie betrachten wir das $E$-Feld im Kondensator. Da wo sich
-das Dielektrikum befindet, ist das Feld im gesamten Bereich 0, für die 
-freien Stellen haben wir ein homogenes $E$-Feld mit dem Betrag $\frac ud$:
+das Dielektrikum befindet, ist das Feld $\frac{U}{d e_r}$, im restlichen 
+Bereich $\frac{U}{d}$.
 \[
 	E(\vec r, x) = \begin{cases}
-		\frac ud &\text{für } \vec r \in A(x) \\
-	0 	&\text{sonst} \end{cases}
+		\frac{U}{e_r d} &\text{für } \vec r \in A(x) \\
+		\frac{U}{d} 	&\text{sonst} \end{cases}
 \]
 Dabei ist $A(x)$ die freie Fläche, welche natürlich von der Auslenkung $x$ 
 abhängt.\\
@@ -106,38 +107,65 @@ Die elektrische Feldenergie ist gegeben durch
 \[
 	W = \frac{\epsz}{2} \int_{\mathbb{R}^3} E^2(\vec r) d^3r 
 \]
-Da das $E$-Feld homogen ist, lässt sich dieses Integral auch als Produkt 
-mit dem Volumen darstellen:
-\[
-	W = \frac{\epsz}{2} \int_{\mathbb{R}^3} E^2(\vec r) d^3r 
-	= 
-	\frac{\epsz}{2} E^2(\vec r) \cdot V_{E}
-	= 
-	\frac{\epsz}{2} E^2(\vec r) \cdot A(x)d
-	=
-	\frac{u \epsz}{2} \cdot (x^2 + a^2)
-\]
-Daraus folgt die rückstellende Kraft:
-\[
-	\vec F = -\vec\nabla W = -\partial_x W_x 
-	= -\frac{\epsz u^2 x}{d} \hat x
-\]
+Die Energie des $E$-Feldes ermitteln wir durch Aufteilung des Bereiches
+mit und ohne Dielektrikum.\\
+Dadurch erhalten wir zwei Bereiche, für die das $E$-Feld homogen ist. Dank
+der Homogenität müssen wir nicht mehr integrieren sondern können mit dem 
+Volumen multiplizieren:
+\begin{align*}
+	W(x) &= \frac{\epsz}{2} \int_{\mathbb{R}^3} E^2(\vec r) d^3r \\
+	% auteilung
+	&= \frac{\epsz}{2} \left(
+		\left(\frac{U}{\epsilon_r d}\right)^2 \cdot d \cdot A(x) +
+		\frac{U^2}{d^2} \cdot d \cdot 2a^2 -
+		\frac{U^2}{d^2} \cdot d \cdot A(x) \right) \\
+	% vereinfachung
+	&= \frac{\epsz U^2}{2d} 
+	\left( \frac{A(x)}{\epsilon_r^2} + 2a^2 - A(x) \right)\\
+	% kuerzen
+	&= \frac{\epsz U^2}{2d} A(x) 
+	\cdot \left(\frac{1}{\epsilon_r^2} -1\right) +
+	\frac{\epsz U^2 a^2}{d}
+\end{align*}
 
 \newpage
 \setlength{\headheight}{0cm}
 
+Mit der Gleichung $F = -\vec\nabla W$ lässt sich die rückstellende Kraft
+bestimmen:
+\begin{align*}
+	F = -\vec\nabla W &= -\partial_x \left(
+	\frac{\epsz U^2}{2d} A(x) 
+	\cdot \left(\frac{1}{\epsilon_r^2} -1\right) +
+	\frac{\epsz U^2 a^2}{d} 
+	\right) \cdot \hat x\\
+	% ableiten
+	&= -\frac{\epsz U^2}{d} \cdot \left(\frac{1}{\epsilon_r^2} -1
+	\right) \cdot \vec x
+\end{align*}
+
 b) Mit dem Ergebnis für die rückstellende Kraft aus a) können wir die DGL 
 aufstellen:
 \begin{align*}
-	F = m\ddot x&=-\frac{\epsz u^2 x}{d}  \\
+	F = m\ddot x
+	&= -\frac{\epsz U^2}{d} \cdot \frac{1 - \epsilon_r^2}{\epsilon_r^2}
+	\cdot x \\
 	% fuer dgl umstellen
-	\frac{\epsz u^2 x}{m \cdot d} + \ddot x &= 0
+	\Leftrightarrow
+	-\frac{\epsz U^2}{dm} \cdot \frac{1 - \epsilon_r^2}{\epsilon_r^2}
+	\cdot x + \ddot x &= 0
 \end{align*}
 Diese besitzt eine uns bekannte Form mit der Lösung
 \[
 	x(t) = \alpha \cdot \exp\left(
-	\sqrt{\frac{\epsz u^2 x}{m \cdot d}} \cdot i \cdot t
-	\right)
+	\sqrt{-\frac{\epsz U^2}{dm} \cdot \frac{1 - \epsilon_r^2}
+	{\epsilon_r^2}}  \cdot i \cdot t \right)
+\]
+Die Oszillation hat die Periodendauer
+\[
+	T = \frac{2\pi}{\omega} = 2\pi \sqrt{\frac
+	{\epsilon_r^2 \cdot d \cdot m}
+	{\epsz \cdot U^2 \cdot (1 - \epsilon_r^2)}}
 \]
 
 \section*{Aufgabe 2}
@@ -197,4 +225,53 @@ Mit der $pq$-Formel erhalten wir $C_1$:
 \end{align*}
 
 \section*{Aufgabe 5}
+
+a) Die Schaltung vereinfacht sich zu den zwei Zeitintervallen:
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=5cm]{aufgabe5a_1.png}
+		\caption{Für $t<0$}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=5cm]{aufgabe5a_2.png}
+		\caption{Für $t\geq0$}
+	\end{subfigure}
+\end{figure}
+Wenn wir die Schaltungen als Spannungsteiler betrachten erhalten wir $U_C$ 
+für $t < 0$ und $t \rightarrow \infty$:
+\begin{align*}
+	U_C (t < 0) &= \frac{350 \Omega}{100 \Omega + 350 \Omega} \ U_q
+	&
+	U_C (t\rightarrow\infty) &= \frac{150\Omega}{100\Omega +
+	150 \Omega} \ U_q\\
+	% brueche kuerzen
+	&= \frac{350}{450} \ U_q & &= \frac{150}{350} \ U_q \\
+	% spannungen ermitteln
+	&= 14V & &=10.8V
+\end{align*}
+D.h. wenn bei $t=0$ der Schalter geschlossen wird, ist auf den 
+Kondensatorplatten ein Potential von $14V$, während von der Spannungsquelle
+nur noch $10.8V$ wirken.\\
+Die `wirkende` Potentialdifferenz des Kondensators für $t=0$ lautet somit
+\[ U_\text{Cap} (0) = 14V - 10.8V = 3.2V \]
+Da sich der Kondensator am Widerstand $R_3 = 150\Omega$ entlädt lautet die
+die Potentialdifferenz die aus dem Kondensator folgt:
+\[
+	U_\text{Cap} (t) = U_\text{Cap} (0) \cdot e^{\frac{-t}{\tau}}
+	= U_\text{Cap} (0) \cdot e^{\frac{-t}{R_3 C}}
+	= 3.2 V \cdot \exp\left(\frac{-t}{150\Omega \mu F}\right)
+\]
+Zusammen mit der Spannungsquelle existiert die Potentialdifferenz $U_C(t)$:
+\[
+	U_C = 10.8V + U_\text{Cap} (t) = 
+	10.8V + 3.2 V \cdot  \exp\left( -\frac{2t}{3s} \cdot 10^4\right)
+\]
+
+
+
+
+
+
 \end{document}
