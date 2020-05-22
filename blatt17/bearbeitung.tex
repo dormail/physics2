@@ -219,10 +219,25 @@ Mit der $pq$-Formel erhalten wir $C_1$:
 	C_1 &= \frac{C_2}{2} \pm \sqrt{\frac{C_2^2}{4} + C_2^2} \\
 	% wurzel aufloesen
 	&= \frac{C_2}{2} \pm \sqrt{1.25} \cdot C_2 \\
-	% negatives ergebnis streichen
-	C_1 \geq 0 \Rightarrow
-	&= \frac{C_2}{2} + \frac{5}{4} C_2 = \frac{7}{4} C_2
 \end{align*}
+
+b) Da die Schaltung unendlich lang ist betrachten wir nur den Teil, der
+immer wiederholt wird.\\
+Dabei lässt sich die Schaltung auf 3 Kondensatoren vereinfachen, die dann
+wie in a) aussieht. Da aber statt $C_2$ die selbe Schaltung nochmal 
+eingesetzt werden müsste, also auch wieder die Kapazität der Gesamtschaltung
+vorliegt, erhalten wir die selbe Gleichung:
+\[
+	\frac1{C_\text{ges}} = \frac{1}{C_1} + \frac{1}{C_1 + C_\text{ges}}
+\]
+Da wir das Verhältnis zwischen $C_1$ und $C_\text{ges}$ aus a) kennen 
+können wir durch umstellen $C_\text{ges}$ ermitteln:
+\[
+	C_1 = C_\text{ges} \cdot \left( \frac12 + \sqrt{1.25} \right)
+	\Rightarrow
+	C_\text{ges} = \frac{C_1}{\frac12 + \sqrt{1.25}}
+	\]
+
 
 \section*{Aufgabe 5}
 
@@ -268,7 +283,29 @@ Zusammen mit der Spannungsquelle existiert die Potentialdifferenz $U_C(t)$:
 	U_C = 10.8V + U_\text{Cap} (t) = 
 	10.8V + 3.2 V \cdot  \exp\left( -\frac{2t}{3s} \cdot 10^4\right)
 \]
+\newpage
+Den Eingangstromfluß berechnen wir mit dem Ohmschen Gesetz:
+\begin{align*}
+	I(t < 0) &= \frac{U(t<0)}{450\Omega} &
+	I(t \rightarrow \infty) &= \frac{U(t \rightarrow \infty)}{250\Omega}
+	\\
+	% einsetzen
+	&= \frac{14V}{450\Omega} & &= \frac{10.8V}{250\Omega} \\
+	% ausrechnen
+	&\approx 0.031 A & &\approx 0.0432A
+\end{align*}
 
+b)
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm]{aufgabe5b_U.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm]{aufgabe5b_I.png}
+\end{figure}
 
 
 
