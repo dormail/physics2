@@ -286,24 +286,30 @@ Zusammen mit der Spannungsquelle existiert die Potentialdifferenz $U_C(t)$:
 \newpage
 Den Eingangstromfluß berechnen wir mit dem Ohmschen Gesetz:
 \begin{align*}
-	I(t < 0) &= \frac{U(t<0)}{450\Omega} &
-	I(t \rightarrow \infty) &= \frac{U(t \rightarrow \infty)}{250\Omega}
+	I_1(t < 0) &= \frac{U_q}{450\Omega} &
+	I_1(t \rightarrow \infty) &= \frac{U_q}{250\Omega}
 	\\
 	% einsetzen
-	&= \frac{14V}{450\Omega} & &= \frac{10.8V}{250\Omega} \\
+	&= \frac{18V}{450\Omega} & &= \frac{18V}{250\Omega} \\
 	% ausrechnen
-	&\approx 0.031 A & &\approx 0.0432A
+	&\approx 0.04 A & &\approx 0.072A
 \end{align*}
+Allgemein hängt der Strom $I_1(t)$ vom Widerstand $R_1$ und der 
+Potentialdifferenz an diesem ab. Damit folgt $I_1(t)$:
+\[
+	I_1(t) = \frac{U_q - U_\text{C}(t)}{R_1}
+	% spannungen einsetzen
+	= \frac{18V - 10.8V -  3.2V \cdot 
+	\exp\left(-\frac{2t}{3s} \cdot 10^4\right)}{100\Omega}
+	% vereinfachen
+	= 0.072 A  - 0.032A \cdot \exp\left(-\frac{2t}{3s} \cdot 10^4\right)
+\]
 
 b)
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=12cm]{aufgabe5b_U.png}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
 	\includegraphics[width=12cm]{aufgabe5b_I.png}
 \end{figure}
 
