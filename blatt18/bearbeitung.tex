@@ -131,34 +131,76 @@ Das magnetische Feld kann mit dem Biot-Savart Gesetz ermittelt werden:
 	&= \frac{\mu_0}{4\pi} \cdot I \cdot 
 	\int_0^{2\pi}
 	\frac{ \vec e_\varphi \times 
-	(z \ \vec e_z - r^\prime \vec e_r)}
+	(z \ \vec e_z - r^\prime \vec e_\rho)}
 	{\left( R^2 + z^2 \right)^{1.5} } \cdot
 	R
 	\ d\varphi^\prime \\
 	% kreuzprodukte ermitteln
 	&= \frac{\mu_0}{4\pi} \cdot I \cdot 
 	\int_0^{2\pi}
-	\frac{z \ \vec e_\rho - R \ \vec e_z}
+	\frac{z \ \vec e_\rho + R \ \vec e_z}
 	{\left( R^2 + z^2 \right)^{1.5} } \cdot
 	R
 	\ d\varphi^\prime
 \end{align*}
-Da sich der Megnetische Dipol auf der $z$-Achse befindet, verschwindet der
+Da sich der Magnetische Dipol auf der $z$-Achse befindet, verschwindet der
 $\vec e_\rho$.
 \begin{align*}
 	\Rightarrow
 	\mathbf B(\mathbf r) 
 	&= \frac{\mu_0}{4\pi} \cdot I \cdot 
 	\int_0^{2\pi}
-	\frac{-R^2 \ \vec e_z}
+	\frac{R^2 \ \vec e_z}
 	{\left( R^2 + z^2 \right)^{1.5} }
 	\ d\varphi^\prime \\
 	% nach phi integrieren
 	&= \frac{\mu_0 \ I}{2}
-	\frac{-R^2 \ \vec e_z}
+	\frac{R^2 \ \vec e_z}
 	{\left( R^2 + z^2 \right)^{1.5} }
 \end{align*}
-
+Daraus folgt die Kraft auf ein magnetisches Dipol $m$:
+\begin{align*}
+	\mathbf F 
+	&= m_z \ \partial_z B_z \ \vec e_z \\
+	% einsetzen
+	&= m_z \ 
+	\frac{R^2 \ \mu_0 \ I}{2}
+	\ \partial_z 
+	\left( R^2 + z^2 \right)^{-1.5}
+	\vec e_z \\
+	% ableiten
+	&= m_z \ 
+	\frac{R^2 \ \mu_0 \ I}{2}
+	\ (-1.5)
+	\left( R^2 + z^2 \right)^{-2.5} \cdot 2z \
+	\vec e_z \\
+	% bisschen ordentlicher hinschreiben
+	&= \frac{-1.5 z \cdot m_z \ R^2 \ \mu_0 \ I}
+	{(R^2 + z^2)^{2.5}} \ \vec e_z
+\end{align*}
+Für kleine Auslenkungen, also $z \ll R$ vereinfacht sich die Kraft:
+\begin{align*}
+	z \ll R \Rightarrow R^2 + z^2 \approx R^2 \Rightarrow
+	\mathbf F
+	&= \frac{-1.5 z \cdot m_z \ R^2 \ \mu_0 \ I}
+	{R^5} \ \vec e_z \\
+	% kuerzen
+	&= \frac{-1.5 z \cdot m_z \ \mu_0 \ I}
+	{R^3} \ \vec e_z
+\end{align*}
+Schreibt man diesen Ausdruck als Differentialgleichung erhalten wir den
+harmonischen Oszillator:
+\begin{align*}
+	F_z = M\ddot z 
+	&= \frac{-1.5 z \cdot m_z \ \mu_0 \ I}
+	{R^3} \Rightarrow
+	\ddot z + \underbrace{\frac{1.5\cdot m_z \ \mu_0 \ I}{M \cdot R^3}}
+	_{\omega^2} \ z = 0
+\end{align*}
+Mit der uns schon bekannten Lösung:
+\[
+	z(t) = z(0) \cos(\omega t) + \dot z(0) \sin(\omega t)
+\]
 
 
 \end{document}
