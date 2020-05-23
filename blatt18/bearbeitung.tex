@@ -1,0 +1,164 @@
+\documentclass[11pt a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{aligned-overset}
+\usepackage{subcaption}
+
+% partielle ableitungen
+\newcommand{\delr}{\partial_r}
+\newcommand{\deltheta}{\partial_\theta}
+\newcommand{\delphi}{\partial_\varphi}
+
+% elektrische feldkonstante
+\newcommand{\epsz}{\epsilon_0}
+% 1 / 4pi eps
+\newcommand{\kco}{\frac{1}{4\pi\epsilon_0}}
+
+% fancy header
+\usepackage{fancyhdr}
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Matthias Maile\\Roman Surma}\vspace{1.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Physik II - Gruppe 2\\Sommersemester 2020}\vspace{1.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{2.5cm}\huge{\textbf{18. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{4cm}
+
+% zum zeichnen tikz
+\usepackage{tikz}
+
+% fuer fabigen text
+\usepackage{xcolor}
+
+\begin{document}
+\thispagestyle{fancy}
+\section*{Aufgabe 2}
+Biot-Savar'sches Gesetz:
+\[
+	\mathbf B(\mathbf r) = \frac{\mu_0}{4\pi} I \int \frac
+	{d\mathbf l \times (\mathbf r - \mathbf{r^\prime})}
+	{\vert \mathbf r - \mathbf{r^\prime}\vert^3}
+\]
+Zur einfacheren Berechnung teilen wir den Draht in die zwei geraden 
+Segmente (welche aufgrund der Symmetrie das Gleiche Feld am Punkt $P$ 
+besitzen) und in das Halbkreissegment auf. \\
+Zur Verinfachung wird das Koordinatensystem so gelegt, dass der Punkt 
+$P$ im Urspung liegt. 
+\newline
+Berechnung des Halbkreissegements:
+\begin{align*}
+	\mathbf B_{HK}(\mathbf r) 
+	&= \frac{\mu_0}{4\pi} I \int \frac
+	{d\mathbf l \times (\mathbf r - \mathbf{r^\prime})}
+	{\vert \mathbf r - \mathbf{r^\prime}\vert^3} \\
+	% parametrisierung und zylinder koordianten
+	&= \frac{\mu_0}{4\pi} I
+	\int_0^\infty \int_{-\infty}^\infty \int_0^{2\pi}
+	\frac
+	{\vec e_\varphi \times (\mathbf r - \mathbf{r^\prime})}
+	{\vert \mathbf r - \mathbf{r^\prime}\vert^3}
+	\cdot r^\prime \cdot
+	\delta(z^\prime) \cdot \delta(r^\prime - R) \cdot 
+	\Theta(\pi - \varphi^\prime)
+	\ d\varphi^\prime dz^\prime d\rho^\prime \\
+	% r = ursprung
+	&= \frac{\mu_0}{4\pi} I
+	\int_0^{\pi}
+	\frac
+	{\vec e_\varphi \times \mathbf{r^\prime}}
+	{\vert \mathbf{r^\prime}\vert^3} \cdot R
+	\ d\varphi^\prime \\
+	% kuerzen
+	&= \frac{\mu_0}{4\pi} I
+	\int_0^{\pi} \frac
+	{\vec e_\varphi \times \vec e_\rho}
+	{R^2}
+	\cdot R
+	\ d\varphi^\prime \\
+	% kreuzprodukt ausrechnen
+	&= \frac{\mu_0}{4\pi} I
+	\int_0^{\pi} \frac
+	{\vec e_z}
+	{R}
+	\ d\varphi^\prime \\
+	% integrieren und kuerzen
+	&= \frac{\mu_0 \ I}{4R} \vec e_z
+\end{align*}
+Die Berechnung des geraden Leiterelements erfolgt mit der Formel für das
+Magnetfeld des endlichen Leiters, in Abhängigkeit von den  Winkeln an den 
+Enden:
+\begin{align*}
+	B_{ger} (\mathbf r)
+	&= \frac{\mu_0 \ I}{4 \pi R} 
+	(\sin \theta_2 - \sin \theta_1) \\
+	% winkel einsetzen
+	&= \frac{\mu_0 \ I}{4 \pi R} 
+	\left( \sin \frac\pi2 - \sin 0 \right) \\
+	% ausrechnen
+	&= \frac{\mu_0 \ I}{4\pi R}
+\end{align*}
+Das Magnetfeld folgt dann:
+\[
+	\mathbf B(\mathbf r) = \mathbf B_{HK}(\mathbf r) +
+	2 \ \mathbf B_{ger} (\mathbf r)
+	= \frac{\mu_0 \ I}{4R} \vec e_z + \frac{\mu_0 \ I}{2\pi R} \vec e_z
+	= \frac{\pi + 2}{4\pi R} \mu_0 \ I \ \vec e_z
+	\]
+
+\newpage
+\setlength{\headheight}{0cm}
+\section*{Aufgabe 3}
+Das magnetische Feld kann mit dem Biot-Savart Gesetz ermittelt werden:
+\begin{align*}
+	\mathbf B(\mathbf r) 
+	&= \frac{\mu_0}{4\pi} \cdot I \cdot \int 
+	\frac{d \mathbf{l} \times (\mathbf{r} - \mathbf{r^\prime})}
+	{\vert \mathbf{r} - \mathbf{r^\prime} \vert^3} \\
+	% parametrisierung des leiters
+	&= \frac{\mu_0}{4\pi} \cdot I \cdot 
+	\int_0^\infty \int_{-\infty}^\infty \int_0^{2\pi}
+	\frac{\vec e_\varphi \times 
+	(\mathbf{r} - \mathbf{r^\prime})}
+	{\vert \mathbf{r} - \mathbf{r^\prime} \vert^3} \cdot
+	\delta(R - \rho^\prime) \cdot \delta(z^\prime) \cdot \rho^\prime
+	\ d\rho^\prime \ dz^\prime \ d\varphi^\prime \\
+	% delta funktionen integrieren
+	&= \frac{\mu_0}{4\pi} \cdot I \cdot 
+	\int_0^{2\pi}
+	\frac{ \vec e_\varphi \times 
+	(z \ \vec e_z - r^\prime \vec e_r)}
+	{\left( R^2 + z^2 \right)^{1.5} } \cdot
+	R
+	\ d\varphi^\prime \\
+	% kreuzprodukte ermitteln
+	&= \frac{\mu_0}{4\pi} \cdot I \cdot 
+	\int_0^{2\pi}
+	\frac{z \ \vec e_\rho - R \ \vec e_z}
+	{\left( R^2 + z^2 \right)^{1.5} } \cdot
+	R
+	\ d\varphi^\prime
+\end{align*}
+Da sich der Megnetische Dipol auf der $z$-Achse befindet, verschwindet der
+$\vec e_\rho$.
+\begin{align*}
+	\Rightarrow
+	\mathbf B(\mathbf r) 
+	&= \frac{\mu_0}{4\pi} \cdot I \cdot 
+	\int_0^{2\pi}
+	\frac{-R^2 \ \vec e_z}
+	{\left( R^2 + z^2 \right)^{1.5} }
+	\ d\varphi^\prime \\
+	% nach phi integrieren
+	&= \frac{\mu_0 \ I}{2}
+	\frac{-R^2 \ \vec e_z}
+	{\left( R^2 + z^2 \right)^{1.5} }
+\end{align*}
+
+
+
+\end{document}
