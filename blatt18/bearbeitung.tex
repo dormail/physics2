@@ -208,7 +208,7 @@ Mit der uns schon bekannten Lösung:
 \newpage
 \section*{Aufgabe 4}
 \[
-	\vec B(\vec r) = B \vec e_z, \ B = const.
+	\vec B(\vec r) = B \vec e_z, \ B = const. \tag{4.1}
 \]
 a) gesucht sei ein $\vec A$, sodass
 \[ \rot \vec A = \vec B \]
@@ -221,7 +221,7 @@ Mit dem Ansatz
 \]
 
 sind die Einträge von $M$ die partiellen Ableitungen von $\vec A$:
-\[ M_{ij} = \partial_j A_i \]
+\[ M_{ij} = \partial_j A_i \tag{4.2} \]
 
 Aus der Vorraussetzung $\rot \vec A =\vec B$ folgen die Bedinungen für 
 $M$:
@@ -237,6 +237,7 @@ $M$:
 	M_{3,2} = M_{2,3}, \
 	M_{1,3} = M_{3,1}, \
 	M_{2,1} = M_{1,2} +B
+	\tag{4.3}
 \end{align*}
 
 Daraus folgt dann die Matrix $M$ (mit den Freiheitsgraden $\alpha$, ...):
@@ -265,19 +266,57 @@ Das einfachste Vektorfeld für $\vec A$ wäre das wo alle Freiheitsgrade auf
 \]
 
 
-b) Wir wählen zwei Lösungen $\vec A_1$ und $\vec A_2$:
-\[
-	\vec A_1 = M_1 \cdot \vec r = \begin{pmatrix}
-		1 &0 &0 \\
-		\beta &0 &0 \\
-		0 &0 &0 \\
-	\end{pmatrix}
-	\cdot \vec r
-	= \begin{pmatrix}
-		x \\Bx \\0
-	\end{pmatrix}
-\]
+b) $A_1$ und $A_2$ seien zwei linear unabhängige Lösungen von (4.1). Dann 
+lässt sich für eine Linearkombination 
+\begin{align*}
+	\vec A^\prime = \alpha_1 \vec A_1 + \alpha_2 \vec A_2
+	\quad \text{(mit $\alpha_1 + \alpha_2 = 1$)}
+\end{align*}
 
+zeigen:
+\begin{align*}
+	\vec \nabla \times \vec A^\prime
+	&= \vec \nabla \times \left(
+		\alpha_1 \vec A_1 + \alpha_2 \vec A_2
+	\right) \\
+	% matrix einsetzen
+	&= \vec \nabla \times \left(
+		\alpha_1 M_1 \cdot \vec r + \alpha_2 M_2 \cdot \vec r
+	\right) \\
+	% kommutativgesetz
+	&= \vec \nabla \times \left(
+		(\alpha_1 M_1 + \alpha_2 M_2) \cdot \vec r
+	\right) \\
+	% indexnotation beim matrix produkt
+	&= \vec \nabla \times \left(
+		\sum_{i j} x_i (\alpha_1 \ M_{1, ij} + 
+		\alpha_2 \ M_{2, ij})
+	\right) \\ 
+	% kreuzprodukt mit epsilon tensor
+	&= \sum_{m n i j} \epsilon_{mni} \  \underbrace{\partial_{x_n} x_i 
+	(\alpha_1 \ M_{1, ij} + \alpha_2 \ M_{2, ij})}_{
+		(4.2) \Rightarrow \ =\alpha_1 M_{1, in} 
+		+ \alpha_2 M_{2, in}}
+	\cdot \hat x_m \\[0.1cm]
+	% 4.2 anwenden
+	&= \sum_{m n i} \epsilon_{mni} \
+		\left( \alpha_1 M_{1, in} + \alpha_2 M_{2, in} \right)
+	\cdot \hat x_m \\
+	% 4.3 anwenden
+	(4.3) \Rightarrow \ 
+	&= \sum_{n i} \epsilon_{3ni} \
+		\left( \alpha_1 M_{1, in} + \alpha_2 M_{2, in} \right)
+	\cdot \hat x_3 \\
+	% indizes einsetzen
+	&= \left( \alpha_1 (M_{1,21} - M_{1,12}) + \alpha_2
+		(M_{2,21} - M_{2,12}) \right) \vec e_z \\
+	% 4.3 anwenden
+	(4.3) \Rightarrow \ 
+	&= \left( \alpha_1 B + \alpha_2 B \right) \vec e_z \\
+	% b rausziehen
+	&= \left( \alpha_1 + \alpha_2 \right) B \vec e_z \\
+	&= B \vec e_z
+\end{align*}
 
 
 
