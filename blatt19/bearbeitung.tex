@@ -1,0 +1,118 @@
+\documentclass[11pt a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{aligned-overset}
+\usepackage{subcaption}
+
+% partielle ableitungen
+\newcommand{\delr}{\partial_r}
+\newcommand{\deltheta}{\partial_\theta}
+\newcommand{\delphi}{\partial_\varphi}
+
+% elektrische feldkonstante
+\newcommand{\epsz}{\epsilon_0}
+% 1 / 4pi eps
+\newcommand{\kco}{\frac{1}{4\pi\epsilon_0}}
+
+% rotation
+\newcommand{\rot}{\text{rot}}
+
+% fancy header
+\usepackage{fancyhdr}
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Matthias Maile\\Roman Surma}\vspace{1.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Physik II - Gruppe 2\\Sommersemester 2020}\vspace{1.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{2.5cm}\huge{\textbf{19. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{4cm}
+
+% zum zeichnen tikz
+\usepackage{tikz}
+
+% fuer fabigen text
+\usepackage{xcolor}
+
+% irgendwas mit figures
+\usepackage{subcaption}
+
+\begin{document}
+\thispagestyle{fancy}
+\section*{Aufgabe 1}
+
+\newpage
+\setlength{\headheight}{0cm}
+
+\section*{Aufgabe 2}
+a)
+\begin{enumerate}
+	\item[(i)] 
+		$ \epsilon_{ijk} 
+		= \alpha \ \epsilon_{jki} 
+		= \alpha \ \epsilon_{ijk}
+		\Rightarrow \alpha = 1$
+	\item[(ii)]
+		$ \epsilon_{ijk} 
+		= \alpha \ \epsilon_{jik} 
+		= -\alpha \ \epsilon_{ijk}
+		\Rightarrow \alpha = -1$
+	\item[(iii)]
+		$ \epsilon_{iik} 
+		= \alpha \ \epsilon_{ijk} 
+		= 0
+		\Rightarrow \alpha = 0$
+\end{enumerate}
+\vspace{0.5cm}
+b) Zur besseren Lesbarkeit wird Einsteinsche Summenkonvention verwendet.
+\begin{enumerate}
+	\item[(i)]
+		$ \epsilon_{ijk} \ \epsilon_{ijk} = \epsilon_{ijk}^2
+		= \begin{cases} 
+			1 & \text{für Permutationen von 1,2,3} \\
+			0 & \text{sonst}
+		\end{cases} $
+	\item[(ii)]
+		$ \epsilon_{ijk} \ \epsilon_{kmn} =
+		\begin{cases}
+			1 & \text{für }  i=m \wedge j=n \\
+			-1 & \text{für } i=n \wedge j=m \\
+			0 & \text{sonst} 
+		\end{cases} $
+\end{enumerate}
+\vspace{0.5cm}
+c)
+\begin{align*}
+	\vec a \times (\vec b \times \vec c)
+	% aeusseres kreuzprodukt in indize schreibweise
+	&= \epsilon_{ijk} \ \hat i \cdot a_j \cdot (\vec b \times \vec c)_k
+	\\
+	% inneres kreuzprodukt in indizesnotation
+	&= \epsilon_{ijk} \ \hat i \cdot a_j \cdot 
+	\epsilon_{kmn} \cdot b_m \cdot c_n
+	\\
+	% ergebnis aus b) (ii) einsetzen
+	b)(ii) \Rightarrow
+	&= \hat i \cdot b_i a_j c_j - \hat i \cdot c_i a_j b_j
+	\\
+	% \hat i und b_i bzw c_i zu vektoren umformen
+	&= \vec b \cdot a_j c_j - \vec c \cdot  a_j b_j
+	\\
+	% a c skalarprodukt erzeugen
+	&= \vec b \ (\vec a \cdot \vec c) - \vec c \ (\vec a \cdot \vec b)
+	\\
+\end{align*}
+
+\newpage
+\section*{Aufgabe 3}
+\newpage
+\section*{Aufgabe 4}
+\newpage
+\section*{Aufgabe 5}
+\newpage
+
+\end{document}
