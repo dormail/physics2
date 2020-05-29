@@ -38,8 +38,58 @@
 % fuer fabigen text
 \usepackage{xcolor}
 
+% irgendwas mit figures
+\usepackage{subcaption}
+
 \begin{document}
 \thispagestyle{fancy}
+\section*{Aufgabe 1}
+a)
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=6cm]{1_1.jpg}
+		\caption{Nicht idealisierte Toroidspule}
+	\end{subfigure}
+	\quad
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=6cm]{1_2.jpg}
+		\caption{Idealisierte Toroidspule}
+	\end{subfigure}
+\end{figure}
+
+b) Mit der Idealisierung, dass die einzelnen Windungen geschlossene
+Leiterschleifen darstellen, erhalten wir das Feld im Inneren Bereich der 
+Toroidspule mit dem Ampereschen Gesetz. \\
+Der weg stellt dabei eine Umrundung im Torus dar. Aufgrund der Symmetrie
+kann das $B$-Feld als annähernd konstant angenommen werden.\\
+Die Fläche innerhalb dieser Umrundung wird natürlich $N$ mal vom Leiter
+durchstoßen, d.h. $I_\text{enc} = NI$:
+\begin{align*}
+	\text{Amperesches Gesetz } \oint \mathbf B \cdot d\mathbf l &=
+	\mu_0 I_\text{enc} \\
+	\Rightarrow
+	B_i \cdot l 	&= \mu_0 I_\text{enc} \\
+			&= \mu_0 NI \\
+	% umstellen
+	B_i(r) 		&= \frac{\mu_0 NI}{2\pi r}
+\end{align*}
+
+c) Der Magnetische Fluß folgt aus dem Ergebniss aus b):
+\begin{align*}
+	\phi &= \iint \vec B \cdot d\vec A \\
+	% flaeche parametrisieren
+	&= \int_0^h \int_{R_1}^{R_2} B(r) \ dr dz \\
+	% z integrieren, b einsetzne
+	&= h \cdot \int_{R_1}^{R_2} \frac{\mu_0 NI}{2\pi r} dr \\
+	% r integrieren
+	&= h \cdot \frac{\mu_0 NI}{2\pi} \ln\left(\
+		\frac{R_2}{R_1} \right)
+\end{align*}
+
+
+\newpage
+\setlength{\headheight}{0cm}
 \section*{Aufgabe 2}
 Biot-Savar'sches Gesetz:
 \[
@@ -264,8 +314,7 @@ Das einfachste Vektorfeld für $\vec A$ wäre das wo alle Freiheitsgrade auf
 		0 \\ Bx \\0
 	\end{pmatrix}
 \]
-
-
+\vspace{0.5cm}
 b) $A_1$ und $A_2$ seien zwei linear unabhängige Lösungen von (4.1). Dann 
 lässt sich für eine Linearkombination 
 \begin{align*}
@@ -317,7 +366,82 @@ zeigen:
 	&= \left( \alpha_1 + \alpha_2 \right) B \vec e_z \\
 	&= B \vec e_z
 \end{align*}
+\newpage
+c)
+\begin{align*}
+	\vec\nabla \times \vec A^{\prime\prime} 
+	&= \vec\nabla \times (\vec A + \vec\nabla \phi) \\
+	&= \vec\nabla \times \vec A + 
+	\underbrace{\vec\nabla \times (\vec\nabla \phi)}_{=0} \\
+	&= \vec B
+\end{align*}
+\vspace{0.5cm}
+d)
+Die Differenz lässt sich auch umschreiben:
+\[
+	\vec A^\prime - \vec A 
+	= M^\prime \cdot \vec r - M \cot r
+	= (M^\prime - M) \cdot r
+\]
+Für diese Differenzmatrix $D := M^\prime - M$ können wir bestimmen:
+\[
+	D_{21} = M_{21}^\prime - M_{21} 
+	= M_{12}^\prime + B - M_{12} - B = M_{12}^\prime - M_{12}
+\]
+da sich die Differenz bei $M_{21}$ und $M_{12}$ jetzt auslöscht, 
+kann man für die Differenzmatrix $D := M^\prime - M$ schreiben:
+\[
+	D_{ij} = D_{ji} \text{ für alle } j,i.
+\]
+Damit extistiert ein ``Differenzfeld``:
+\[
+	\vec d := D \cdot r =
+	\begin{pmatrix}
+		D_{11} \cdot x + D_{12} \cdot y + D_{13} \cdot z \\
+		D_{12} \cdot x + D_{22} \cdot y + D_{23} \cdot z \\
+		D_{13} \cdot x + D_{23} \cdot y + D_{33} \cdot z
+	\end{pmatrix}
+\]
+Zu diesem Feld existiert immer ein Potential U:
+\begin{align*}
+	U &= \int d_x \ dx =
+	\frac{D_{11}}2 \cdot x^2 + D_{12} \cdot yx + D_{13} \cdot zx + C_1 
+\\
+	U &= \int d_y \ dy =
+	D_{12} \cdot xy + \frac{D_{22}}2 \cdot y^2 + D_{23} \cdot zy + C_2
+\\
+	U &= \int d_z \ dz =
+	D_{13} \cdot xz + D_{23} \cdot yz + \frac{D_{33}}2 \cdot z^2 + C_3
+\\
+\Rightarrow
+	U &= \frac{D_{11}}2 \cdot x^2 + \frac{D_{22}}2 \cdot y^2 
+	+ \frac{D_{33}}2 \cdot z^2 + D_{12} \cdot yx + D_{13} \cdot zx
+	+ D_{23} \cdot yz
+\end{align*}
+\vspace{0.5cm}
+e) Die Eichfreiheit beim Vektorpotential gibt Möglichkeiten für 
+Randbedinungen beim berechnen.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=7cm]{aufgabe4_meme.jpg}
+\end{figure}
 
-
+\newpage
+\section*{Aufgabe 5}
+Wir können die geknickte Fläche aufteilen in zwei flache Leiterschleifen, 
+wo das Dipolmoment gegeben ist durch
+\[ \vec m = I \cdot A \cdot \hat n. \]
+Das kombinierte Dipolmoment entspricht dann der vektoriellen Summe
+\[
+	\vec m = \vec m_1 + \vec m_2 
+	= Iw^2 \vec e_z + Iw^2 \vec e_z
+\]
+Entlang der $x$-Achse verlaufen die zwei Ströme gegenläufig, sodass der 
+Gesamtstrom an der Stelle 0 ist (ensprechend der Randbedingung).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{5_1}
+	\caption{Aufteilung in zwei Schleifen}
+\end{figure}
 
 \end{document}
