@@ -44,6 +44,35 @@
 \begin{document}
 \thispagestyle{fancy}
 \section*{Aufgabe 1}
+a) Das elektrische Feld im Bereich des Kondensators folgt aus einem 
+Wegintegral:
+\[
+	E = \frac{\sigma}{\epsz}, \quad U = - \int_0^d E \ dl
+	\Rightarrow
+	U = \frac{-\sigma \ d}{\epsz} \Rightarrow
+	E = \frac{-U}{d} \tag{1.1}
+\]
+Die gesamte Kraft auf ein geladenes Teilchen in einem magnetischen 
+und elektrischen Feld ist gegeben durch:
+\[ \vec F_\text{ges} = q (\vec E + \vec v \times \vec B) \]
+Das stellen wir zu $v$ um:
+\begin{align*}
+	\vec F_\text{ges} = q (\vec E + \vec v \times \vec B) 
+	\overset{!}&{=} \vec 0 \\
+	% keine vektoren schreibweise, q kuerzen
+	E &= vB \\
+	v &= \frac{E}{B} \\
+	% 1.1 einsetzen
+	(1.1) \Rightarrow v &= \frac{U}{d \cdot B} 
+	% ergebnis
+	\approx \frac23 c
+\end{align*}
+
+\vspace{0.5cm}
+e) Im Zyklotron werden die Teilchen "nach links" abgelenkt (in 
+Bewegungsrichtung betrachtet). Obwohl im Bereich des Kondensator die 
+Richtung des magnetischen Feldes die gleiche ist, werden die Teilchen in 
+die andere Richtung gelenkt.
 
 \newpage
 \setlength{\headheight}{0cm}
@@ -109,8 +138,171 @@ c)
 
 \newpage
 \section*{Aufgabe 3}
+a) Für die Konfiguration der Richtung von $E$- und $B$-Feld existieren zwei
+Möglichkeiten:
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]
+		{aufgabe3a_efeld_oben.png}
+		\caption{E-Feld nach oben gerichtet,\\B-Feld ``ins Papier``}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]
+		{aufgabe3a_efeld_unten.png}
+		\caption{E-Feld nach unten gerichtet,\\B-Feld ``zum Leser``}
+	\end{subfigure}
+\end{figure}
+
+\vspace{0.5cm}
+b) Wenn man den Spalt klein genug macht, so darf die Geschwindigkeit in 
+$y$-Richtung nicht stark gewesen sein. Damit können wir die Lorentzkraft 
+als konstant annehmen und die auf das Teilchen wirkende Kraft ist 
+ebenfalls konstant:
+\[ \vec F = q (\vec E + \vec v \times \vec B) = q(E+vB) \cdot \vec e_y \]
+Dann können wir für die Koordinaten des Teilchens schreiben ($t_1$ ist 
+der Zeitpunkt bei dem das Teilchen den Spalt erreicht):
+\begin{align*}
+	x(t) &= v\cdot t \Rightarrow t_1 = \frac Lv 
+	&
+	y(t) &= \frac12 at^2 
+	= \frac{q(E+vB)}{2m} t^2 \\ &&
+	\Rightarrow
+	y(t_1) &= \frac{q(E+vB)}{2m} \frac{L^2}{v^2}
+\end{align*}
+Wenn der Spalt in $y$-Richtung von $-a$ bis $a$ geht erhalten wir die 
+zwei Intervalgrenzen $v_1$ und $v_2$:
+\begin{align*}
+	% erste geschwindigkeit
+	% gleichung aufstellen
+	v_1: \quad
+	y(t_1) &= \frac{q(E+v_1 B)}{2m} \frac{L^2}{v_1^2} 
+	\overset != a \\
+	% durch v kuerzen, nach 0 umstellen
+	\Rightarrow
+	0 &= a - \frac{qEL^2}{2m v_1^2} - \frac{q B L^2}{2m v_1} \\
+	% mit v multiplizieren
+	&= av_1^2 - \frac{q B L^2}{2m} v_1 - \frac{qEL^2}{2m} \\
+	% durch a teilen
+	&= v_1^2 - \frac{q B L^2}{2m a} v_1 - \frac{qEL^2}{2m a} \\
+	%
+	% zweite geschwindigkeit
+	% gleichung aufstellebn
+	v_2: \quad
+	y(t_1) &= \frac{q(E+v_2 B)}{2m} \frac{L^2}{v_2^2} 
+	\overset != -a \\
+	% durch v kuerzen, nach 0 umstellen
+	\Rightarrow
+	0 &= a + \frac{qEL^2}{2m v_2^2} + \frac{q B L^2}{2m v_2} \\
+	% mit v multiplizieren
+	&= av_2^2 + \frac{q B L^2}{2m} v_2 + \frac{qEL^2}{2m} \\
+	% durch a teilen
+	&= v_2^2 + \frac{q B L^2}{2m a} v_2 + \frac{qEL^2}{2m a} \\
+\end{align*}
 \newpage
+Mit der $pq$-Formel erhalten wir die Lösungen für $v_1$ und $v_2$ (wobei 
+der -Teil eine negative Geschwindigkeit erzeugt und ignoriert werden kann)
+\begin{align*}
+	v_1 &= \frac{q B L^2}{4m a} \pm \sqrt{
+		\left(\frac{q B L^2}{4m a}\right)^2 + \frac{qEL^2}{2m a}
+	}
+	\quad
+	&
+	v_2 &= -\frac{q B L^2}{4m a} \pm \sqrt{
+		\left(\frac{q B L^2}{4m a}\right)^2 - \frac{qEL^2}{2m a}
+	}
+\end{align*}
+	
+\vspace{0.5cm}
+
+c) Die Gesamtkraft auf ein geladenes Teilchen im Wienfilter (Summe aus 
+Coulomb- und Lorentzkraft) lautet:
+\[
+	\vec F = q (\vec E + \vec v \times \vec B)
+\]
+Mit dem 3. Newtonschen Axiom können wir die DGL aufstellen:
+\begin{align*}
+	\vec F = m \cdot \dot {\vec v} 
+	&= q (\vec E + \vec v \times \vec B) \\
+	% E feld einsetzen
+	&= Eq \ \vec e_y + Bq \ (\dot{\vec v} \times \vec e_z) \\
+	% kreuzprodukt ausrechnen
+	&= Eq \ \vec e_y + Bq \cdot 
+	\begin{pmatrix} v_y \\ -v_x \\ 0 \end{pmatrix} \\
+\end{align*}
+Man erhält ein System aus 3 Gleichungen:
+\begin{align*}
+	\dot v_x &= \frac{qB}{m} v_y \tag{3.1}\\
+	\dot v_y &= \frac{Eq}{m} - \frac{qB}{m} v_x \tag{3.2}\\
+	\dot v_z &= 0 \tag{3.3}
+\end{align*}
+Durch Ableiten der ersten und einsetzen in die zweite Gleichung bringt uns 
+$v_x(t)$:
+\begin{align*}
+	(3.1) \overset{\frac{d}{dt}}{\Rightarrow}
+	\ddot v_x = \frac{qB}{m} \dot v_y \Rightarrow
+	\dot v_y &= \frac{m}{qB} \ddot v_x \\
+	% einsetzen in 3.2
+	\text{Einsetzen in (3.2)} \ \Rightarrow
+	\frac{m}{qB} \ddot v_x &=
+	\frac{qE}{m} - \frac{qB}{m} v_x \\
+	% dgl umstellen
+	\ddot v_x + \underbrace{\left(\frac{qB}m \right)^2}_{= \omega^2}
+	v_x
+	&= \frac{qE}{m} \frac{qB}{m}
+\end{align*}
+Mit dem Ansatz $v_x(t) = \alpha \sin(\omega t) + \beta \cos(\omega t) + 
+\gamma$ erhalten wir mit den Randbedingungen:
+\begin{itemize}
+	\item $\alpha = 0$, da bei $t=0$ keine Kraft in $x$-Richtung wirkt 
+	\item $\gamma$ mit der partikulären Lösung:
+	\[ 
+		\omega^2 \cdot \gamma = \frac{q^2 \ E \ B}{m^2} 
+		\Rightarrow
+		\gamma = \frac EB
+	\]
+	\item $\beta$ folgt aus der Rdb $v_x(0) = v_0$:
+	\[
+		v_x(0) = \beta \cos(0) + \frac EB = \beta + \frac EB
+		\overset{!}{=} v_0
+		\Rightarrow
+		\beta = v_0 - \frac{E}{B}
+	\]
+\end{itemize}
+Damit lautet die Lösung der $x$-Koordinate:
+\[ v_x (t) = \left( v_0 - \frac EB \right) \cos(\omega t) + \frac EB \]
+
+\newpage
+Wenn man die Lösung für $v_x$ in (3.2) erhält man durch integrieren eine
+Lösung für $v_y$:
+\begin{align*}
+	\dot v_y &= \frac{Eq}{m} - \frac{qB}{m} v_x \\
+	% loesung fue vx einsetzen
+	&= \frac{Eq}{m} - \frac{qB}{m} \left(
+		\left( v_0 - \frac EB \right) \cos(\omega t) + \frac EB
+		\right) \\
+	% umstellen fuers kuerzen
+	&= \frac{Eq}{m} - \frac{qB}{m} \frac EB  - \frac{qB}{m}\left(
+		\left( v_0 - \frac EB \right) \cos(\omega t)
+		\right) \\
+	% kuerzen
+	&= -\frac{qB}{m} \left(v_0 0 \frac EB \right)
+		\cos (\omega t)
+\end{align*}
+Mit $\omega$ als Zyklotron(-kreis-)frequenz
+\[ 
+	\omega = \frac{qB}{m} 
+	\Rightarrow f = \frac{\omega}{2\pi} = \frac{qB}{2\pi m}
+\]
+
+\newpage
+
 \section*{Aufgabe 4}
+a) Da sich die induzierte Spannung proportional zur Fläche der Spule und 
+Menge an Windungen verhält, sollte die Fläche mit der größtem Fläche pro
+Umfang gewählt werden, was die kreisförmige Spule ist.
+
 \newpage
 \section*{Aufgabe 5}
 \newpage
