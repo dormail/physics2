@@ -5,6 +5,7 @@
 \usepackage{float}
 \usepackage{aligned-overset}
 \usepackage{subcaption}
+\usepackage{tabularx} % fuer gleichungen nebeneinander
 
 % partielle ableitungen
 \newcommand{\delr}{\partial_r}
@@ -299,12 +300,113 @@ Mit $\omega$ als Zyklotron(-kreis-)frequenz
 \newpage
 
 \section*{Aufgabe 4}
-a) Da sich die induzierte Spannung proportional zur Fläche der Spule und 
-Menge an Windungen verhält, sollte die Fläche mit der größtem Fläche pro
-Umfang gewählt werden, was die kreisförmige Spule ist.
-
 \newpage
 \section*{Aufgabe 5}
-\newpage
+
+b) Die induzierte Spannung hängt direkt mit der Bewegung in $z$-Richtung 
+zusammen:
+\[
+	U_\text{ind} = -\frac{d\Phi_B}{dt}
+	= -\frac{d}{dt} A \beta z
+	= -A\beta \dot z
+\]
+Die Gesamtenergie im System setzt sich zusammen aus kinetischer und
+potentieller Energie, zusammen mit der Leistung des induzierten Stromes
+im Ring (nach der Zeit integriert, die Energie ist in Form von 
+thermischer Energie ``verloren``):
+\begin{align*}
+	E_\text{ges} 
+	&= E_\text{kin} + E_\text{pot} + \int_0^t P_\text{ind} \ dt \\
+	% P_ind einzetzen
+	&= \frac12 mv^2 + mgz 
+	+ \int_0^t U_\text{ind} \cdot I_\text{ind} \ dt \\
+	% I einsetzen
+	&= \frac12 mv^2 + mgz 
+	+ \int_0^t \frac{U_\text{ind}^2} R \ dt \\
+	% U einsetzen
+	&= \frac12 mv^2 + mgz 
+	+ \int_0^t \frac{(A\beta \dot z)^2} R \ dt
+	\overset != const.
+\end{align*}
+
+\vspace{0.5cm}
+
+c) Da $E_\text{ges}$ konstant ist, muss die Ableitung dieser $0$ sein.\\
+Dann lässt sich die DGL aufstellen:
+\begin{align*}
+	\frac{d}{dt} E_\text{ges} 
+	= 0
+	\overset{!}&{=}
+	m v \dot v + mgv
+	+ \frac{(A\beta \dot z)^2} R \\
+	% dot z ersetzen
+	&= m v \dot v + mgv + \frac{(A\beta)^2} R \cdot v^2 \\
+	% durch \dot v teilen
+	\Leftrightarrow
+	0
+	&= m \dot v + mg + \frac{(A\beta)^2} R \cdot v \\
+	% wie ne dgl hinschrieben
+	\Leftrightarrow
+	g
+	&= - \dot v - \underbrace{\frac{(A\beta)^2}{Rm}}_{\alpha :=}
+	\cdot v
+\end{align*}
+Für die DGL existieren die homogene und partikuläre Lösung:
+\begin{align*}
+	\text{homogene Lsg:} \ 
+	0
+	&= - \dot v_h - \alpha v_h
+	&
+	\text{partikuläre Lsg:} \ 
+	g
+	&= - \dot v_p - \alpha v_p \\
+	% reinigen
+	\Leftrightarrow
+	0
+	&= \dot v_h + \alpha v_h
+	&
+	\text{Ansatz: } v_p(t) 
+	&= \xi_2 \\
+	% loesen
+	\Rightarrow
+	v_h(t) 
+	&= \xi_1 \cdot e^{-\alpha t}
+	&
+	\Leftrightarrow
+	g
+	&=- \alpha \xi_2 \\
+	% v_p loesen
+	&&
+	\xi_2
+	&= -\frac g\alpha
+\end{align*}
+Unsere Gesamtlösung lautet dann:
+\[
+	v(t) = v_h(t) + v_p(t) = \xi_1 \cdot e^{-\alpha t} -\frac g\alpha
+\]
+d) Mit unserer Rdb. erhalten wir dann:
+\begin{align*}
+	v(0) 
+	&= \xi_1 \cdot e^{-\alpha 0} -\frac g\alpha 
+	= \xi_1 - \frac g\alpha \overset != 0 \\
+	\Rightarrow
+	\xi_1 
+	&= \frac g\alpha \\
+	\Rightarrow
+	v(t) 
+	&= \frac g\alpha \cdot e^{-\alpha t} -\frac g\alpha
+\end{align*}
+Damit existiert eine Grenzgeschwindigkeit:
+\[
+	\lim_{t \rightarrow \infty} v(t)
+	=
+	\lim_{t \rightarrow \infty}
+	\frac g\alpha \cdot e^{-\alpha t} -\frac g\alpha
+	=
+	-\frac g\alpha
+\]
+
+
+
 
 \end{document}
