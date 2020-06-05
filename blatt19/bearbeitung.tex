@@ -69,11 +69,24 @@ Das stellen wir zu $v$ um:
 	\approx \frac23 c
 \end{align*}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{1d.jpg}
+\end{figure}
+
 \vspace{0.5cm}
 e) Im Zyklotron werden die Teilchen "nach links" abgelenkt (in 
 Bewegungsrichtung betrachtet). Obwohl im Bereich des Kondensator die 
 Richtung des magnetischen Feldes die gleiche ist, werden die Teilchen in 
 die andere Richtung gelenkt.
+
+\newpage
+\setlength{\headheight}{0cm}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{1bc.jpg}
+\end{figure}
 
 \newpage
 \setlength{\headheight}{0cm}
@@ -146,15 +159,35 @@ Möglichkeiten:
 	\begin{subfigure}[b]{0.3\textwidth}
 		\includegraphics[width=\textwidth]
 		{aufgabe3a_efeld_oben.png}
-		\caption{E-Feld nach oben gerichtet,\\B-Feld ``ins Papier``}
+		\caption{E-Feld nach oben gerichtet,\\B-Feld ``zum Leser``}
 	\end{subfigure}
 	~
 	\begin{subfigure}[b]{0.3\textwidth}
 		\includegraphics[width=\textwidth]
 		{aufgabe3a_efeld_unten.png}
-		\caption{E-Feld nach unten gerichtet,\\B-Feld ``zum Leser``}
+		\caption{E-Feld nach unten gerichtet,\\B-Feld ``ins Papier``}
 	\end{subfigure}
 \end{figure}
+Da das $E$-Feld konstant ist, das $B$-Feld jedoch von der Geschwindigkeit
+der Ladungsträger abhängt, lassen sich drei Fälle herleiten:
+\begin{itemize}
+	\item die Geschwindigkeit ist bei der "Filtergeschwindigkeit",
+	d.h. $E$ und $B$ Feld gleichen sich genau aus und das Teilchen
+	wird nicht abgelenkt (in Skizze unten mit $v_1$)
+	\item das Teilchen ist zu langsam: Es wird in die Richtung der
+	wirkenden Coulombkraft gezogen (positive Ladungen also zum 
+	negativen Pol des Kondensators, in Skizze mit $v_2$)
+	\item das Teilchen ist zu schnell: Umgekehrter Effekt von gerade, 
+	das Teilchen wird in die Richtung des Kondensators gesteuer, 
+	welche die gleichnamige Ladung besitzt (in Skizze $v_3$)
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm]{aufgabe3a_drift.png}
+\end{figure}
+
+\newpage
 
 \vspace{0.5cm}
 b) Wenn man den Spalt klein genug macht, so darf die Geschwindigkeit in 
@@ -288,8 +321,16 @@ Lösung für $v_y$:
 		\left( v_0 - \frac EB \right) \cos(\omega t)
 		\right) \\
 	% kuerzen
-	&= -\frac{qB}{m} \left(v_0 0 \frac EB \right)
-		\cos (\omega t)
+	&= -\frac{qB}{m} \left(v_0 - \frac EB \right)
+		\cos (\omega t) \\
+	% integrieren um v zu erhalten
+	\Rightarrow
+	v_y(t)
+	&= \frac{-1}{\omega} \frac{qB}{m} \left(v_0 - \frac EB \right)
+		\sin (\omega t) \\
+	% kuerzen
+	&= \left(\frac EB - v_0 \right)
+		\sin (\omega t) \\
 \end{align*}
 Mit $\omega$ als Zyklotron(-kreis-)frequenz
 \[ 
@@ -300,8 +341,36 @@ Mit $\omega$ als Zyklotron(-kreis-)frequenz
 \newpage
 
 \section*{Aufgabe 4}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{4a.jpg}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{4b.jpg}
+\end{figure}
+
 \newpage
 \section*{Aufgabe 5}
+
+\quad a) Da das $B$-Feld in $z$-Richtung inhomogen ist, verändert sich die 
+auch der Magnetische Fluss durch den Ring, wenn er sich in $z$-Richtung
+bewegt, da die Feldlinien des externen $B$-Feldes orthogonal auf der
+Fläche des Ringes stehen. \\
+Der Ring ist eine geschlossene Leiterschleife, d.h. wenn sich der 
+magnetische Fluss durch diesen mit der Zeit ändert wird eine
+Spannung induziert.\\
+Daher ist mit einer Bewegung in $z$-Richtung eine Induktionsspannung
+verbunden. \\
+
+Da sich $\vec B_\text{ges}$ aus dem externen Feld ($H$-Feld) und der
+Magnetisierung der Luft und des Ringes ($M$-Feld) zusammensetzt,
+kann $B_\text{ges} \approx B_\text{ext}$ bei einer geringen Magnetisierung
+des Mediums angenommen werden.
+
+\vspace{0.5cm}
 
 b) Die induzierte Spannung hängt direkt mit der Bewegung in $z$-Richtung 
 zusammen:
@@ -380,11 +449,14 @@ Für die DGL existieren die homogene und partikuläre Lösung:
 	\xi_2
 	&= -\frac g\alpha
 \end{align*}
-Unsere Gesamtlösung lautet dann:
+Unsere allgemein Lösung lautet dann:
 \[
 	v(t) = v_h(t) + v_p(t) = \xi_1 \cdot e^{-\alpha t} -\frac g\alpha
 \]
-d) Mit unserer Rdb. erhalten wir dann:
+
+\newpage
+
+d) Mit unserer Rdb. erhalten wir $v(t)$:
 \begin{align*}
 	v(0) 
 	&= \xi_1 \cdot e^{-\alpha 0} -\frac g\alpha 
