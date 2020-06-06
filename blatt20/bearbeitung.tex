@@ -1,0 +1,57 @@
+
+\documentclass[11pt a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{aligned-overset}
+\usepackage{subcaption}
+\usepackage{tabularx} % fuer gleichungen nebeneinander
+
+% partielle ableitungen
+\newcommand{\delr}{\partial_r}
+\newcommand{\deltheta}{\partial_\theta}
+\newcommand{\delphi}{\partial_\varphi}
+
+% elektrische feldkonstante
+\newcommand{\epsz}{\epsilon_0}
+% 1 / 4pi eps
+\newcommand{\kco}{\frac{1}{4\pi\epsilon_0}}
+
+% rotation
+\newcommand{\rot}{\text{rot}}
+
+% fancy header
+\usepackage{fancyhdr}
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Matthias Maile\\Roman Surma}\vspace{1.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Physik II - Gruppe 2\\Sommersemester 2020}\vspace{1.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{2.5cm}\huge{\textbf{20. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{4cm}
+
+% zum zeichnen tikz
+\usepackage{tikz}
+
+% fuer fabigen text
+\usepackage{xcolor}
+
+% irgendwas mit figures
+\usepackage{subcaption}
+
+\begin{document}
+\thispagestyle{fancy}
+\section*{Aufgabe 3}
+
+Gesamtimpedanze der Schaltung:
+\begin{align*}
+	\frac1{Z_\text{ges}}
+	&= \frac1{Z_\text{R}} + \frac1{Z_\text{C}} + \frac1{Z_\text{L}} \\
+	&= \frac1R + i\omega C + \frac1{i\omega L}
+\end{align*}
+
+\end{document}
