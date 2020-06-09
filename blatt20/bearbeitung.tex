@@ -45,6 +45,11 @@
 
 \begin{document}
 \thispagestyle{fancy}
+\section{Aufgabe 1}
+
+\newpage
+\setlength{\headheight}{0cm}
+
 \section*{Aufgabe 3}
 
 Gesamtimpedanze der Schaltung:
@@ -53,5 +58,65 @@ Gesamtimpedanze der Schaltung:
 	&= \frac1{Z_\text{R}} + \frac1{Z_\text{C}} + \frac1{Z_\text{L}} \\
 	&= \frac1R + i\omega C + \frac1{i\omega L}
 \end{align*}
+
+\newpage
+
+\section*{Aufgabe 5}
+
+\quad (a) Bei der Schaltung handelt es sich um einen Tiefpass. \\
+Bei niedrigen Frequenzen verhält sich die Induktivität 
+wie ein normales Kabel ($Z_L \approx 0$), erst bei hohen Frequenzen muss der Strom mehr gegen die 
+Selbstinduktivität ``ankämpfen``.
+\[ V(\omega) = \frac{R_a}{Z_\text{ges}} = \frac{R_a}{R + R_a + i\omega L} \]
+\\
+
+(b) Bei der Schaltung handelt es sich um einen Hochpass. \\
+Bei niedrigen Frequenzen nähert sich das Verhalten der
+Schaltung der bei Gleichstrom an, wodurch die Impedanz des Kondensators gegen unendlich geht.
+\[ V(\omega) = \frac{R_a}{Z_\text{ges}} = \frac{R_a}{R + R_a + \frac{1}{i\omega c}} \]
+\\
+
+(c) Die Schaltung ist ein Hochpass. \\
+Bei niedrigen Frequenzen würde der meiste Strom nicht durch den Verbraucher, sondern durch die Induktivität laufen.
+Erst bei höheren Frequenzen steigt die Impedanz der Induktivität und mehr Strom fließt durch den Verbraucher.
+\[
+	Z_a = \frac{R_a \ Z_L}{R_a + Z_L} = \frac{R_a \ i\omega L}{R_a + i\omega L} 
+	\Rightarrow 
+	V(\omega) = \frac{Z_a}{Z_\text{ges}} 
+	= \frac{R_a \ i\omega L}{R_a + i\omega L} \frac{1}{R + \frac{R_a \ i\omega L}{R_a + i\omega L}}
+	= \frac{\omega L - iR_a}{R R_a \omega L + \omega L - iR_a}
+\]
+\\
+
+(d) Die Schaltung ist ein Tiefpass. \\
+Das Verhalten ist das Umgekehrte zu der bei (c). Hier ist es jedoch so, dass bei niedrigen Frequenzen die Impedanz
+des Kondensators gegen unendlich geht und bei hohen Frequenzen durchlässig wird. Dadurch fließt bei tiefen
+Frequenzen viel Strom durch den Verbraucher, bei hohen wenig.
+\[
+	Z_a = \frac{R_a}{1 + R_a i\omega C}
+	\Rightarrow 
+	V(\omega) = \frac{Z_a}{Z_\text{ges}} 
+	= \frac{R_a}{1 + R_a i\omega C} \frac{1}{R + \frac{R_a}{1 + R_a i\omega C}}
+	= \frac{R_a}{R + R_a + RR_a i\omega C}
+\]
+\\
+
+(e) Die Schaltung ist ein Bandpass. \\
+Bei hohen Frequenzen ``scheitert`` der Strom an der Induktivität, bei niedrigen an dem Kondensator.
+\[
+	V(\omega) = \frac{Z_a}{Z_\text{ges}} = \frac{R_a}{R + i\omega L + \frac{1}{i \omega C} + R_a}
+\]
+\\
+
+(f) Die Schaltung ist ein Sperrfilter. \\
+Sehr hohe Frequenzen können einfach durch den Kondensator, niedrige durch die Induktivität. Frequenzen in einem
+mittleren Frequenzbereich werden jedoch nicht stark durchgelassen.
+\[
+	V(\omega) = \frac{Z_a}{Z_\text{ges}} 
+	= \frac{R_a}{R + \frac{L}{C} \frac{i\omega C}{1 - \omega^2 LC} + R_a}
+\]
+
+
+
 
 \end{document}
