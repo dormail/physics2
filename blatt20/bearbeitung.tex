@@ -224,13 +224,16 @@ Distanz $\sqrt{R^2 + l^2}$ genommen werden:
 
 \newpage
 
-\section*{Aufgabe 3}
+\section*{Aufgabe 4}
 
-Gesamtimpedanze der Schaltung:
+Gesamtimpedanz der Schaltung:
 \begin{align*}
 	\frac1{Z_\text{ges}}
 	&= \frac1{Z_\text{R}} + \frac1{Z_\text{C}} + \frac1{Z_\text{L}} \\
-	&= \frac1R + i\omega C + \frac1{i\omega L}
+	&= \frac1R + i\omega C + \frac1{i\omega L} \\
+	&= \frac{i\omega L + R - \omega^2 LCR}{i\omega LR} \\
+	\Rightarrow
+	Z_\text{ges} &= \frac{i\omega LR}{i\omega L + R - \omega^2 LCR}
 \end{align*}
 
 \newpage
