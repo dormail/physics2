@@ -20,6 +20,7 @@
 
 % rotation
 \newcommand{\rot}{\text{rot}}
+\newcommand{\arsinh}{\text{arsinh}}
 
 % fancy header
 \usepackage{fancyhdr}
@@ -49,6 +50,179 @@
 
 \newpage
 \setlength{\headheight}{0cm}
+
+\section*{Aufgabe 2}
+Für eine einfachere Rechnung werden zuerst einige Verinfachungen gemacht. \\
+Aus der Symetrie folgt, dass der Induktions-Effekt auf eine Schleife 
+der vierfache des Effekts auf eine Kante der Schleife sein muss:
+\begin{center}
+\begin{tikzpicture}
+	% linker bereich, linke spule
+	\draw[gray, thick] (-5, 0) -- (-5,2);
+	\draw[gray, thick] (-5, 0) -- (-3,0.5);
+	\draw[gray, thick] (-3, 0.5) -- (-3,2.5);
+	\draw[gray, thick] (-5, 2) -- (-3,2.5);
+	% linker bereich, rechte spule
+	\draw[gray, thick] (-2.9, 0) -- (-2.9,2);
+	\draw[gray, thick] (-2.9, 0) -- (-0.9,0.5);
+	\draw[gray, thick] (-0.9, 0.5) -- (-0.9,2.5);
+	\draw[gray, thick] (-2.9, 2) -- (-0.9,2.5);
+	% gleichheitszeichen und 4 *
+	\draw (0, 1.25) node {$=$};
+	\draw (1, 1.25) node {$4 \ \cdot$};
+	% rechter bereich, spule
+	\draw[gray, thick] (1.5, 0) -- (1.5,2);
+	\draw[gray, thick] (1.5, 0) -- (3.5,0.5);
+	\draw[gray, thick] (3.5, 0.5) -- (3.5,2.5);
+	\draw[gray, thick] (1.5, 2) -- (3.5,2.5);
+	% rechter bereich, kante
+	\draw[gray, thick] (3.6, 0) -- (5.6,0.5);
+\end{tikzpicture}
+\end{center}
+Dieses Integral entlang des gesamten Quadrats lässt sich weiter aufteilen:
+\begin{center}
+\begin{tikzpicture}
+	% linker bereich, linke spule
+	\draw[gray, thick] (-5, 0) -- (-5,2);
+	\draw[gray, thick] (-5, 0) -- (-3,0.5);
+	\draw[gray, thick] (-3, 0.5) -- (-3,2.5);
+	\draw[gray, thick] (-5, 2) -- (-3,2.5);
+	% linker bereich, rechte spule
+	\draw[gray, thick] (-2.9, 0) -- (-0.9,0.5);
+	% gleichheitszeichen und 4 *
+	\draw (0, 1.25) node {$=$};
+	% rechte seite
+	% 2 * seite
+	\draw (1, 1.25) node {$2 \ \cdot$};
+	\draw[gray, thick] (1.5, 0) -- (1.5,2);
+	\draw[gray, thick] (1.6, 0) -- (3.6,0.5);
+	% untere kante
+	\draw (3.7, 1.25) node {+};
+	\draw[gray, thick] (3.8, 0) -- (5.8,0.5);
+	\draw[gray, thick] (5.9, 0) -- (7.9,0.5);
+	% obere kante
+	\draw (8, 1.25) node {+};
+	\draw[gray, thick] (8.1, 2) -- (10.1,2.5);
+	\draw[gray, thick] (10.2, 0) -- (12.2,0.5);
+\end{tikzpicture}
+\end{center}
+Dabei fällte schon direkt auf, dass der ``senkrechte`` Teil keinen Einfluss auf die Leitung besitzt, da das 
+Skalarprodukt der Vektoren entlang der Leitungen 0 ist (aufgrund der Rechtwinkligkeit):
+\[ 	
+	L = \frac{\mu_0}{4\pi} \int_{l} 
+	\int_{l^\prime} \underbrace{d\vec x \cdot d\vec y}_{0} \frac{}{\vert \vec r - \vec r^\prime \vert}
+	= 0
+\]
+Damit verbleiben nur die Integrale entlang der parallelen Leitungen, welches erstmal für eine algemeine Distanz
+$d$ zwischen den Leitern gelöst wird:
+\begin{align*}
+	L_\text{parallel} 
+	&= \frac{\mu_0}{4\pi} \int_l \int_{l^\prime} 
+	\frac{d\vec r \cdot d\vec r^\prime}{\vert \vec r - \vec r^\prime \vert} \\
+	% parametrisierung einsetzen
+	&= \frac{\mu_0}{4\pi} \int_0^l \int_0^l
+	\frac{\vec e_x \cdot \vec e_x}{\sqrt{d^2 + (x-y)^2}} \ dx dy \\
+	% d ausklammern
+	&= \frac{\mu_0}{4\pi} \frac 1d \int_0^l \int_0^l
+	\frac{1}{\sqrt{1 + \left( \frac{x-y}{d} \right) ^2}} \ dx dy \\
+	% substituieren
+	\text{Substitution: } ^{u = \frac{x-y}{d}} _{dx = d \cdot du} \Rightarrow
+	&= \frac{\mu_0}{4\pi} \int_0^l \int_{-\frac yd}^{\frac{l-y}{d}}
+	\frac{1}{\sqrt{1 + u^2}} \ du \ dy \\
+	% integrieren nach u
+	&= \frac{\mu_0}{4\pi} \int_0^l 
+	\left[ \arsinh \ u \right]_{-\frac yd}^{\frac{l-y}{d}}
+	 \ dy \\
+	% u einsetzen
+	&= \frac{\mu_0}{4\pi} \int_0^l 
+	\left( \arsinh \left(\frac{l-y}{d}\right) - \arsinh \left(\frac{-y}{d} \right) \right)
+	 \ dy \\
+	% integral aufteilen
+	&= \frac{\mu_0}{4\pi} \underbrace{\int_0^l 
+	\arsinh \left(\frac{l-y}{d}\right) \ dy}_{\text{Int}_1 :=}
+	- \frac{\mu_0}{4\pi} \underbrace{\int_0^l \arsinh \left(\frac{-y}{d} \right) \ dy}_{\text{Int}_2 := } \\
+\end{align*}
+Das integral des arsinh ist gegeben durch
+\[ \int \arsinh(ax) \ dx = x \ arsinh(ax) - \frac{\sqrt{a^2x^2 + 1}}{a} + C \]
+
+\newpage
+Dann lässt sich der erste Teil des Integrals durch eine Substitution lösen:
+\begin{align*}
+	\text{Int}_1 
+	&= \int_0^l 
+	\arsinh \left(\frac{l-y}{d}\right)
+	 \ dy \qquad 
+	z := \frac{l-y}{d} \Rightarrow dy = -d \cdot dz
+	 \\
+	% substitution einsetzen
+	\Rightarrow
+	&= \int_{\frac{l}{d}}^0
+	(-d) \cdot \arsinh \left( z \right)
+	 \ dz \\
+	% integrieren
+	&= (-d) \cdot \left[ z \ arsinh(z) - \sqrt{z^2 + 1} \right]_{\frac{l}{d}}^0 \\
+	% einsetzen
+	&= -d \cdot \left(-1 -\frac{l}{d} \ \arsinh \left(\frac{l}{d} \right) 
+			- \sqrt{\left( \frac{l}{d}\right)^2 + 1} \right) \\
+	% d reinziehen
+	&= d + l \ \arsinh \left(\frac{l}{d} \right) 
+			- \sqrt{l^2 + 1}
+\end{align*}
+Das zweite Integral folgt direkt aus der Formel für das Integral:
+\begin{align*}
+	\text{Int}_2
+	&= \int_0^l \arsinh \left(\frac{-y}{d} \right) \ dy \\
+	&=  \left[ y \cdot \ \arsinh \left(-\frac{y}{d} \right) 
+	+ d \sqrt{\left( \frac yd \right)^2 + 1} \right]_0^l \\
+	% einsetzen
+	&= l \ \arsinh \left(- \frac ld \right) + \sqrt{l^2 + d^2} - d
+\end{align*}
+Dann lautet die Gegeninduktivität von zwei parallelen Leitern der Länge $l$ mit Abstand $d$:
+\begin{align*}
+	L_\text{parallel} 
+	&= \frac{\mu_0}{4\pi} \left( \text{Int}_1 - \text{Int}_2 \right) \\
+	% lsg der integrale einsetzen
+	&= \frac{\mu_0}{4\pi} \left(
+		d + l \ \arsinh \left(\frac{l}{d} \right) - \sqrt{l^2 + d^2} -
+		\left(l \ \arsinh \left(- \frac ld \right) + \sqrt{l^2 + d^2} - d \right)
+	\right) \\
+	% kuerzen
+	&= \frac{\mu_0}{4\pi} \left(
+		d + l \ \arsinh \left(\frac{l}{d} \right) - \sqrt{l^2 + d^2}
+		+ l \ \arsinh \left(\frac ld \right) - \sqrt{l^2 + d^2} + d
+	\right) \\
+	% alles doppel
+	&= \frac{\mu_0}{4\pi} \left(
+		2d + 2l \ \arsinh \left(\frac{l}{d} \right) - 2\sqrt{l^2 + d^2}
+	\right) \\
+	% 2 rauszieh
+	&= \frac{\mu_0}{2\pi} \left(
+		d + l \ \arsinh \left(\frac{l}{d} \right) - \sqrt{l^2 + d^2}
+	\right) \\
+\end{align*}
+Für die Gesamtinduktivität muss dann (gemäß der Skizze) 4 mal (wegen 4 Kanten) der Anteil bei Distanz $R$ und bei
+Distanz $\sqrt{R^2 + l^2}$ genommen werden:
+\begin{align*}
+	L_\text{ges} 
+	&= 4 \cdot \frac{\mu_0}{2\pi}
+		\left( L_\text{par} (R) + L_\text{par} \left( \sqrt{R^2 + l^2} \right) \right) \\
+	% einsetzen
+	&= 2 \cdot \frac{\mu_0}{\pi} \left( 
+			R + l \ \arsinh \left(\frac{l}{R} \right) - \sqrt{l^2 + R^2} + 
+			\sqrt{R^2 + l^2} + l \ \arsinh \left(\frac{l}{\sqrt{R^2 + l^2}} \right) 
+			- \sqrt{l^2 + R^2 + l^2}
+		\right) \\
+	% kuerze
+	&= 2 \cdot \frac{\mu_0}{\pi} \left( 
+			R + l \ \arsinh \left(\frac{l}{R} \right)
+			  + l \ \arsinh \left(\frac{l}{\sqrt{R^2 + l^2}} \right) 
+			- \sqrt{R^2 + 2l^2}
+		\right)
+\end{align*}
+
+
+
+\newpage
 
 \section*{Aufgabe 3}
 
