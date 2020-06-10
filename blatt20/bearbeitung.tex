@@ -226,7 +226,7 @@ Distanz $\sqrt{R^2 + l^2}$ genommen werden:
 
 \section*{Aufgabe 4}
 
-Gesamtimpedanz der Schaltung:
+a) Gesamtimpedanz der Schaltung:
 \begin{align*}
 	\frac1{Z_\text{ges}}
 	&= \frac1{Z_\text{R}} + \frac1{Z_\text{C}} + \frac1{Z_\text{L}} \\
@@ -235,6 +235,66 @@ Gesamtimpedanz der Schaltung:
 	\Rightarrow
 	Z_\text{ges} &= \frac{i\omega LR}{i\omega L + R - \omega^2 LCR}
 \end{align*}
+Das Amplitudenverhältnis ist der Betrag der Impedanz:
+\begin{align*}
+	\frac{U_0}{I_0}
+	&= \left\vert \frac{iR\omega L}{i\omega L + R - \omega^2LCR} \right\vert \\
+	% betrag aufteilen auf zaehler und nenner
+	&= \frac{\vert iR\omega L \vert}{\vert i\omega L + R - \omega^2LCR \vert} \\
+	% betrag bilden
+	&= \frac{R\omega L}{\vert i\omega L + R  (1 - \omega^2LC) \vert} \\
+	% unten betrag bilden
+	&= \frac{R\omega L}{\sqrt{(\omega L)^2 + R^2  (1 - \omega^2LC)^2}} \\
+	% durch omega teilen
+	&= \frac{RL}{\sqrt{L^2 + R^2  (\frac1\omega - \omega LC)^2}} \\
+\end{align*}
+Die Phasenverschiebung $\varphi$ ist das Argument von $z$:
+\begin{align*}
+	\varphi
+	&= \arctan \left(\frac{Im \ Z}{Re \ Z} \right) \\
+	% real und imaginaerteil einsetzen
+	&= \arctan \left(\frac{\omega R^2L (1 - \omega^2LC)}{R\omega^2L^2} \right) \\
+	% kuerzen
+	&= \arctan \left(\frac{R (1 - \omega^2LC)}{\omega L} \right) \\
+	% bruach entfernen
+	&= \arctan \left( \frac RL \left(\frac 1\omega - \omega LC \right) \right) \\
+\end{align*}
+
+\newpage
+b)
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=12cm]{aufgabe3.png}
+\end{figure}
+
+c) Die für die maximale Spannung gilt:
+\[ U_0^\text{max} = \text{max}\vert Z \vert \ I_0 \]
+Gesucht wird also ein Maximum von $\vert Z \vert$, bilde dazu die Ableitung und setze diese gleich 0:
+\begin{align*}
+	\frac{d}{d\omega} \vert Z(\omega) \vert 
+	&= \frac{d}{d\omega} \frac{RL}{\sqrt{L^2 + R^2  \left(\frac1\omega - \omega LC \right)^2}} \\
+	% linearität ausnutzen
+	&= LR \ \frac{d}{d\omega} \left(L^2 + R^2  \left(\frac1\omega - \omega LC \right)^2 \right)^{-0.5} \\
+	&= LR \ (-0.5) \left(L^2 + R^2  \left(\frac1\omega - \omega LC \right)^2 \right)^{-1.5}
+		\ \frac{d}{d\omega} \left(L^2 + R^2  \left(\frac1\omega - \omega LC \right)^2 \right) \\
+	&= LR \ (-0.5) \left(L^2 + R^2  \left(\frac1\omega - \omega LC \right)^2 \right)^{-1.5}
+		2R^2  \left(\frac1\omega - \omega LC \right) \cdot \left(-\frac{1}{\omega^2} - LC \right) \\
+	% bisschen kuerzen und gleich 0 setzen
+	&= LR^3 \ \left(L^2 + R^2  \left(\frac1\omega - \omega LC \right)^2 \right)^{-1.5}
+		\left(\frac1\omega - \omega LC \right) \cdot \left(\frac{1}{\omega^2} + LC \right) 
+	\overset != 0
+\end{align*}
+\[
+\Leftrightarrow \qquad
+	L^2 + R^2  \left(\frac1\omega - \omega LC \right)^2 = 0 \quad \lor \quad
+	\frac1\omega - \omega LC = 0 \quad \lor \quad
+	\frac{1}{\omega^2} + LC = 0
+\]
+Die linke und rechte Gleichung besitzen keine Lösung, die mittler liefert durch Umstellen
+\[ \omega = \frac 1 {\sqrt{LC}} \]
+Der Graph aus b) zeigt uns, dass es sich auch um ein Maximum handelt. \\
+Damit benötigt man für die gegebenen Werte maximal
+\[ U_0^\text{max} =  \vert Z\left(\sqrt{LC}\right) \vert \ I_0 = R \ I_0 = 10^3 V. \]
 
 \newpage
 
