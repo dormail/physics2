@@ -7,6 +7,7 @@
 \usepackage{aligned-overset}
 \usepackage{subcaption}
 \usepackage{tabularx} % fuer gleichungen nebeneinander
+\usepackage{wrapfig} % damit figures neben text sien koennen
 
 % partielle ableitungen
 \newcommand{\delr}{\partial_r}
@@ -46,7 +47,73 @@
 
 \begin{document}
 \thispagestyle{fancy}
-\section{Aufgabe 1}
+\section*{Aufgabe 1}
+Im Bereich des Magnetfeldes wirkt eine Lorentzkraft, welche eine Spannung induziert. Diese Spannung ermitteln wir, 
+indem wir ein Elektrisches Feld gegen die Lorentzkraft setzen, welche sich ausgleichen. Das Wegintegral des
+$E$-Feldes ist dann die Induktionsspannung $U_\text{ind}$.
+\begin{align*}
+	F_\text{Lo}
+	&= \vert \vec v \times \vec B \vert \quad \\ 
+	% in skalaresprodukt umstellen
+	&= v \cdot B \\
+	% v = \omega r 
+	&= \omega r B \\
+	% e feld ermitteln
+	E \overset{!}&{=} - F_\text{Lo} = -\omega r B \\
+	% U ermitteln
+	U_\text{ind} 
+	&= - \int_{r + \frac a2}^{r^\prime - \frac a2} -\omega rB \ dr^\prime \\
+	% stammfunktion
+	&= \left[  \frac12 \omega B r^2 \right]_{r + \frac12}^{r - \frac12} \\
+	% einsetzen
+	&= \frac12 \omega B \left( \left( r + \frac12 \right)^2 \left( r - \frac12 \right)^2 \right) \\
+	% verinfachen
+	&= - \omega Bra
+\end{align*}
+%%%%							%%%%%
+%%%%							%%%%%
+%%%% hier noch ne erklaerung zum weg des stromes	%%%%%
+%%%%							%%%%%
+%%%%							%%%%%
+Für den Widerstand des Wirbelstroms vereinfachen wir den Stromkreislauf, sodass ein ``inneren Bereich`` existiert,
+wo der Strom in eine Richtung (von $B$ und Drehrichtung abängig) fließt, und ein Äußerer, wo er Parallel zu den
+Seiten der Magnete zurück fließt:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{Aufgabe1.jpg}
+\end{figure}
+\noindent
+Damit ergibt sich der Widerstand
+\[ 
+	R 
+	= \rho \frac{l}{A} 
+	= \rho \frac{l}{d \cdot \frac a2} 
+	= \rho \cdot \frac{2a}{d \cdot \frac a2} 
+	= \frac{4\rho}{d}
+\]
+Daraus ergibt sich die Leistung des Stromen $P(\omega)$:
+\begin{align*}
+	P 
+	&= \frac{U^2}{R} \\
+	% U und R einsetzen
+	&= \frac{\omega^2 B^2 r^2 a^2 d}{\rho 4}
+\end{align*}
+
+\newpage
+\setlength{\headheight}{0cm}
+Daraus können wir ein Drehmoment herleiten:
+\begin{align*}
+	P
+	&= \vec M \cdot \vec \omega = M\omega \\
+	% nach M umstellen
+	\Rightarrow
+	M
+	&= \frac{P}{\omega} \\
+	% P einsetzej
+	&= \frac{\omega^2 B^2 r^2 a^2 d}{4 \omega \rho} \\
+	&= \frac{\omega B^2 r^2 a^2 d}{4 \rho} \\
+	&\approx 0.071608 \ Nm
+\end{align*}
 
 \newpage
 \setlength{\headheight}{0cm}
@@ -220,7 +287,69 @@ Distanz $\sqrt{R^2 + l^2}$ genommen werden:
 		\right)
 \end{align*}
 
-
+\newpage
+\section*{Aufgabe 3}
+a) Das Amplitudenverhältnis ist gegeben durch den Betrag der Impedanz, welcher gegeben ist:
+\[ I_0 = \frac{U_0}{\vert Z \vert} = \frac{100V}{10\Omega} = 10 A \]
+%
+\vspace{0.5cm}
+b) Aus Winkeleigenschaften bei komplexen Zahlen folgt die Phasenverschiebung $\varphi$:
+\begin{align*}
+	\varphi 
+	&= \text{Arg} (Z) \\
+	&= \text{arcsin} \left( \frac{ \text{Im} \ Z}{\vert Z \vert} \right) \\
+	&= \text{arcsin} \left( \frac{8\Omega}{10\Omega} \right) \\
+	&= \text{arcsin} \left( \frac45 \right) \\
+	&\approx 0.93
+\end{align*}
+\vspace{0.5cm}
+c) Die neue Gesamtimpedanz $Z^prime$ setzt sich zusammen aus den Einzelimpedanzen, für $\varphi = 0$ muss 
+der \\ Imaginärteil verschwinden:
+\begin{align*}
+	Z^\prime
+	&= R + i\omega L + Z_C \\
+	% allgemeine form fuer Z_C einsetzen
+	&= R + i\omega L + \frac1{i\omega C} \overset{!}{\in} \mathbb{R} \\
+	% umstellen zu imaginaer gleich null
+	\Leftrightarrow
+	0
+	&= i\omega L + \frac1{i\omega C} \\
+	% i hoch ziehen um minus zu erhalten
+	&= i\omega L - \frac{i}{\omega C} \\
+	% zu 1/C umstellen
+	\frac{i}{\omega C}
+	&= i\omega L \\
+	% zu C umstellen
+	C 
+	&= \frac{1}{\omega^2 L} \approx \frac1{400} F
+\end{align*}
+\vspace{0.5cm}
+d) Das neue Amplitudenverhältniss:
+\[ I_0 = \frac{U_0}{Z^\prime} = \frac{U_0}{R} = \frac{100}{6} A \approx 16.67 \ A \]
+NR für den Widerstand $R$:
+\begin{align*}
+	\sqrt{R^2 + X^2} = \sqrt{R^2 + 64 \Omega^2}
+	&= 10 \Omega \\
+	% wurzel entfernen
+	\Leftrightarrow
+	R^2 + 64 \Omega^2
+	&= 100 \Omega^2 \\
+	% vereinfachen
+	R^2 
+	&= 36 \Omega^2 \\
+	% wurzel bilden
+	\Rightarrow
+	R 
+	&= 6 \Omega
+\end{align*}
+e) Der Spannungsabfall folgt dann:
+\begin{align*}
+	\Delta U_0
+	&= \vert Z_C \vert I_0 \\
+	&= \frac{1}{\omega C} I_0 \\
+	&= \omega L \cdot I \\
+	&= 8 \Omega \cdot 16.67 A = 133.3 \ V
+\end{align*}
 
 \newpage
 
