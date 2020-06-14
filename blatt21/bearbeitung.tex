@@ -1,0 +1,103 @@
+\documentclass[11pt a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{aligned-overset}
+\usepackage{subcaption}
+\usepackage{tabularx} % fuer gleichungen nebeneinander
+\usepackage{wrapfig} % damit figures neben text sien koennen
+
+% partielle ableitungen
+\newcommand{\delr}{\partial_r}
+\newcommand{\delt}{\partial_t}
+\newcommand{\deltheta}{\partial_\theta}
+\newcommand{\delphi}{\partial_\varphi}
+
+% elektrische feldkonstante
+\newcommand{\epsz}{\epsilon_0}
+% 1 / 4pi eps
+\newcommand{\kco}{\frac{1}{4\pi\epsilon_0}}
+
+% div und rot
+\newcommand{\diver}{\vec \nabla \cdot}
+\newcommand{\rot}{\vec \nabla \times}
+
+% hyperbolische funktionen
+\newcommand{\arsinh}{\text{arsinh}}
+\newcommand{\arcosh}{\text{arcosh}}
+\newcommand{\artanh}{\text{artanh}}
+
+% fancy header
+\usepackage{fancyhdr}
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Matthias Maile\\Roman Surma}\vspace{1.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Physik II - Gruppe 2\\Sommersemester 2020}\vspace{1.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{2.5cm}\huge{\textbf{21. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{4cm}
+
+% zum zeichnen tikz
+\usepackage{tikz}
+
+% fuer fabigen text
+\usepackage{xcolor}
+
+% irgendwas mit figures
+\usepackage{subcaption}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\section*{Aufgabe 1}
+
+\newpage
+\setlength{\headheight}{0cm}
+
+\section*{Aufgabe 3}
+a) Da die Leitung einen Widerstand besitzt, verrichtet der Strom an diesem Arbeit durch Aufheizen des Kabels.
+\[ P = U \cdot I = I^2 \cdot R \]
+Dieser ist proportional zum Quadrat der Stromstärke $I$, d.h. diese sollte minimiert werden. Dafür muss die 
+Spannung $U$ angehoben werden.
+b)
+\[
+	P = I^2 \cdot R = 500^2 \ A^2 \cdot 0.2 \ k\Omega = 5 \cdot 10^4 \ W
+\]
+
+\newpage
+
+\section*{Aufgabe 5}
+a) 
+\begin{enumerate}
+	\item Mit Gaußschem Satz
+	\[ 
+		\diver \vec E = \frac{\rho}{\epsz} 
+		\Rightarrow
+		\int_V \diver \vec E \ dV = \int_V \frac{\rho}{\epsz} \ dV = \frac{q_\text{enq}}{\epsz}
+		\Rightarrow
+		\oint_{\partial_V} \vec E \ d\vec A = \frac{q_\text{enq}}{\epsz}
+	\]
+	\item Ebenfalls mit Gaußschem Satz
+	\[
+		\diver \vec B = 0
+		\Rightarrow
+		\int_V \diver \vec B \ dV = 0
+		\Rightarrow
+		\oint_{\partial_V} \vec B \ d\vec A = 0
+	\]
+	\item Mit Satz von Stokes
+	\[
+		\rot \vec E = -\delt \vec B
+		\Rightarrow
+		\int_A \rot \vec E \ d\vec A = \int_A -\delt \vec B \ d\vec A
+		\Rightarrow
+		\oint_{\partial_A} \vec E \ d\vec r = -\delt \int_A \vec B \ \vec d\vec A = -\delt \phi
+	\]
+	\item 
+\end{enumerate}
+
+\end{document}
