@@ -28,6 +28,14 @@
 \newcommand{\arcosh}{\text{arcosh}}
 \newcommand{\artanh}{\text{artanh}}
 
+% fuer impedanzen 
+\newcommand{\omegaC}{\omega C}
+\newcommand{\omegaL}{\omega L}
+\newcommand{\omegaR}{\omega R}
+\newcommand{\omegaLC}{\omega LC}
+\newcommand{\omegaLCR}{\omega LCR}
+\newcommand{\omegaCR}{\omega CR}
+
 % fancy header
 \usepackage{fancyhdr}
 \fancyhf{}
@@ -54,9 +62,119 @@
 \thispagestyle{fancy}
 
 \section*{Aufgabe 1}
+a) 
+\begin{align*}
+	Z_{AB}
+	&= Z_C + Z_{LR} \\
+	&= \frac{i\omega C} + \frac{i\omega LR}{i \omega L + R} \\
+	&= \frac{i \omega L + R + i \omega C (i \omega LR)}{i \omegaC (i\omegaL + R)} \\
+	&= \frac{R - \omega^2 LCR + i \omega L}{i\omega CR - \omega^2 LC}
+\end{align*}
+Für die relle Impedanz:
+\begin{align*}
+	\text{Im} \left( Z_{AB} \right)
+	&= \frac{\omega L (- \omega^2 LC) - (R - \omega^2 LCR) \cdot \omegaCR}{(\omega CR)^2 + (\omega^2 LC)^2} 
+	\overset{!}{=} 0 \\
+	% bruch entfernen
+	\Rightarrow
+	0
+	&= \omega L (- \omega^2 LC) - (R - \omega^2 LCR) \cdot \omegaCR \\
+	% vereinfachen
+	&= -\omega^3 L^2 C - \omega CR^2 + \omega^3 LC^2R^2 \\
+	% durch omega teilen
+	\Rightarrow
+	0
+	&= -\omega^2 L^2 C - CR^2 + \omega^2 LC^2R^2 \\
+	\Leftrightarrow
+	CR^2
+	&= -\omega^2 L^2 C + \omega^2 LC^2R^2 \\
+	% nach omega^2 umstellen
+	\Rightarrow
+	\omega^2
+	&= \frac{CR^2}{L^2C^2R^2 - L^2C} \\
+	\Rightarrow
+	\omega
+	&= \sqrt{\frac{R^2}{L^2CR^2 - L^2}}
+\end{align*}
+b) Die an der LCR-Schaltung abfallende Spannung $U_{AB}$ ist bestimmt durch
+\[ U_{AB} = \frac{Z_{AB}}{R_i + Z_{AB}} U_0 \]
+Dann lautet die elektrische Leistung der LCR-Schaltung:
+\begin{align*}
+	P
+	&= \frac{\Delta U^2}{Z_{AB}} \\
+	&= \frac{Z_{AB}^2}{(R_i+Z_{AB})^2} \frac{1}{Z_{AB}} U_0 \\
+	&= \frac{Z_{AB}}{(R_i+Z_{AB})^2} U_0 
+\end{align*}
+Diese wird maximal für
+\begin{align*}
+	d_{Z_{AB}} P
+	&= U \frac{(R_i+Z_{AB})^2 - Z_{AB} \cdot 2 \cdot (R_i + Z_{AB})}{(R_i+Z_{AB})^4} \overset != 0 \\
+	\Leftrightarrow
+	0
+	&= R_i + Z_{AB} - 2 Z_{AB} \\
+	\Rightarrow
+	Z_{AB} &= R_i
+\end{align*}
 
 \newpage
 \setlength{\headheight}{0cm}
+
+c) 
+\begin{align*}
+	R_i
+	&= \frac{R - \omega^2 LCR + i \omega L}{i\omega CR - \omega^2 LC} \\
+	% quotient berechnen
+	Z_{AB} \in \mathbb{R} \Rightarrow
+	&= \frac{(R - \omega^2 LCR) (-\omega^2 LC) + \omega^2 LCR}{(\omega CR)^2 + (\omega^2 LC)^2} \\
+	&= \frac{\omega^4 L^2 C^2 R - \omega^2 LCR + \omega^2 LCR}{(\omega CR)^2 + (\omega^2 LC)^2} \\
+	&= \frac{\omega^4 L^2 C^2 R}{(\omega CR)^2 + (\omega^2 LC)^2} \\
+	&= \frac{\omega^2 L^2 R}{R^2 + \omega^2 L^2} \\
+	% nach 0 umstellen
+	\Rightarrow
+	0
+	&= \frac{\omega^2 L^2 R}{R^2 + \omega^2 L^2} - R_i \\
+	% bruch entfernen
+	\Leftrightarrow
+	0
+	&= \omega^2 L^2 R - R_iR^2 - R_i\omega^2L^2 \\
+	% fuer pq formel
+	\Leftrightarrow
+	0
+	&= R^2 - \frac{\omega^2L^2}{R_i} R + \omega^2 L^2
+\end{align*}
+Mit der pq-Formel erhalten wir eine Lösung:
+\[
+	R = \frac{\omega^2L^2}{2 R_i} \pm \sqrt{\left( \frac{\omega^2L^2}{2 R_i}\right)^2 - \omega^2 L^2} 
+\]
+
+
+\newpage
+\setlength{\headheight}{0cm}
+
+\section*{Aufgabe 2}
+Die Leistung des Heizlüfters hängt vom Spannungsabfall an diesem ab:
+\[ P_H = \frac{\Delta U^2}{R_2} \]
+Der Spannungsabfall folgt aus den Kirchhoffschen Regeln:
+\[ \Delta U = U_H \frac{R_2}{R_1 + R_2} \]
+Dann können wir den benötigten Widerstand genau berechnen:
+\begin{align*}
+	P_H 
+	&= U_H^2 \frac{R_2^2}{(R_1 + R_2)^2} \frac{1}{R_2} \\
+	&= U_H^2 \frac{R_2}{(R_1 + R_2)^2} \\
+	% 1. umformung
+	\Leftrightarrow
+	P_H (R_1 + R_2)^2 
+	&= U_H^2 R_2 \\
+	% binomische formel, nach 0 umstellen
+	\Leftrightarrow
+	0 
+	&= P_H R_1^2 + 2 P_H R_1 R_2 + P_H R_2^2 - U_H^2 R_2 \\
+	\Leftrightarrow
+	0
+	&= R_2^2 + \left( 2 R_1 - \frac{U_H^2}{P_H} \right) R_2 + R_1^2 \\
+\end{align*}
+
+\newpage
 
 \section*{Aufgabe 3}
 a) Da die Leitung einen Widerstand besitzt, verrichtet der Strom an diesem Arbeit durch Aufheizen des Kabels.
