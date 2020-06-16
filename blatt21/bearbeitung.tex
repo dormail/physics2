@@ -195,9 +195,10 @@ a)
 	\[ 
 		\diver \vec E = \frac{\rho}{\epsz} 
 		\Rightarrow
-		\int_V \diver \vec E \ dV = \int_V \frac{\rho}{\epsz} \ dV = \frac{q_\text{enq}}{\epsz}
+		\int_V \diver \vec E \ dV = \int_V \frac{\rho}{\epsz} \ dV 
 		\Rightarrow
-		\oint_{\partial_V} \vec E \ d\vec A = \frac{q_\text{enq}}{\epsz}
+		\oint_{\partial_V} \vec E \ d\vec A = \int_V \frac{\rho}{\epsz} \ dV 
+		= \frac{q_\text{enq}}{\epsz}
 	\]
 	\item Ebenfalls mit Gaußschem Satz
 	\[
@@ -217,5 +218,41 @@ a)
 	\]
 	\item 
 \end{enumerate}
+b) Aus der 4. Maxwell-Gleichung erhalten wir:
+\begin{align*}
+	\rot \vec B 
+	&= \mu_0 \vec j + \mu_0 \epsz \delt \vec E \\
+	% auf beiden Seiten divergenz
+	\Rightarrow
+	\underbrace{\diver \left(\rot \vec B \right)}_{=0}
+	&= \mu_0 \diver \vec j + \mu_0 \epsz \diver \left( \delt \vec E \right) \\
+	% umstellen nach div \dot E
+	\Rightarrow
+	\diver \dot{\vec E}
+	&= - \frac{\diver \vec j}{\epsz} \tag{5.1}
+\end{align*}
+Ausgehend von (5.1) und der Kontinuitätsgleichung lässt sich dann zeigen:
+\begin{align*}
+	\diver \vec E(t) 
+	&= \diver \vec E(0) + \int_0^t \diver \dot{\vec E} \ dt \\
+	% umformen mit 5.1
+	(5.1) \Rightarrow \quad
+	&= \frac{\rho(0)}{\epsz} - \int_0^t \frac{\diver \vec j}{\epsz} \ dt \\
+	   % koninuitaet
+	\text{(Kontinuität)} \Rightarrow \quad
+	&= \frac{\rho(0)}{\epsz} + \int_0^t \frac{\delt \rho}{\epsz} \ dt \\
+	&= \frac{\rho(0)}{\epsz} + \left. \frac{\rho(t)}{\epsz} \right|_0^t \\
+	&= \frac{\rho(0)}{\epsz} + \left. \frac{\rho(t)}{\epsz} \right|_0^t \\
+	&= \frac{\rho(0)}{\epsz} + \frac{\rho(t)}{\epsz} - \frac{\rho(0)}{\epsz} \\
+	&= \frac{\rho(t)}{\epsz}
+\end{align*}
+Mit der 2. und 3. Maxwellgleichug lässt sich zeigen:
+\begin{align*}
+	\diver \vec B(t) 
+	&= \diver \vec B(0) + \int_0^t \diver \dot{\vec B}(t) \ dt \\
+	&= \diver \vec B(0) - \int_0^t \diver \left( \rot E(t) \right) \ dt \\
+	&= \diver \vec B(0) \\
+	&= 0
+\end{align*}
 
 \end{document}
