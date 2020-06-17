@@ -18,6 +18,8 @@
 \newcommand{\epsz}{\epsilon_0}
 % 1 / 4pi eps
 \newcommand{\kco}{\frac{1}{4\pi\epsilon_0}}
+% del fuer partial
+\newcommand{\del}{\partial}
 
 % div und rot
 \newcommand{\diver}{\vec \nabla \cdot}
@@ -185,6 +187,42 @@ b)
 \[
 	P = I^2 \cdot R = 500^2 \ A^2 \cdot 0.2 \ k\Omega = 5 \cdot 10^4 \ W
 \]
+
+\section*{Aufgabe 4}
+a) Mit der 4. Maxwellgleichung wissen wir, dass 
+\[ \oint_{\del A} \vec B \cdot d\vec s = \mu_0 (I + I_V) \]
+und diese Gleichung auch für alle Flächen erfüllt sein muss. \\
+Wenn wir als uns eine Fläche denken, wo der Leiter komplett durch die Fläche durchstößt, also kein 
+Verschiebungsstrom existiert, so muss gelten:
+\[ \oint_{\del A} \vec B \cdot d\vec s = \mu_0 I. \]
+Genauso kann man aber auch eine Fläche wählen, die, am Leiter vorbei, durch den Raum des Kondensators verläuft.
+Durch diese Fläche fließt dann kein Strom, sondern nur ein Verschibungsstrom. Da wir aber den Rand gleich ließen, 
+können wir für $I_V$ schreiben:
+\[ \oint_{\del A} \vec B \cdot d \vec s = \mu_0 I = \mu_0 I_V \ \Rightarrow \ I_V = I = 2 \ A \]
+b) Das elektrische Feld des Plattenkondensators ist gegeben durch
+\[ E(t) = \frac{\sigma(t)}{\epsz} \] 
+mit $\sigma$ als Flächenladungsdichte $\frac{Q}{A}$. \\
+Dann lautet die Ableitung des $\vec E$-Feldes nach der Zeit:
+\begin{align*}
+	\delt E(t) 
+	&= \delt \frac{\sigma}{\epsz} \\
+	% sigma einsetzen
+	&= \delt \frac{Q}{A \cdot \epsz} \\
+	&= \frac{I}{A \cdot \epsz} \\
+	&= \frac{2 \ A}{\epsz}
+\end{align*}
+c) Der Verschiebungsstrom $\tilde{I}_V$, der durch die Fläche $A^\prime$ fließt, lässt sich dann bestimmen:
+\begin{align*}
+	\tilde{I}_V
+	&= \epsz \delt \int_{A^\prime} \vec E \cdot d \vec A^\prime \quad 
+	\vec E \text{ homogen} \\
+	&= \epsz \delt E \cdot A^\prime \\
+	&= \epsz A^\prime \frac{I}{\epsz A} \\
+	&= \frac{A^\prime}{A} I \\
+	&= \frac{I}{4}
+\end{align*}
+d) Aus der 4. Maxwell-Gleichung folgt dann das Megnetfeld am Rand der der Fläche $A^\prime$:
+\[ \oint_{A^\prime} \vec B \cdot d\vec s = \mu_0 (I + I_V) = \mu_0 I_V = \mu_0 \frac{I}{4} \]
 
 \newpage
 
