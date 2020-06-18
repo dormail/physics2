@@ -154,27 +154,38 @@ Mit der pq-Formel erhalten wir eine Lösung:
 \setlength{\headheight}{0cm}
 
 \section*{Aufgabe 2}
-Die Leistung des Heizlüfters hängt vom Spannungsabfall an diesem ab:
-\[ P_H = \frac{\Delta U^2}{R_2} \]
-Der Spannungsabfall folgt aus den Kirchhoffschen Regeln:
-\[ \Delta U = U_H \frac{R_2}{R_1 + R_2} \]
-Dann können wir den benötigten Widerstand genau berechnen:
-\begin{align*}
-	P_H 
-	&= U_H^2 \frac{R_2^2}{(R_1 + R_2)^2} \frac{1}{R_2} \\
-	&= U_H^2 \frac{R_2}{(R_1 + R_2)^2} \\
-	% 1. umformung
-	\Leftrightarrow
-	P_H (R_1 + R_2)^2 
-	&= U_H^2 R_2 \\
-	% binomische formel, nach 0 umstellen
-	\Leftrightarrow
-	0 
-	&= P_H R_1^2 + 2 P_H R_1 R_2 + P_H R_2^2 - U_H^2 R_2 \\
-	\Leftrightarrow
-	0
-	&= R_2^2 + \left( 2 R_1 - \frac{U_H^2}{P_H} \right) R_2 + R_1^2 \\
-\end{align*}
+a) Der Aufbau sieht entsprechend aus:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 5cm]{figures/aufgabe2-1.png}
+\end{figure}
+\noindent
+Für die Betriebsleistung muss ein Strom $I$ fließen:
+\[ P_H = U_H \cdot I \ \Rightarrow \ I = \frac{P_H}{U_H} \approx 7.8261 \ A \]
+Da dieser Strom auch durch den Widerstand fließt, wird an diesem die Arbeit geleistet:
+\[ P_R = U_R \cdot I = R \cdot I^2 = 1531.2 \ W \]
+Gesamtleistung und Wirkungsgrad lauten somit
+\[ 
+	P_G = P_H + P_R = 3331.2 \ W
+	\Rightarrow
+	\eta = \frac{P_H}{P_G} \approx 0.54
+\]
+b) Mit den Transformatoren sieht der Aufbau wie folgt aus:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 8cm]{figures/aufgabe2-2.png}
+\end{figure}
+\noindent
+Aus dem Windungszahlverhältnis $9:1$ folgt das Stromverhältnis 
+\[ I_R : I_H = 1 : 9 \ \Rightarrow I_R = \frac{I_H}{9} \approx 0.87 \ A \]
+Damit muss am Widerstand die Leistung $P_R^\prime$ geleistet werden:
+\[ P_R^\prime = R \cdot I_R^2 = 18.904 \ W \]
+Gesamtleistung und Wirkungsgrad lauten somit
+\[ 
+	P_G^\prime = P_H + P_H^\prime = 1818.9 \ W
+	\ \Rightarrow \
+	\eta^\prime = \frac{P_H}{P_G^\prime} \approx 0.99
+\]
 
 \newpage
 
@@ -183,6 +194,7 @@ a) Da die Leitung einen Widerstand besitzt, verrichtet der Strom an diesem Arbei
 \[ P = U \cdot I = I^2 \cdot R \]
 Dieser ist proportional zum Quadrat der Stromstärke $I$, d.h. diese sollte minimiert werden. Dafür muss die 
 Spannung $U$ angehoben werden.
+\newline
 b)
 \[
 	P = I^2 \cdot R = 500^2 \ A^2 \cdot 0.2 \ k\Omega = 5 \cdot 10^4 \ W
