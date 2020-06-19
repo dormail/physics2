@@ -1,0 +1,174 @@
+\documentclass[11pt a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{aligned-overset}
+\usepackage{subcaption}
+\usepackage{tabularx} % fuer gleichungen nebeneinander
+\usepackage{wrapfig} % damit figures neben text sien koennen
+
+% partielle ableitungen
+\newcommand{\delr}{\partial_r}
+\newcommand{\delt}{\partial_t}
+\newcommand{\deltheta}{\partial_\theta}
+\newcommand{\delphi}{\partial_\varphi}
+
+% elektrische feldkonstante
+\newcommand{\epsz}{\epsilon_0}
+% 1 / 4pi eps
+\newcommand{\kco}{\frac{1}{4\pi\epsilon_0}}
+% del fuer partial
+\newcommand{\del}{\partial}
+
+% div und rot
+\newcommand{\diver}{\vec \nabla \cdot}
+\newcommand{\rot}{\vec \nabla \times}
+
+% hyperbolische funktionen
+\newcommand{\arsinh}{\text{arsinh}}
+\newcommand{\arcosh}{\text{arcosh}}
+\newcommand{\artanh}{\text{artanh}}
+
+% fuer impedanzen 
+\newcommand{\omegaC}{\omega C}
+\newcommand{\omegaL}{\omega L}
+\newcommand{\omegaR}{\omega R}
+\newcommand{\omegaLC}{\omega LC}
+\newcommand{\omegaLCR}{\omega LCR}
+\newcommand{\omegaCR}{\omega CR}
+
+% fancy header
+\usepackage{fancyhdr}
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Matthias Maile\\Roman Surma}\vspace{1.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Physik II - Gruppe 2\\Sommersemester 2020}\vspace{1.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{2.5cm}\huge{\textbf{22. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{4cm}
+
+% zum zeichnen tikz
+\usepackage{tikz}
+
+% fuer fabigen text
+\usepackage{xcolor}
+
+% irgendwas mit figures
+\usepackage{subcaption}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\section*{Aufgabe 1}
+a) 
+
+\newpage
+\setlength{\headheight}{0cm}
+\section*{Aufgabe 2}
+a) Das Dipolmoment und seine Ableiutungen lauten:
+\begin{align*}
+	\vec p(t) 
+	= \vec p_0 e^{-i\omega t}
+	\qquad
+	\dot{\vec p}(t) 
+	= -i\omega \ \vec p_0 e^{-i\omega t}
+	\qquad
+	\ddot{\vec p}(t) 
+	= -\omega^2 \ \vec p_0 e^{-i\omega t}
+\end{align*}
+Dann lässt sich für die Divergenz des Vektorpotentials zeigen:
+\begin{align*}
+	\diver \vec A(\vec r, t)
+	&= \diver \frac{\mu_0}{4\pi r} \dot{\vec p} \left(t - \frac rc\right) \\
+	% p einsetzen
+	&= \diver \frac{-i \omega \mu_0}{4\pi r} \vec p_0 \exp \left( i\omega \frac rc - i\omega t \right) \\
+	% divergenz nach vorne
+	&= 
+		\frac{-i \omega \mu_0}{4\pi}  \
+		\diver \vec p_0 \frac{\exp\left(i\omega\frac rc - i\omega t\right)}{r} \\
+	% produktregel
+	&= 
+		\frac{-i \omega \mu_0}{4\pi}  \
+		\Bigg (
+			\frac{\exp\left(i\omega\frac rc - i\omega t\right)}{r}  
+			\underbrace{\diver \vec p_0}_{=0}
+			+ \vec p_0 \cdot \vec \nabla \frac{\exp\left(i\omega\frac rc - i\omega t\right)}{r}
+		\Bigg ) \\
+	% 0 Term rausstriechen
+	&= 
+		\frac{-i \omega \mu_0}{4\pi}  \
+		\Bigg (
+			\vec p_0 \cdot \vec \nabla \frac{\exp\left(i\omega\frac rc - i\omega t\right)}{r}
+		\Bigg ) \\
+	% divergenz einsetze
+	&= 
+		\frac{-i \omega \mu_0}{4\pi}  \ \vec e_r \cdot \vec p_0 \cdot
+		 \del_r \frac{\exp\left(i\omega\frac rc - i\omega t\right)}{r} \\
+	% nach r ableiten
+	&= 
+		\frac{-i \omega \mu_0}{4\pi}  \ \vec e_r \cdot \vec p_0 \cdot
+		 \frac{r 
+		 	\frac{i\omega}{c} \exp\left(i\omega\frac rc - i\omega t\right)
+		 	- \exp\left(i\omega\frac rc - i\omega t\right)}{r^2} \\
+	% bruch trennen, r statt e_r
+	&= 
+		\frac{-i \omega \mu_0}{4\pi}  \ \vec r \cdot 
+		\left(
+		 \frac{\vec p_0 i\omega \exp\left(i\omega\frac rc - i\omega t\right)}{c r^2}
+		 - \frac{\vec p_0 \exp\left(i\omega\frac rc - i\omega t\right)}{r^3}
+		\right) \\
+	% iomega reinziehen
+	&= 
+		- \frac{\mu_0}{4\pi}  \ \vec r \cdot 
+		\Bigg(
+		 \underbrace{\frac{-\omega^2 \vec p_0 \exp\left(i\omega\frac rc - i\omega t\right)}{c r^2}}
+		 _{\frac{\ddot{\vec p}(t - r/c)}{cr^2}}
+		 - \underbrace{\frac{i \omega \vec p_0 \exp\left(i\omega\frac rc - i\omega t\right)}{r^3}}
+		 _{- \frac{\dot{\vec p}(t - r/c)}{r^3}}
+		\Bigg) \\
+	% p einsetzen
+	&= 
+		- \frac{\mu_0}{4\pi}  \ \vec r \cdot 
+		\left(
+			\frac{\ddot{\vec p} \left(t - \frac rc \right)}{cr^2} 
+			+ \frac{\dot{\vec p}\left( t - \frac rc \right)}{r^3}
+		\right) \\
+	% epsz einsetzen
+	&= 
+		- \frac{\mu_0\epsz}{4\pi\epsz}  \ \vec r \cdot 
+		\left(
+			\frac{\ddot{\vec p} \left(t - \frac rc \right)}{cr^2} 
+			+ \frac{\dot{\vec p}\left( t - \frac rc \right)}{r^3}
+		\right) \\
+	% nach c umstellen
+	&= 
+		- \frac{1}{c^2} \frac{1}{4\pi\epsz}  \ \vec r \cdot 
+		\left(
+			\frac{\ddot{\vec p} \left(t - \frac rc \right)}{cr^2} 
+			+ \frac{\dot{\vec p}\left( t - \frac rc \right)}{r^3}
+		\right) \\
+	\overset{!}&{=} - \frac{1}{c^2} \dot \phi(\vec r, t) \\
+	% nach dot phi uumstellen
+	\Rightarrow \
+	\dot \phi(\vec r, t)
+	&= 
+		\frac{1}{4\pi\epsz}  \ \vec r \cdot 
+		\left(
+			\frac{\ddot{\vec p} \left(t - \frac rc \right)}{cr^2} 
+			+ \frac{\dot{\vec p}\left( t - \frac rc \right)}{r^3}
+		\right) \\
+	\Rightarrow \
+	\phi(\vec r, t)
+	&= 
+		\frac{1}{4\pi\epsz}  \ \vec r \cdot 
+		\left(
+			\frac{\dot{\vec p} \left(t - \frac rc \right)}{cr^2} 
+			+ \frac{\vec p\left( t - \frac rc \right)}{r^3}
+		\right) + const.
+\end{align*}
+
+\end{document}
