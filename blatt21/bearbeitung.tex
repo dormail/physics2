@@ -266,7 +266,15 @@ a)
 		\Rightarrow
 		\oint_{\partial_A} \vec E \ d\vec r = -\delt \int_A \vec B \ \vec d\vec A = -\delt \phi
 	\]
-	\item 
+	\item Mit Satz von Stokes
+	\[ 
+	\rot \vec B = \mu_0 \vec j + \mu_0 \epsz \delt \vec E 
+	\Rightarrow
+	\int_A \rot \vec B \cdot d\vec A
+	= \oint_{\del A} \vec B \cdot d\vec r
+	= \mu_0 \int_A \vec j \cdot d\vec A + \mu_0 \epsz \int_A \delt \vec E \cdot d\vec A
+	= \mu_0 I_\text{enq} + \mu_0 \epsz \int_A \delt \vec E \cdot d\vec A
+	\]
 \end{enumerate}
 b) Aus der 4. Maxwell-Gleichung erhalten wir:
 \begin{align*}
