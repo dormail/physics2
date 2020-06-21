@@ -24,6 +24,7 @@
 % div und rot
 \newcommand{\diver}{\vec \nabla \cdot}
 \newcommand{\rot}{\vec \nabla \times}
+\newcommand{\grad}{\vec \nabla}
 
 % hyperbolische funktionen
 \newcommand{\arsinh}{\text{arsinh}}
@@ -64,7 +65,47 @@
 \thispagestyle{fancy}
 
 \section*{Aufgabe 1}
-a) 
+a) \newline
+c) 
+\begin{align*}
+	\square E(x,t)
+	&= \square E_0 \int_{\mathbb R} F(k) e^{i(\omega t - kx)} \ dk \\
+	% square ausschreiben
+	&= \left(\Delta - \frac{1}{c^2} \delt^2 \right) E_0 \int_{\mathbb R} F(k) e^{i(\omega t - kx)} \ dk \\
+	&= \left(\del_x^2 - \frac{1}{c^2} \delt^2 \right) E_0 \int_{\mathbb R} F(k) e^{i(\omega t - kx)} \ dk \\
+	&= E_0 \int_{\mathbb R} F(k) \left( 
+		\del_x^2 e^{i(\omega t - kx)} - \frac{1}{c^2} \delt^2 e^{i(\omega t - kx)} \right) \ dk \\
+	&= E_0 \int_{\mathbb R} F(k) e^{i(\omega t - kx)} \left( 
+		-k^2 + \frac{1}{c^2} \omega^2 \right) \ dk \\
+	% c definiton einsetzen
+	c = \frac{\omega}{k} \ \Rightarrow \
+	&= E_0 \int_{\mathbb R} F(k) e^{i(\omega t - kx)} \left( 
+		-k^2 + \frac{k^2}{\omega^2} \omega^2 \right) \ dk \\
+	&= E_0 \int_{\mathbb R} F(k) e^{i(\omega t - kx)} (k^2 - k^2) \ dk \\
+	&= E_0 \int_{\mathbb R} 0 \ dk \\
+	&= 0
+\end{align*}
+d) Mit der Definiton des Laplace-Operators in Kugelkoordinaten
+\[ \Delta f =  \frac{1}{r} \frac{\partial^2}{\partial r^2} (rf) + \frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta} \left(\sin \theta \frac{\partial f}{\partial \theta} \right) + \frac{1}{r^2 \sin^2 \theta} \frac{\partial^2 f}{\partial \varphi^2} \]
+lässt sich zeigen, dass Kugelwellen eine Lösung der Wellengleichung darstellen:
+\begin{align*}
+	\square \vec E(r,t)
+	&= \left(\Delta - \frac{1}{c^2} \delt^2 \right) \left( \frac 1r \vec f(r \pm ct) \right) \\
+	&= \Delta  \left( \frac 1r \vec f(r \pm ct) \right) 
+	- \frac{1}{c^2} \delt^2 \left( \frac 1r \vec f(r \pm ct) \right) \\
+	% zeitliche ableitungen bilden
+	&= \Delta  \left( \frac 1r \vec f(r \pm ct) \right) 
+	\mp \frac{1}{rc} \delt \left( \dot{\vec f}(r \pm ct) \right) \\
+	&= \Delta  \left( \frac 1r \vec f(r \pm ct) \right) 
+	- \frac{1}{r} \ddot{\vec f}(r \pm ct) \\
+	% laplace einsetzen
+	&= \frac{1}{r} \del_r^2 \left(\vec f(r \pm ct) \right) 
+	- \frac{1}{r} \ddot{\vec f}(r \pm ct) \\
+	% raeumliche ableitung
+	&= \frac{1}{r} \ddot{\vec f}(r \pm ct)
+	- \frac{1}{r} \ddot{\vec f}(r \pm ct) \\
+	&= 0
+\end{align*}
 
 \newpage
 \setlength{\headheight}{0cm}
@@ -79,6 +120,8 @@ a) Das Dipolmoment und seine Ableiutungen lauten:
 	\qquad
 	\ddot{\vec p}(t) 
 	= -\omega^2 \ \vec p_0 e^{-i\omega t}
+	\qquad \text{mit }
+	\vec p_0 = p_0 \vec e_z
 \end{align*}
 Dann lässt sich für die Divergenz des Vektorpotentials zeigen:
 \begin{align*}
@@ -169,6 +212,110 @@ Dann lässt sich für die Divergenz des Vektorpotentials zeigen:
 			\frac{\dot{\vec p} \left(t - \frac rc \right)}{cr^2} 
 			+ \frac{\vec p\left( t - \frac rc \right)}{r^3}
 		\right) + const.
+\end{align*}
+
+\newpage
+b) Das $\vec E$-Feld in der Elektrodynamik ist gegeben durch 
+\[ \vec E = -\grad \phi - \delt \vec A \]
+Die zeitliche Ableitung von $\vec A$ lautet
+\[ \delt A 
+	= \delt \frac{\mu_0}{4\pi r} \dot{\vec p} \left(t - \frac rc\right) 
+	= \frac{\mu_0}{4\pi r} \ddot{\vec p} \left(t - \frac rc\right) 
+	= \frac{-\omega^2 \mu_0}{4\pi r} \vec p_0 \exp\left(\frac{i\omega r}{c} - i\omega t \right)
+\]
+aus $c = \frac{1}{\sqrt{\epsz \mu_0}}$ folgt, dass
+\[ \delt A 
+	= - \frac{1}{4\pi\epsz} \frac{\omega^2}{c^2 r} \vec p_0 \exp\left(\frac{i\omega r}{c} - i\omega t \right)
+	\tag{2.1}
+\]
+Für $\grad \phi$ lässt sich schreiben:
+\begin{align*}
+	\grad \phi
+	&= \grad
+		\frac{1}{4\pi\epsz}  \ \vec r \cdot 
+		\left(
+			\frac{\dot{\vec p} \left(t - \frac rc \right)}{cr^2} 
+			+ \frac{\vec p\left( t - \frac rc \right)}{r^3}
+		\right) \\
+	% umschreiben in e funktion
+	&= \grad
+		\frac{1}{4\pi\epsz}  \
+		\underbrace{(\vec e_r \cdot \vec p_0)}_{p_0 \cos\theta} \
+		\underbrace{\left(
+			\frac{\exp\left(\frac{i\omega r}{c} - i\omega t \right)}{r^2}
+			-
+			\frac{i\omega \exp\left(\frac{i\omega r}{c} - i\omega t \right)}{cr}
+		\right)}_{\alpha :=} \\
+	&= \grad
+		\frac{1}{4\pi\epsz} \ p_0 \cos\theta \cdot  \alpha \\
+	% definiton des gradienten einsetzen
+	&= \kco \Big( 
+	\vec e_r \delr \left(p_0 \cos\theta \cdot \alpha \right) +
+	\frac{\vec e_\theta}{r} \del_\theta \left(p_0 \cos\theta \cdot \alpha \right)
+	+ \frac{\vec e_\phi}{r\sin\theta} 
+	\underbrace{\del_\phi \left(p_0 \cos\theta \cdot \alpha \right)}_{0}
+	\Big) \\
+	% ableitungen richtig setzen
+	&= \frac{p_0}{4\pi\epsz} \left(
+		\vec e_r \cdot \cos\theta \cdot \delr\alpha 
+		+
+		\frac{\vec e_\theta \cdot \alpha}{r} \del_\theta \cos\theta
+	\right)
+\end{align*}
+Die Nebenrechnung für $\delr \alpha$:
+\begin{align*}
+	\delr \alpha 
+	&= \delr \left(\exp\left(\frac{i\omega r}{c} - i\omega t \right) \cdot
+		\left(\frac{1}{r^2} - \frac{i\omega}{cr} \right)
+	\right) \\
+	&= 
+		\exp\left(\frac{i\omega r}{c} - i\omega t \right) 
+		\cdot \left(\frac{2i\omega}{cr^2} + \frac{\omega^2}{c^2r} -\frac{2}{r^3} \right)
+\end{align*}
+% einsetzen der Nebenrechnung in Hauptrechnung
+\begin{align*}
+	\Rightarrow
+	\grad \phi
+	&= \frac{p_0}{4\pi\epsz} \exp(\hdots)
+	\left(
+		\vec e_r \cdot \cos\theta \cdot 
+		\left(\frac{2i\omega}{cr^2} + \frac{\omega^2}{c^2r} -\frac{2}{r^3} \right)
+		+
+		\vec e_\theta \cdot \sin\theta \cdot \left(\frac{1}{r^3} - \frac{i\omega}{cr^2} \right)
+	\right)
+\end{align*}
+Mit der Eigenschaft $\vec e_z = \vec e_r \cos\theta - \vec e_\theta \sin\theta$ lässt sich der 
+Ausdruck (2.1) für $\delt \vec A$ umschreiben:
+\begin{align*}
+	\delt \vec A
+	&= - \frac{1}{4\pi\epsz} \ \frac{\omega^2}{c^2 r} \ 
+	\vec p_0 \exp\left(\frac{i\omega r}{c} - i\omega t \right) \\
+	% \vec p_0 umschreiben
+	&= - \frac{1}{4\pi\epsz} \ \frac{\omega^2}{c^2 r} \ 
+	p_0 \cdot \vec e_z \exp\left(\frac{i\omega r}{c} - i\omega t \right) \\
+	&= \frac{p_0}{4\pi\epsz} \
+	\exp(\hdots)  \
+	\frac{\omega^2}{c^2 r} 
+	\left(\vec e_\theta \sin\theta - \vec e_r \cos\theta \right)
+	\\
+\end{align*}
+
+\newpage
+Dann lauten die Kompenenten des $\vec E$-Feldes:
+\begin{align*}
+	% r richtung
+	E_r 
+	&= -\left(\grad \phi \right)_r -\left(\delt \vec A \right)_r  \\
+	&= - \frac{p_0}{4\pi\epsz} \exp\left(\frac{i\omega r}{c} - i\omega t \right) \cdot \cos\theta
+	\cdot \left(\frac{2i\omega}{cr^2} + \frac{\omega^2}{c^2r} -\frac{2}{r^3} - \frac{\omega^2}{c^2r} \right) \\
+	% kuerzen
+	&= \frac{p_0}{2\pi\epsz} \exp\left(\frac{i\omega r}{c} - i\omega t \right) \cdot \cos\theta
+	\cdot \left(\frac{1}{r^3} - \frac{i\omega}{cr^2} \right) \\
+	% theta richtung
+	E_\theta
+	&= -\left(\grad \phi \right)_\theta -\left(\delt \vec A \right)_\theta  \\
+	&= - \frac{p_0}{4\pi\epsz} \exp\left(\frac{i\omega r}{c} - i\omega t \right) \cdot \sin\theta
+	\cdot \left(\frac{\omega^2}{c^2r} - \frac{i\omega}{cr^2} + \frac{1}{r^3} \right)
 \end{align*}
 
 \end{document}
