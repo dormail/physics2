@@ -1,0 +1,109 @@
+\documentclass[11pt a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{aligned-overset}
+\usepackage{subcaption}
+\usepackage{tabularx} % fuer gleichungen nebeneinander
+\usepackage{wrapfig} % damit figures neben text sien koennen
+
+% partielle ableitungen
+\newcommand{\delr}{\partial_r}
+\newcommand{\delt}{\partial_t}
+\newcommand{\deltheta}{\partial_\theta}
+\newcommand{\delphi}{\partial_\varphi}
+
+% elektrische feldkonstante
+\newcommand{\epsz}{\epsilon_0}
+% 1 / 4pi eps
+\newcommand{\kco}{\frac{1}{4\pi\epsilon_0}}
+% del fuer partial
+\newcommand{\del}{\partial}
+
+% div und rot
+\newcommand{\diver}{\vec \nabla \cdot}
+\newcommand{\rot}{\vec \nabla \times}
+\newcommand{\grad}{\vec \nabla}
+
+% hyperbolische funktionen
+\newcommand{\arsinh}{\text{arsinh}}
+\newcommand{\arcosh}{\text{arcosh}}
+\newcommand{\artanh}{\text{artanh}}
+
+% fuer impedanzen 
+\newcommand{\omegaC}{\omega C}
+\newcommand{\omegaL}{\omega L}
+\newcommand{\omegaR}{\omega R}
+\newcommand{\omegaLC}{\omega LC}
+\newcommand{\omegaLCR}{\omega LCR}
+\newcommand{\omegaCR}{\omega CR}
+
+% fancy header
+\usepackage{fancyhdr}
+\fancyhf{}
+% vspaces in den headern fuer Distanzen notwendig
+% linke Seite: Namen der Abgabegruppe
+\lhead{\textbf{Matthias Maile\\Roman Surma}\vspace{1.5cm}}
+% rechte Seite: Modul, Gruppe, Semester
+\rhead{\textbf{Physik II - Gruppe 2\\Sommersemester 2020}\vspace{1.5cm}}
+% Center: nr. des blattes
+\chead{\vspace{2.5cm}\huge{\textbf{23. Übungsblatt}}}
+% benoetigt damit der eigentliche Text nicht in der Überschrift steckt
+\setlength{\headheight}{4cm}
+
+% zum zeichnen tikz
+\usepackage{tikz}
+
+% fuer fabigen text
+\usepackage{xcolor}
+
+% irgendwas mit figures
+\usepackage{subcaption}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\section*{Aufgabe 1}
+\[ \vec E = E_0 \vec e_y \cdot \cos(kx - \omega t) \]
+a) Ausbreitung in $x$-Richtung $\Rightarrow \vec k = k \cdot \vec e_x $ \\
+Damit folgt $\vec B$:
+\begin{align*}
+	\vec B = \frac{\vec k \times \vec E}{\omega} 
+	&= \underbrace{\frac{k}{\omega} \cdot E_0}_{B_0 = \frac{E_0}{c}}
+		\cdot (\vec e_x \times \vec e_y) \cdot \cos(kx - \omega t) \\
+	&= \underbrace{B_0 \cdot \vec e_z}_{\vec B = B_0 \vec e_z} \cdot \cos(kx - \omega t) \\
+\end{align*}
+% berechnung des poynting vektors
+\begin{align*}
+	\vec S = \frac{\vec E \times \vec B}{\mu_0}
+	&= \frac{E_0 \cdot B_0}{\mu_0} \cdot \cos^2(kx - \omega t) \cdot (\vec e_y \times \vec e_z) \\
+	&= \frac{E_0 \cdot B_0}{\mu_0} \cdot \cos^2(kx - \omega t) \cdot \vec e_x \\
+	&= \frac{E_0^2}{c \mu_0} \cdot \cos^2(kx - \omega t) \cdot \vec e_x \\
+\end{align*}
+b) Der Poynting-Vektor zeigt in die Richtung des Energieflusses und der Betrag von diesem ist die Intensität des 
+Energieflusses zum Zeitpunkt $t$.
+
+\vspace{0.5cm}
+\noindent 
+c)
+\begin{align*}
+	I = \langle \vert \vec s \vert \rangle_t 
+	&= \frac{E_0^2}{c\mu_0} \langle \vert \cos^2(kx - \omega t) \vert \rangle_t
+	&= \frac{E_0^2}{2c\mu_0}
+\end{align*}
+
+\vspace{0.5cm}
+\noindent 
+d)
+\[ P = \frac{I}{c} = \frac{E_0^2}{2c^2\mu_0} = \frac{B_0^2}{2\mu_0} \]
+e) 
+\[ P = \frac{I}{c} = \frac{1.4 \cdot 10^3 \ Wm^{-2}}{3 \cdot 10^8 m/s} \approx 4.67 \cdot 10^{-6} Nm^{-2} 
+\Rightarrow 
+F = PA = P \cdot \pi R_E^2 \approx 5.95 \cdot 10^{8} \ N 
+\]
+
+
+
+
+\end{document}
