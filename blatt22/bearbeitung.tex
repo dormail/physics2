@@ -65,7 +65,14 @@
 \thispagestyle{fancy}
 
 \section*{Aufgabe 1}
-a) \newline
+a) Für $\omega$ und $k$ muss gelten:
+\[ \frac{\omega}{k} = c = \frac{1}{\sqrt{\epsz\mu_0}} \]
+Damit die erste Maxwellgleichung erhalten bleibt, muss $\vec E_0$ senkrecht auf $\vec k$ stehen:
+\[ \vec E_0 \cdot \vec k = 0 \]
+b) $c$ entspricht der Phasengeschwindigkeit der Elektromagnetischen Welle.
+
+\vspace{0.5cm}
+\noindent
 c) 
 \begin{align*}
 	\square E(x,t)
@@ -85,6 +92,10 @@ c)
 	&= E_0 \int_{\mathbb R} 0 \ dk \\
 	&= 0
 \end{align*}
+
+\newpage
+\setlength{\headheight}{0cm}
+
 d) Mit der Definiton des Laplace-Operators in Kugelkoordinaten
 \[ \Delta f =  \frac{1}{r} \frac{\partial^2}{\partial r^2} (rf) + \frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta} \left(\sin \theta \frac{\partial f}{\partial \theta} \right) + \frac{1}{r^2 \sin^2 \theta} \frac{\partial^2 f}{\partial \varphi^2} \]
 lässt sich zeigen, dass Kugelwellen eine Lösung der Wellengleichung darstellen:
@@ -317,5 +328,46 @@ Dann lauten die Kompenenten des $\vec E$-Feldes:
 	&= - \frac{p_0}{4\pi\epsz} \exp\left(\frac{i\omega r}{c} - i\omega t \right) \cdot \sin\theta
 	\cdot \left(\frac{\omega^2}{c^2r} - \frac{i\omega}{cr^2} + \frac{1}{r^3} \right)
 \end{align*}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=17cm]{2c.jpg}
+\end{figure}
+Der Ponynting Vektor zeigt (aufgrund des negativen Vorzeichens in der Rechnung, wahrscheinlich irgendwo eins 
+falsch gesetzt) vom Beobachter zur Quelle.
+\[ \vec S \parallel \vec e_r \]
+Auf der Äquatorialebene ist dieser am stärksten, bei den Polen geht dieser gegen 0.
+
+\newpage
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=18cm]{3a.jpg}
+\end{figure}
+
+\begin{wrapfigure}{l}{0.5\textwidth}
+	\centering
+	\includegraphics[width=8cm]{3b.jpg}
+\end{wrapfigure}
+Für $\omega$: \\
+Die Anrgefrequenz $\omega$ sollte von der Eigenfrequenz $\omega_0$ des Schwingkreises abweichen, da es sonst 
+zu einer Resonanzkatastrophe kommen kann (in der Gleichung einem durch 0 teilen entsprechend). \\
+Da in der Realität zumindest durch die Bauteile immer eine geringe Dämpfung stattfindet gäbe es ein 
+``Maximum`` für die Resonanz. \\
+Da es aber dennoch zu Schäden durch zu hohen Stromfluss kommen kann, sollte dies bei Schaltungen beachtet werden.
+
+\newpage
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=18cm]{4a.jpg}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=18cm]{4b.jpg}
+\end{figure}
+
+c) Ein Vorteil des Koaxialkabels ist die verbessert Abschirmung gegen externe Magnetfelder, bzw. dass andere
+Kabel in der Umgebung von diesem kein Magnetfeld erfahren.
 
 \end{document}
