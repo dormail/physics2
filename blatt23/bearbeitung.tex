@@ -106,17 +106,49 @@ F = PA = P \cdot \pi R_E^2 \approx 5.95 \cdot 10^{8} \ N
 \newpage
 \setlength{\headheight}{0cm}
 
+\section*{Aufgabe 2}
+\par{a)} Beim ersten Fall entsteht eine linear polarisierte Welle:
+\begin{itemize}
+	\item $\delta = 0: \ \vec E 
+		= \begin{pmatrix} \vert \hat E_x \vert \cdot \cos(kz - \omega t)  \\
+		\vert \hat E_y \vert \cdot \cos(kz - \omega t) \end{pmatrix}
+		= \cos(kz - ω t) \cdot \begin{pmatrix} \vert \hat E_x \vert \\ \vert \hat E_y \vert \end{pmatrix}$
+	\item $\delta = \pm\pi: \ \vec E 
+		= \begin{pmatrix} \vert \hat E_x \vert \cdot \cos(kz - \omega t)  \\ 
+			\vert \hat E_y \vert \cdot \cos\left(kz - \omega t \pm \pi \right)  \end{pmatrix}
+		% cos in sin umschreiben
+		= \begin{pmatrix} \vert \hat E_x \vert \cdot \cos(kz - \omega t)  \\ 
+			-\vert \hat E_y \vert \cdot \cos\(kz - \omega t)  \end{pmatrix}
+		= \cos\left(kx - \omega t\right) \begin{pmatrix} \vert \hat E_x \vert \\ 
+			-\vert \hat E_y \vert \ \end{pmatrix}
+			$
+\end{itemize}
+Beim zweiten Fall entsteht eine elliptisch polarisierte Welle (da $\vert \hat E_x \vert \neq \vert \hat E_y \vert$ keine zirkular polarisierte Welle):
+\begin{align*}
+	\vec E 
+	&= \begin{pmatrix}
+		\vert \hat E_x \vert \cdot \cos(kz - \omega t) \\
+		\vert \hat E_y \vert \cdot \cos(kz - \omega t \pm \frac\pi2) \\
+	\end{pmatrix} 
+	= \begin{pmatrix}
+		\vert \hat E_x \vert \cdot \cos(kz - \omega t) \\
+		\mp \vert \hat E_y \vert \cdot \sin(kz - \omega t) \\
+	\end{pmatrix}
+\end{align*}
+
+
+\newpage
+
 \section*{Aufgabe 3}
-Das elektrische Dipolmoment der Anordnung lautet:
-\[ 
-	\vec p(t) 
-	= \sum_{i} q_i \cdot \vec r_i 
-	= -q \cdot a \cos\left(\frac\omega2 t\right) \vec e_z + 2q \cdot \vec 0 
-	+ q \cdot b \cos\left(\frac\omega2 t\right) \vec e_z
-	% zusammenfassen
-	= \underbrace{q (b - a) \vec e_z}_{\vec p_0} \cos\left(\frac\omega2 t\right)
-\]
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=18cm]{aufgabe3.jpg}
+\end{figure}
+
+\newpage
 
 \section*{Aufgabe 4}
+
 
 \end{document}
